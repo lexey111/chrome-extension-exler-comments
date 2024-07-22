@@ -1,9 +1,10 @@
 import {h} from 'preact'
 import {HeaderComponent} from './header.component'
 import {LanguageAwareWrapper} from '../shared/language-aware.wrapper'
-import {I18n} from '../shared/i18n.component'
 import {useEffect} from 'preact/compat'
 import {settingsPageStorageKey} from '../../types/consts'
+import {StatComponent} from '../shared/stat.component'
+import {DisclaimerComponent} from "./disclaimer.component";
 
 const storeTabId = async () => {
     const tabs = await chrome.tabs.query({active: true, currentWindow: true})
@@ -19,10 +20,8 @@ export const SettingsPage = () => {
     return <div>
         <LanguageAwareWrapper>
             <HeaderComponent/>
-            data
-            <I18n>test</I18n>
-            <I18n>test232</I18n>
-            <I18n code={'test3'}/>
+            <StatComponent/>
+            <DisclaimerComponent/>
         </LanguageAwareWrapper>
     </div>
 }

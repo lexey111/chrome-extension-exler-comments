@@ -1,6 +1,7 @@
 import {h} from 'preact'
 import {useCallback} from 'preact/compat'
 import {allTimeStatStorageKey, statStorageKey} from '../../types/consts'
+import {I18n} from './i18n.component'
 
 export const ResetStatComponent = () => {
     const resetStat = useCallback(async () => {
@@ -8,8 +9,8 @@ export const ResetStatComponent = () => {
         await chrome.storage.sync.set({[allTimeStatStorageKey]: {processed: 0, total: 0}})
 
     }, [])
-    return <div>
-        <a href="#" onClick={resetStat}>Reset stat</a>
+    return <div class={'reset-stat-container'}>
+        <a href="#" onClick={resetStat}><I18n code={'reset_stat'}/></a>
     </div>
 }
 

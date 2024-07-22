@@ -622,27 +622,36 @@
 
   // src/resources/ua.ts
   var UA = {
-    test: "\u0422\u0435\u0441\u0442\u043E\u0432\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F",
-    test2: "\u0422\u0435\u0441\u0442\u043E\u0432\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F 2",
-    test3: "\u0422\u0435\u0441\u0442\u043E\u0432\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F 3",
+    title: "Exler's site | \u0432\u043E\u0433\u043D\u0435\u0433\u0430\u0441\u043D\u0438\u043A \u043A\u043E\u043C\u0435\u043D\u0442\u0430\u0440\u0456\u0432",
+    has_been_hidden: "\u043F\u0440\u0438\u0445\u043E\u0432\u0430\u043D\u043E",
+    total: "\u0432\u0441\u044C\u043E\u0433\u043E",
+    in_current_session: "\u0412 \u043F\u043E\u0442\u043E\u0447\u043D\u0456\u0439 \u0441\u0435\u0441\u0456\u0457",
+    for_all_time: "\u0417\u0430 \u0432\u0435\u0441\u044C \u0447\u0430\u0441",
+    reset_stat: "\u0421\u043A\u0438\u043D\u0443\u0442\u0438 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
     settings: "\u041D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F",
     open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F..."
   };
 
   // src/resources/en.ts
   var EN = {
-    test: "Test value",
-    test2: "Test value 2",
-    test3: "Test value 3",
+    title: "Exler's site | comments fire extinguisher",
+    has_been_hidden: "was hidden",
+    total: "total",
+    in_current_session: "In current session",
+    for_all_time: "For all the time",
+    reset_stat: "Reset statistics",
     settings: "Settings",
     open_settings_page: "Open settings page..."
   };
 
   // src/resources/ru.ts
   var RU = {
-    test: "\u0422\u0435\u0441\u0442\u043E\u0432\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435",
-    test2: "\u0422\u0435\u0441\u0442\u043E\u0432\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 2",
-    test3: "\u0422\u0435\u0441\u0442\u043E\u0432\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 3",
+    title: "Exler's site | \u043E\u0433\u043D\u0435\u0442\u0443\u0448\u0438\u0442\u0435\u043B\u044C \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0435\u0432",
+    has_been_hidden: "\u0441\u043A\u0440\u044B\u0442\u043E",
+    total: "\u0432\u0441\u0435\u0433\u043E",
+    in_current_session: "\u0412 \u0442\u0435\u043A\u0443\u0449\u0435\u0439 \u0441\u0435\u0441\u0441\u0438\u0438",
+    for_all_time: "\u0417\u0430 \u0432\u0441\u0451 \u0432\u0440\u0435\u043C\u044F",
+    reset_stat: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
     settings: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438",
     open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438..."
   };
@@ -656,19 +665,15 @@
 
   // src/components/shared/i18n.component.tsx
   var I18n = ({ code, children }) => {
-    let keyCode = code;
     if (!code) {
-      keyCode = children?.toString();
-    }
-    if (!keyCode) {
       return null;
     }
     return /* @__PURE__ */ _(LanguageContext.Consumer, null, (langCode) => {
       if (!langCode) {
-        return /* @__PURE__ */ _("span", null);
+        return /* @__PURE__ */ _("span", null, "...");
       }
-      const text = langs[langCode][keyCode] || "";
-      return /* @__PURE__ */ _("span", null, text || "unknown code " + keyCode);
+      const text = langs[langCode][code] || "";
+      return /* @__PURE__ */ _("span", null, text);
     });
   };
 
@@ -723,31 +728,34 @@
     return /* @__PURE__ */ _(LanguageContext.Provider, { value: activeLanguage }, children);
   };
 
-  // src/components/popup/reset-stat.component.tsx
+  // src/components/shared/reset-stat.component.tsx
   var ResetStatComponent = () => {
     const resetStat = q2(async () => {
       await chrome.storage.sync.set({ [statStorageKey]: { processed: 0, total: 0 } });
       await chrome.storage.sync.set({ [allTimeStatStorageKey]: { processed: 0, total: 0 } });
     }, []);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("a", { href: "#", onClick: resetStat }, "Reset stat"));
+    return /* @__PURE__ */ _("div", { class: "reset-stat-container" }, /* @__PURE__ */ _("a", { href: "#", onClick: resetStat }, /* @__PURE__ */ _(I18n, { code: "reset_stat" })));
   };
 
-  // src/components/popup/popup.page.tsx
-  var PopupPage = () => {
+  // src/components/shared/stat.component.tsx
+  var StatComponent = () => {
     const [stat, setStat] = h2({ processed: 0, total: 0 });
     const [allStat, setAllStat] = h2({ processed: 0, total: 0 });
     y2(() => {
       const processCurrentStat = async () => {
         const storedStat = await chrome.storage.sync.get([statStorageKey]);
-        console.log("stored stat", storedStat);
-        setStat({ processed: storedStat?.[statStorageKey]?.processed ?? 0, total: storedStat?.[statStorageKey]?.total ?? 0 });
+        setStat({
+          processed: storedStat?.[statStorageKey]?.processed ?? 0,
+          total: storedStat?.[statStorageKey]?.total ?? 0
+        });
         const storedAllStat = await chrome.storage.sync.get([allTimeStatStorageKey]);
-        console.log("stored storedAllStat", storedAllStat);
-        setAllStat({ processed: storedAllStat?.[allTimeStatStorageKey]?.processed ?? 0, total: storedAllStat?.[allTimeStatStorageKey]?.total ?? 0 });
+        setAllStat({
+          processed: storedAllStat?.[allTimeStatStorageKey]?.processed ?? 0,
+          total: storedAllStat?.[allTimeStatStorageKey]?.total ?? 0
+        });
       };
       const handleLangChanges = (changes, areaName) => {
         if (areaName === "sync" && changes?.[statStorageKey]?.newValue) {
-          console.log("update!");
           void processCurrentStat();
         }
       };
@@ -757,7 +765,12 @@
         chrome.storage.onChanged.removeListener(handleLangChanges);
       };
     }, [setStat, setAllStat]);
-    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _("h1", null, "Exler's site | comments fire extinguisher", /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _(LanguageComponent, null))), /* @__PURE__ */ _("h2", null, "Statistics"), JSON.stringify(stat, null, 2), /* @__PURE__ */ _("br", null), JSON.stringify(allStat, null, 2), /* @__PURE__ */ _(ResetStatComponent, null), /* @__PURE__ */ _("hr", null), /* @__PURE__ */ _(GoSettingsComponent, null));
+    return /* @__PURE__ */ _("div", { className: "extension-stat" }, /* @__PURE__ */ _("table", null, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "has_been_hidden" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "total" })))), /* @__PURE__ */ _("tbody", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "in_current_session" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, stat.processed), /* @__PURE__ */ _("td", null, stat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "for_all_time" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, allStat.processed), /* @__PURE__ */ _("td", null, allStat.total)))), /* @__PURE__ */ _(ResetStatComponent, null));
+  };
+
+  // src/components/popup/popup.page.tsx
+  var PopupPage = () => {
+    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _("h1", null, /* @__PURE__ */ _(I18n, { code: "title" }), /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _(LanguageComponent, null))), /* @__PURE__ */ _(StatComponent, null), /* @__PURE__ */ _(GoSettingsComponent, null));
   };
 
   // src/popup.tsx

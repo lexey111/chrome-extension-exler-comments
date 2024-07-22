@@ -1,9 +1,10 @@
-import {StringI18nKey} from './langs'
-
-export const EN:Record<StringI18nKey, string> = {
-    test: 'Test value',
-    test2: 'Test value 2',
-    test3: 'Test value 3',
+export const EN = {
+    title: 'Exler\'s site | comments fire extinguisher',
+    has_been_hidden: 'was hidden',
+    total: 'total',
+    in_current_session: 'In current session',
+    for_all_time: 'For all the time',
+    reset_stat: 'Reset statistics',
     settings: 'Settings',
     open_settings_page: 'Open settings page...'
 } as const

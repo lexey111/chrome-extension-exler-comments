@@ -1,0 +1,47 @@
+@import "reset.css";
+@import "fonts.css";
+@import "typography.css";
+@import "language-component.css";
+
+.extension-stat {
+    margin: 2rem 0;
+    font-size: .8rem;
+
+    table {
+        width: 100%;
+        border: none;
+        border-collapse: separate;
+
+        th {
+            color: var(--headers-color);
+            border-bottom: 2px solid var(--headers-color);
+            font-size: .7rem;
+            padding: 8px 0;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            width: 50%;
+        }
+
+        tbody {
+            td {
+                text-align: center;
+                padding: 8px 0;
+                border-radius: 4px;
+                background-color: var(--cell-color);
+                color: var(--cell-text-color);
+            }
+
+            td[colspan="2"] {
+                font-size: .7rem;
+                padding: 4px 0;
+                color: var(--headers-color);
+                background-color: transparent;
+            }
+        }
+    }
+    .reset-stat-container {
+        margin: .5rem 0;
+        text-align: right;
+    }
+}

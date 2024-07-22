@@ -1,6 +1,11 @@
 :root {
+    --page-color: #efe8e4;
     --accent-color: #883912;
     --text-color: #221006;
+    --headers-color: #883912;
+    --headers-text-color: #352720;
+    --cell-color: #fdf3ee;
+    --cell-text-color: #883912;
 }
 
 
@@ -8,15 +13,16 @@ body {
     font-family: system-ui;
     margin: 0;
     color: var(--text-color);
+    background-color: var(--page-color);
 }
 
 a,
 a:visited {
     color: var(--accent-color);
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s linear;
 
-    &:hover {
+    &:hover, &:focus {
         text-decoration: underline;
         color: var(--accent-color);
     }
@@ -37,5 +43,5 @@ h2 {
 hr {
     height: 1px;
     border: none;
-    background-color: var(--text-color);
+    background-color: var(--accent-color);
 }

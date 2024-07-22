@@ -2,11 +2,12 @@
 @import "fonts.css";
 @import "typography.css";
 @import "language-component.css";
+@import "stat.css";
 
 body {
     margin: 0;
     width: 400px;
-    height: 200px;
+    min-height: 200px;
     padding: 16px 32px;
 }
 
@@ -21,11 +22,4 @@ h1 {
     .language-selector {
         margin-left: auto;
     }
-}
-
-
-h2 {
-    font-weight: 200;
-    font-size: 1.1rem;
-    margin: .5rem 0;
 }

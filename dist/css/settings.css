@@ -2,25 +2,47 @@
 @import "fonts.css";
 @import "typography.css";
 @import "language-component.css";
+@import "stat.css";
 
 body {
-    background-color: #efe8e4;
     display: flex;
     margin: 0;
+    padding: 0;
     width: 100vw;
     height: 100vh;
-}
-
-h1 {
-    font-size: 3rem;
-}
-
-h2 {
-    font-size: 2rem;
 }
 
 #root {
     max-width: 960px;
     margin: 2rem auto;
+    padding: 0 32px;
+    width: clamp(300px, 90vw, 960px);
+}
+
+h1 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-weight: 200;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin: .5rem 0 2rem 0;
+}
+
+.extension-stat {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+h2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-weight: 200;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    margin: 1rem 0;
+
+    .language-selector {
+        margin-left: auto;
+    }
 }
 
