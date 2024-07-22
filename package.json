@@ -1,0 +1,37 @@
+{
+  "name": "insane-nano-core",
+  "version": "1.0.0",
+  "description": "Exler site comments fire extinguisher",
+  "main": "src/settings/settings.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun build/esbuild.js",
+    "start": "bun build/esbuild-serve.js",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint",
+    "lint-fix": "eslint --fix"
+  },
+  "keywords": [
+    "insane",
+    "frontend",
+    "chrome",
+    "extension",
+    "exler"
+  ],
+  "author": "lexey111",
+  "license": "ISC",
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^2.2.2",
+    "@stylistic/eslint-plugin-ts": "^2.2.2",
+    "@types/bun": "latest",
+    "@types/chrome": "^0.0.268",
+    "@typescript-eslint/parser": "^7.13.1",
+    "chokidar": "^3.6.0",
+    "esbuild": "^0.21.5",
+    "eslint": "^9.5.0",
+    "globals": "^15.6.0",
+    "preact": "^10.22.0",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {}
+}

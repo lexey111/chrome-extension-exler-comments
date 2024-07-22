@@ -1,0 +1,28 @@
+{
+  "name": "Exler Comments",
+  "description": "Removes comments by author on Exler.[ru]",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "include_globs": [
+        "*/exler.*/*#comments"
+      ],
+      "css": [
+        "css/content.css"
+      ],
+      "js": [
+        "content-script.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"]
+}

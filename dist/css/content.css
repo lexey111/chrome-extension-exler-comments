@@ -1,0 +1,13 @@
+body {
+    .hide-comment {
+        transition: all .4s ease-in-out;
+        opacity: 0.3;
+        filter: blur(8px) grayscale(1);
+        overflow: hidden;
+    }
+
+    .hide-comment:hover {
+        opacity: 1;
+        filter: none;
+    }
+}
