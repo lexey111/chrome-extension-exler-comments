@@ -1,7 +1,8 @@
 import {h} from 'preact'
 import {useCallback} from 'preact/compat'
-import {LanguageCode, languageCodes, languageStorageKey} from '../../types/consts'
+import {languageStorageKey} from '../../consts/storage-keys.consts'
 import {LanguageContext} from './language.context'
+import {LanguageCode, LANGUAGE_CODES} from '../../resources/langs'
 
 export const LanguageComponent = () => {
     const setCode = useCallback((code: LanguageCode) => {
@@ -12,7 +13,7 @@ export const LanguageComponent = () => {
         {(langCode) => {
             return (<span className={'language-selector'}>
                 <ul>
-                    {languageCodes.map(code => <li key={code}>
+                    {LANGUAGE_CODES.map(code => <li key={code}>
                         <a
                             href="#" onClick={() => setCode(code)}
                             className={code === langCode ? 'active' : ''}>{code}</a>

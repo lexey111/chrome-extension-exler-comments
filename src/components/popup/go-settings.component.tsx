@@ -1,7 +1,7 @@
 import {h} from 'preact'
 import {useCallback} from 'preact/compat'
 import {I18n} from '../shared/i18n.component'
-import {settingsPageStorageKey} from '../../types/consts'
+import {settingsPageStorageKey} from '../../consts/storage-keys.consts'
 
 const getStoredTabId = async () => {
     const currentMayBeSettings = await chrome.storage.sync.get([settingsPageStorageKey])

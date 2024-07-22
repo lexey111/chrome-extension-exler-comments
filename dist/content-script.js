@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  // src/types/consts.ts
+  // src/consts/storage-keys.consts.ts
   var languageStorageKey = "activeLanguage";
   var statStorageKey = "stat";
   var allTimeStatStorageKey = "all_stat";

@@ -1,7 +1,8 @@
 import {ComponentChildren, h} from 'preact'
 import {FC, useEffect, useState} from 'preact/compat'
-import {LanguageCode, languageCodes, languageStorageKey} from '../../types/consts'
+import {languageStorageKey} from '../../consts/storage-keys.consts'
 import {LanguageContext} from './language.context'
+import {LanguageCode, LANGUAGE_CODES} from '../../resources/langs'
 
 type LanguageAwareComponentProps = {
     children: ComponentChildren
@@ -15,7 +16,7 @@ export const LanguageAwareWrapper: FC<LanguageAwareComponentProps> = ({children}
             const storedLanguage = await chrome.storage.sync.get([languageStorageKey])
 
             let actual: LanguageCode = 'EN'
-            if (languageCodes.includes(storedLanguage[languageStorageKey])) {
+            if (LANGUAGE_CODES.includes(storedLanguage[languageStorageKey])) {
                 actual = storedLanguage[languageStorageKey]
             }
             setActiveLanguage(actual)

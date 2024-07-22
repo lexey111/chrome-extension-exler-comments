@@ -1,13 +1,13 @@
 import {h} from 'preact'
 import {FC} from 'preact/compat'
 import {LanguageContext} from './language.context'
-import {langs, StringI18nKey} from '../../resources/langs'
+import {LANG_DATA, StringI18nKey} from '../../resources/langs'
 
 type I18nProps = {
     code?: StringI18nKey
 }
 
-export const I18n: FC<I18nProps> = ({code, children}) => {
+export const I18n: FC<I18nProps> = ({code}) => {
     if (!code) {
         return null
     }
@@ -17,7 +17,7 @@ export const I18n: FC<I18nProps> = ({code, children}) => {
             if (!langCode) {
                 return <span>...</span>
             }
-            const text = langs[langCode][code as StringI18nKey] || ''
+            const text = LANG_DATA[langCode][code as StringI18nKey] || ''
 
             return (<span>
                 {text}

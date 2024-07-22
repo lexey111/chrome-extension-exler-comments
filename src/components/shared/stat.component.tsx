@@ -1,6 +1,6 @@
 import {h} from 'preact'
 import {useEffect, useState} from 'preact/compat'
-import {allTimeStatStorageKey, statStorageKey} from '../../types/consts'
+import {allTimeStatStorageKey, statStorageKey} from '../../consts/storage-keys.consts'
 import {ResetStatComponent} from './reset-stat.component'
 import {I18n} from './i18n.component'
 

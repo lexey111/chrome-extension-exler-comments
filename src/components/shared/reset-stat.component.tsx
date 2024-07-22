@@ -1,6 +1,6 @@
 import {h} from 'preact'
 import {useCallback} from 'preact/compat'
-import {allTimeStatStorageKey, statStorageKey} from '../../types/consts'
+import {allTimeStatStorageKey, statStorageKey} from '../../consts/storage-keys.consts'
 import {I18n} from './i18n.component'
 
 export const ResetStatComponent = () => {

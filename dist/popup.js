@@ -592,8 +592,7 @@
     null != e3 && "textarea" === n2.type && "value" in t3 && t3.value !== e3.value && (e3.value = null == t3.value ? "" : t3.value), nn = null;
   };
 
-  // src/types/consts.ts
-  var languageCodes = ["EN", "UA", "RU"];
+  // src/consts/storage-keys.consts.ts
   var languageStorageKey = "activeLanguage";
   var statStorageKey = "stat";
   var allTimeStatStorageKey = "all_stat";
@@ -601,24 +600,6 @@
 
   // src/components/shared/language.context.tsx
   var LanguageContext = G("EN");
-
-  // src/components/shared/language.component.tsx
-  var LanguageComponent = () => {
-    const setCode = q2((code) => {
-      void chrome.storage.sync.set({ [languageStorageKey]: code });
-    }, []);
-    return /* @__PURE__ */ _(LanguageContext.Consumer, null, (langCode) => {
-      return /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _("ul", null, languageCodes.map((code) => /* @__PURE__ */ _("li", { key: code }, /* @__PURE__ */ _(
-        "a",
-        {
-          href: "#",
-          onClick: () => setCode(code),
-          className: code === langCode ? "active" : ""
-        },
-        code
-      )))));
-    });
-  };
 
   // src/resources/ua.ts
   var UA = {
@@ -657,14 +638,33 @@
   };
 
   // src/resources/langs.ts
-  var langs = {
+  var LANGUAGE_CODES = ["EN", "UA", "RU"];
+  var LANG_DATA = {
     EN,
     UA,
     RU
   };
 
+  // src/components/shared/language.component.tsx
+  var LanguageComponent = () => {
+    const setCode = q2((code) => {
+      void chrome.storage.sync.set({ [languageStorageKey]: code });
+    }, []);
+    return /* @__PURE__ */ _(LanguageContext.Consumer, null, (langCode) => {
+      return /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _("ul", null, LANGUAGE_CODES.map((code) => /* @__PURE__ */ _("li", { key: code }, /* @__PURE__ */ _(
+        "a",
+        {
+          href: "#",
+          onClick: () => setCode(code),
+          className: code === langCode ? "active" : ""
+        },
+        code
+      )))));
+    });
+  };
+
   // src/components/shared/i18n.component.tsx
-  var I18n = ({ code, children }) => {
+  var I18n = ({ code }) => {
     if (!code) {
       return null;
     }
@@ -672,7 +672,7 @@
       if (!langCode) {
         return /* @__PURE__ */ _("span", null, "...");
       }
-      const text = langs[langCode][code] || "";
+      const text = LANG_DATA[langCode][code] || "";
       return /* @__PURE__ */ _("span", null, text);
     });
   };
@@ -709,7 +709,7 @@
       const processCurrentLanguage = async () => {
         const storedLanguage = await chrome.storage.sync.get([languageStorageKey]);
         let actual = "EN";
-        if (languageCodes.includes(storedLanguage[languageStorageKey])) {
+        if (LANGUAGE_CODES.includes(storedLanguage[languageStorageKey])) {
           actual = storedLanguage[languageStorageKey];
         }
         setActiveLanguage(actual);

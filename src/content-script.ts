@@ -1,4 +1,4 @@
-import {allTimeStatStorageKey, languageStorageKey, statStorageKey} from './types/consts'
+import {allTimeStatStorageKey, languageStorageKey, statStorageKey} from './consts/storage-keys.consts'
 
 console.log('Loaded!')
 
