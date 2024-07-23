@@ -35,13 +35,11 @@ function getReadableFileSizeString(fileSizeInBytes) {
 export function showResults(directory) {
     const fullDirPath = path.resolve(directory)
     console.log()
-    console.log(`Calculating '${fullDirPath}'...`)
+    console.log(`State of: '${fullDirPath}'...`)
 
     const fullFileList = listFilesSync(fullDirPath)
     const filesAndSizes = fullFileList.map(fileAndSize)
     const totalSize = getReadableFileSizeString(filesAndSizes.reduce((prev, currentValue) => prev + currentValue.size, 0))
-
-    let sizeWithoutMaps = 0
 
     const categories = filesAndSizes.reduce((prev, currentValue) => {
         const ext = currentValue.file
@@ -54,13 +52,11 @@ export function showResults(directory) {
             prev[ext] = 0
         }
         prev[ext] += currentValue.size
-        if (!ext.endsWith('.map')) {
-            sizeWithoutMaps += currentValue.size
-        }
+
         return prev
     }, {})
 
-    const totalSizeLine = `  Total size   | ${totalSize} (${getReadableFileSizeString(sizeWithoutMaps)} without .map)`
+    const totalSizeLine = `  Total size   | ${totalSize}`
     const dividerLine = '  '.padEnd(totalSizeLine.toString().length, '-')
 
     console.log()

@@ -3,6 +3,7 @@ import {buildConfig, DEBOUNCE_BUILD_TIME} from './build.config.js'
 import {fillErrorLines} from './utils/error-processing.js'
 import {initWatcher} from './utils/source-watch.js'
 import {executeTSCheck} from './utils/ts-check.js'
+import {showResults} from './utils/build-results.js'
 
 let buildErrors = [] // pay attention: it should be a const reference
 
@@ -41,6 +42,7 @@ function doBuild() {
             result = await executeBuild()
         }
 
+        showResults('./dist')
         console.log('')
         console.log(result ? '✅  Build successful.' : '⛔  Build failed.')
         inBuild = false
