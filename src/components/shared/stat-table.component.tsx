@@ -2,7 +2,7 @@ import {h} from 'preact'
 import {useEffect, useState} from 'preact/compat'
 import {allTimeStatStorageKey, statStorageKey} from '../../consts/storage-keys.consts'
 import {ResetStat} from './reset-stat.component'
-import {I18n} from '../../i18n/components/i18n.component'
+import {I18n} from '../../i18n'
 
 export const StatTable = () => {
     const [stat, setStat] = useState({processed: 0, total: 0})

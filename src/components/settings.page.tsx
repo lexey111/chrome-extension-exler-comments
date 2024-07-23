@@ -1,11 +1,9 @@
 import {h} from 'preact'
-import {Header} from './settings/header.component'
-import {LanguageAwareWrapper} from '../i18n/components/language-aware.wrapper'
+import {Disclaimer, Header, HideMode} from './settings'
+import {LanguageAwareWrapper} from '../i18n'
 import {useEffect} from 'preact/compat'
 import {settingsPageStorageKey} from '../consts/storage-keys.consts'
-import {StatTable} from './shared/stat-table.component'
-import {Disclaimer} from './settings/disclaimer.component'
-import {HideMode} from './settings/hide-mode.component'
+import {StatTable} from './shared'
 
 const storeTabId = async () => {
     const tabs = await chrome.tabs.query({active: true, currentWindow: true})

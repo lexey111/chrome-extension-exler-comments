@@ -13,3 +13,8 @@ export const LANG_DATA: Record<LanguageCode, Record<i18nKey, string>> = {
     UA: UA,
     RU: RU
 }
+
+export * from './components/i18n.component'
+export * from './components/language-selector.component'
+export * from './components/language-aware.wrapper'
+export * from './components/language.context'

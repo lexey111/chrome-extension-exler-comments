@@ -1,6 +1,5 @@
 import {h} from 'preact'
-import {LanguageSelector} from '../../i18n/components/language-selector.component'
-import {I18n} from '../../i18n/components/i18n.component'
+import {I18n, LanguageSelector} from '../../i18n'
 
 export const Header = () => {
     return <div className={'app-header'}>
