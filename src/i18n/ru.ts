@@ -1,6 +1,6 @@
-import {StringI18nKey} from './langs'
+import {i18nKey} from './index'
 
-export const RU: Record<StringI18nKey, string> = {
+export const RU: Record<i18nKey, string> = {
     title: 'Exler\'s site | огнетушитель комментариев',
     has_been_hidden: 'скрыто',
     total: 'всего',

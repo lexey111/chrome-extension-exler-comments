@@ -1,6 +1,6 @@
-import {StringI18nKey} from './langs'
+import {i18nKey} from './index'
 
-export const UA:Record<StringI18nKey, string> = {
+export const UA:Record<i18nKey, string> = {
     title: 'Exler\'s site | вогнегасник коментарів',
     has_been_hidden: 'приховано',
     total: 'всього',

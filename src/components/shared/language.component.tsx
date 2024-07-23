@@ -2,7 +2,7 @@ import {h} from 'preact'
 import {useCallback} from 'preact/compat'
 import {languageStorageKey} from '../../consts/storage-keys.consts'
 import {LanguageContext} from './language.context'
-import {LanguageCode, LANGUAGE_CODES} from '../../resources/langs'
+import {LanguageCode, LANGUAGE_CODES} from '../../i18n'
 
 export const LanguageComponent = () => {
     const setCode = useCallback((code: LanguageCode) => {
