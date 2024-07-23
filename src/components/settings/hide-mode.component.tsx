@@ -1,13 +1,13 @@
 import {h} from 'preact'
-import {HideModeItemComponent} from './hide-mode-item.component'
+import {HideModeItem} from './hide-mode-item.component'
 
-export const HideModeComponent = () => {
+export const HideMode = () => {
     return <div className={'hide-mode-selector'}>
         <div className={'hide-mode-example'}>
             <div className={'hide-mode-item'}>
-                <HideModeItemComponent index={1}/>
-                <HideModeItemComponent index={2}/>
-                <HideModeItemComponent index={3}/>
+                <HideModeItem index={1}/>
+                <HideModeItem index={2}/>
+                <HideModeItem index={3}/>
             </div>
         </div>
     </div>

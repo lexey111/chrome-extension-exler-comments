@@ -2,7 +2,7 @@ import {ComponentChildren, h} from 'preact'
 import {FC, useEffect, useState} from 'preact/compat'
 import {languageStorageKey} from '../../consts/storage-keys.consts'
 import {LanguageContext} from './language.context'
-import {LanguageCode, LANGUAGE_CODES} from '../../i18n'
+import {LanguageCode, LANGUAGE_CODES} from '../index'
 
 type LanguageAwareComponentProps = {
     children: ComponentChildren

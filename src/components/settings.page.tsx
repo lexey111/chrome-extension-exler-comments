@@ -1,11 +1,11 @@
 import {h} from 'preact'
-import {HeaderComponent} from './header.component'
-import {LanguageAwareWrapper} from '../shared/language-aware.wrapper'
+import {Header} from './settings/header.component'
+import {LanguageAwareWrapper} from '../i18n/components/language-aware.wrapper'
 import {useEffect} from 'preact/compat'
-import {settingsPageStorageKey} from '../../consts/storage-keys.consts'
-import {StatComponent} from '../shared/stat.component'
-import {DisclaimerComponent} from './disclaimer.component'
-import {HideModeComponent} from './hide-mode.component'
+import {settingsPageStorageKey} from '../consts/storage-keys.consts'
+import {StatTable} from './shared/stat-table.component'
+import {Disclaimer} from './settings/disclaimer.component'
+import {HideMode} from './settings/hide-mode.component'
 
 const storeTabId = async () => {
     const tabs = await chrome.tabs.query({active: true, currentWindow: true})
@@ -20,10 +20,10 @@ export const SettingsPage = () => {
     }, [])
     return <div>
         <LanguageAwareWrapper>
-            <HeaderComponent/>
-            <StatComponent/>
-            <HideModeComponent/>
-            <DisclaimerComponent/>
+            <Header/>
+            <StatTable/>
+            <HideMode/>
+            <Disclaimer/>
         </LanguageAwareWrapper>
     </div>
 }

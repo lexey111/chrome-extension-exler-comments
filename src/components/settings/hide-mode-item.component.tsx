@@ -10,7 +10,7 @@ function randomDate(start: Date, end: Date) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
 }
 
-export const HideModeItemComponent: FC<HideModeItemProps> = ({index}) => {
+export const HideModeItem: FC<HideModeItemProps> = ({index}) => {
     const date = new Intl.DateTimeFormat('ru-RU', {
         dateStyle: 'short',
         timeStyle: 'short',

@@ -350,6 +350,10 @@
       return n2;
     }, t3);
   }
+  function x2(n2) {
+    var u3 = r2.context[n2.__c], i4 = d2(t2++, 9);
+    return i4.c = n2, u3 ? (null == i4.__ && (i4.__ = true, u3.sub(r2)), u3.props.value) : n2.__;
+  }
   function j2() {
     for (var n2; n2 = f2.shift(); ) if (n2.__P && n2.__H) try {
       n2.__H.__h.forEach(z2), n2.__H.__h.forEach(B2), n2.__H.__h = [];
@@ -598,7 +602,7 @@
   var allTimeStatStorageKey = "all_stat";
   var settingsPageStorageKey = "settings_page";
 
-  // src/components/shared/language.context.tsx
+  // src/i18n/components/language.context.tsx
   var LanguageContext = G("EN");
 
   // src/i18n/ua.ts
@@ -645,36 +649,30 @@
     RU
   };
 
-  // src/components/shared/language.component.tsx
-  var LanguageComponent = () => {
+  // src/i18n/components/language-selector.component.tsx
+  var LanguageSelector = () => {
     const setCode = q2((code) => {
       void chrome.storage.sync.set({ [languageStorageKey]: code });
     }, []);
-    return /* @__PURE__ */ _(LanguageContext.Consumer, null, (langCode) => {
-      return /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _("ul", null, LANGUAGE_CODES.map((code) => /* @__PURE__ */ _("li", { key: code }, /* @__PURE__ */ _(
-        "a",
-        {
-          href: "#",
-          onClick: () => setCode(code),
-          className: code === langCode ? "active" : ""
-        },
-        code
-      )))));
-    });
+    const langCode = x2(LanguageContext);
+    return /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _("ul", null, LANGUAGE_CODES.map((code) => /* @__PURE__ */ _("li", { key: code }, /* @__PURE__ */ _(
+      "a",
+      {
+        href: "#",
+        onClick: () => setCode(code),
+        className: code === langCode ? "active" : ""
+      },
+      code
+    )))));
   };
 
-  // src/components/shared/i18n.component.tsx
+  // src/i18n/components/i18n.component.tsx
   var I18n = ({ code }) => {
-    if (!code) {
-      return null;
+    const langCode = x2(LanguageContext);
+    if (!code || !langCode) {
+      return /* @__PURE__ */ _("span", null, "...");
     }
-    return /* @__PURE__ */ _(LanguageContext.Consumer, null, (langCode) => {
-      if (!langCode) {
-        return /* @__PURE__ */ _("span", null, "...");
-      }
-      const text = LANG_DATA[langCode][code] || "";
-      return /* @__PURE__ */ _("span", null, text);
-    });
+    return /* @__PURE__ */ _("span", null, LANG_DATA[langCode][code]);
   };
 
   // src/components/popup/go-settings.component.tsx
@@ -682,7 +680,7 @@
     const currentMayBeSettings = await chrome.storage.sync.get([settingsPageStorageKey]);
     return isNaN(Number(currentMayBeSettings[settingsPageStorageKey])) ? -1 : Number(currentMayBeSettings[settingsPageStorageKey]);
   };
-  var GoSettingsComponent = () => {
+  var GoSettings = () => {
     const goSettings = q2(async (e3) => {
       e3.preventDefault();
       e3.stopPropagation();
@@ -702,7 +700,7 @@
     return /* @__PURE__ */ _("a", { href: "#", onClick: goSettings }, /* @__PURE__ */ _(I18n, { code: "open_settings_page" }));
   };
 
-  // src/components/shared/language-aware.wrapper.tsx
+  // src/i18n/components/language-aware.wrapper.tsx
   var LanguageAwareWrapper = ({ children }) => {
     const [activeLanguage, setActiveLanguage] = h2(null);
     y2(() => {
@@ -729,7 +727,7 @@
   };
 
   // src/components/shared/reset-stat.component.tsx
-  var ResetStatComponent = () => {
+  var ResetStat = () => {
     const resetStat = q2(async () => {
       await chrome.storage.sync.set({ [statStorageKey]: { processed: 0, total: 0 } });
       await chrome.storage.sync.set({ [allTimeStatStorageKey]: { processed: 0, total: 0 } });
@@ -737,8 +735,8 @@
     return /* @__PURE__ */ _("div", { class: "reset-stat-container" }, /* @__PURE__ */ _("a", { href: "#", onClick: resetStat }, /* @__PURE__ */ _(I18n, { code: "reset_stat" })));
   };
 
-  // src/components/shared/stat.component.tsx
-  var StatComponent = () => {
+  // src/components/shared/stat-table.component.tsx
+  var StatTable = () => {
     const [stat, setStat] = h2({ processed: 0, total: 0 });
     const [allStat, setAllStat] = h2({ processed: 0, total: 0 });
     y2(() => {
@@ -765,12 +763,12 @@
         chrome.storage.onChanged.removeListener(handleLangChanges);
       };
     }, [setStat, setAllStat]);
-    return /* @__PURE__ */ _("div", { className: "extension-stat" }, /* @__PURE__ */ _("table", null, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "has_been_hidden" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "total" })))), /* @__PURE__ */ _("tbody", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "in_current_session" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, stat.processed), /* @__PURE__ */ _("td", null, stat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "for_all_time" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, allStat.processed), /* @__PURE__ */ _("td", null, allStat.total)))), /* @__PURE__ */ _(ResetStatComponent, null));
+    return /* @__PURE__ */ _("div", { className: "extension-stat" }, /* @__PURE__ */ _("table", null, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "has_been_hidden" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "total" })))), /* @__PURE__ */ _("tbody", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "in_current_session" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, stat.processed), /* @__PURE__ */ _("td", null, stat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "for_all_time" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, allStat.processed), /* @__PURE__ */ _("td", null, allStat.total)))), /* @__PURE__ */ _(ResetStat, null));
   };
 
-  // src/components/popup/popup.page.tsx
+  // src/components/popup.page.tsx
   var PopupPage = () => {
-    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _("h1", null, /* @__PURE__ */ _(I18n, { code: "title" }), /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _(LanguageComponent, null))), /* @__PURE__ */ _(StatComponent, null), /* @__PURE__ */ _(GoSettingsComponent, null));
+    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _("h1", null, /* @__PURE__ */ _(I18n, { code: "title" }), /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _(LanguageSelector, null))), /* @__PURE__ */ _(StatTable, null), /* @__PURE__ */ _(GoSettings, null));
   };
 
   // src/popup.tsx

@@ -1,10 +1,10 @@
 import {h} from 'preact'
 import {useEffect, useState} from 'preact/compat'
 import {allTimeStatStorageKey, statStorageKey} from '../../consts/storage-keys.consts'
-import {ResetStatComponent} from './reset-stat.component'
-import {I18n} from './i18n.component'
+import {ResetStat} from './reset-stat.component'
+import {I18n} from '../../i18n/components/i18n.component'
 
-export const StatComponent = () => {
+export const StatTable = () => {
     const [stat, setStat] = useState({processed: 0, total: 0})
     const [allStat, setAllStat] = useState({processed: 0, total: 0})
 
@@ -65,7 +65,7 @@ export const StatComponent = () => {
             </tbody>
         </table>
 
-        <ResetStatComponent/>
+        <ResetStat/>
     </div>
 }
 

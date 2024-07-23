@@ -1,6 +1,6 @@
 import {h} from 'preact'
 import {useCallback} from 'preact/compat'
-import {I18n} from '../shared/i18n.component'
+import {I18n} from '../../i18n/components/i18n.component'
 import {settingsPageStorageKey} from '../../consts/storage-keys.consts'
 
 const getStoredTabId = async () => {
@@ -8,7 +8,7 @@ const getStoredTabId = async () => {
     return isNaN(Number(currentMayBeSettings[settingsPageStorageKey])) ? -1 : Number(currentMayBeSettings[settingsPageStorageKey])
 }
 
-export const GoSettingsComponent = () => {
+export const GoSettings = () => {
     const goSettings = useCallback(async (e: Event) => {
         e.preventDefault()
         e.stopPropagation()
