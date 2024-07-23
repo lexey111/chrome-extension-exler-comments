@@ -632,23 +632,14 @@
     null != e3 && "textarea" === n2.type && "value" in t3 && t3.value !== e3.value && (e3.value = null == t3.value ? "" : t3.value), nn = null;
   };
 
-  // src/i18n/components/language.context.tsx
-  var LanguageContext = G("EN");
-
-  // src/i18n/components/i18n.component.tsx
-  var I18n = ({ code }) => {
-    const langCode = x2(LanguageContext);
-    if (!code || !langCode) {
-      return /* @__PURE__ */ _("span", null, "...");
-    }
-    return /* @__PURE__ */ _("span", null, LANG_DATA[langCode][code]);
-  };
-
   // src/consts/storage-keys.consts.ts
   var languageStorageKey = "activeLanguage";
   var statStorageKey = "stat";
   var allTimeStatStorageKey = "all_stat";
   var settingsPageStorageKey = "settings_page";
+
+  // src/i18n/components/language.context.tsx
+  var LanguageContext = G("EN");
 
   // src/i18n/components/language-selector.component.tsx
   var LanguageSelector = () => {
@@ -693,6 +684,15 @@
     return /* @__PURE__ */ _(LanguageContext.Provider, { value: activeLanguage }, children);
   };
 
+  // src/i18n/components/i18n.component.tsx
+  var I18n = ({ code }) => {
+    const langCode = x2(LanguageContext);
+    if (!code || !langCode) {
+      return /* @__PURE__ */ _("span", null, "...");
+    }
+    return /* @__PURE__ */ _("span", null, LANG_DATA[langCode][code]);
+  };
+
   // src/i18n/index.ts
   var LANGUAGE_CODES = ["EN", "UA", "RU"];
   var LANG_DATA = {
@@ -701,7 +701,7 @@
     RU
   };
 
-  // src/components/popup/go-settings.component.tsx
+  // src/pages/components/popup/go-settings.component.tsx
   var getStoredTabId = async () => {
     const currentMayBeSettings = await chrome.storage.sync.get([settingsPageStorageKey]);
     return isNaN(Number(currentMayBeSettings[settingsPageStorageKey])) ? -1 : Number(currentMayBeSettings[settingsPageStorageKey]);
@@ -726,7 +726,7 @@
     return /* @__PURE__ */ _("a", { href: "#", onClick: goSettings }, /* @__PURE__ */ _(I18n, { code: "open_settings_page" }));
   };
 
-  // src/components/shared/reset-stat.component.tsx
+  // src/pages/components/shared/reset-stat.component.tsx
   var ResetStat = () => {
     const resetStat = q2(async () => {
       await chrome.storage.sync.set({ [statStorageKey]: { processed: 0, total: 0 } });
@@ -735,7 +735,7 @@
     return /* @__PURE__ */ _("div", { class: "reset-stat-container" }, /* @__PURE__ */ _("a", { href: "#", onClick: resetStat }, /* @__PURE__ */ _(I18n, { code: "reset_stat" })));
   };
 
-  // src/components/shared/stat-table.component.tsx
+  // src/pages/components/shared/stat-table.component.tsx
   var StatTable = () => {
     const [stat, setStat] = h2({ processed: 0, total: 0 });
     const [allStat, setAllStat] = h2({ processed: 0, total: 0 });
@@ -766,7 +766,7 @@
     return /* @__PURE__ */ _("div", { className: "extension-stat" }, /* @__PURE__ */ _("table", null, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "has_been_hidden" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "total" })))), /* @__PURE__ */ _("tbody", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "in_current_session" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, stat.processed), /* @__PURE__ */ _("td", null, stat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "for_all_time" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, allStat.processed), /* @__PURE__ */ _("td", null, allStat.total)))), /* @__PURE__ */ _(ResetStat, null));
   };
 
-  // src/components/popup.page.tsx
+  // src/pages/popup.page.tsx
   var PopupPage = () => {
     return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _("h1", null, /* @__PURE__ */ _(I18n, { code: "title" }), /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _(LanguageSelector, null))), /* @__PURE__ */ _(StatTable, null), /* @__PURE__ */ _(GoSettings, null));
   };

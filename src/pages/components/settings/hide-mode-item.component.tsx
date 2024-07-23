@@ -1,6 +1,6 @@
 import {h} from 'preact'
 import {FC} from 'preact/compat'
-import {getRandomLine} from '../../consts/random-lipsum'
+import {getRandomLine} from '../../../consts/random-lipsum'
 
 type HideModeItemProps = {
     index: number

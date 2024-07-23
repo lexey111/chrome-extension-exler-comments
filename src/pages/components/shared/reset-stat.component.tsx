@@ -1,7 +1,7 @@
 import {h} from 'preact'
 import {useCallback} from 'preact/compat'
-import {allTimeStatStorageKey, statStorageKey} from '../../consts/storage-keys.consts'
-import {I18n} from '../../i18n'
+import {allTimeStatStorageKey, statStorageKey} from '../../../consts/storage-keys.consts'
+import {I18n} from '../../../i18n'
 
 export const ResetStat = () => {
     const resetStat = useCallback(async () => {

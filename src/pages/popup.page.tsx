@@ -1,7 +1,7 @@
 import {h} from 'preact'
 import {I18n, LanguageAwareWrapper, LanguageSelector} from '../i18n'
-import {GoSettings} from './popup'
-import {StatTable} from './shared'
+import {GoSettings} from './components/popup'
+import {StatTable} from './components/shared'
 
 export const PopupPage = () => {
     return <LanguageAwareWrapper>
