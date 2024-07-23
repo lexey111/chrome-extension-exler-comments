@@ -784,11 +784,14 @@
   var getRandomLine = () => lines[Math.floor(Math.random() * lines.length)];
 
   // src/components/settings/hide-mode-item.component.tsx
+  function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
   var HideModeItemComponent = ({ index }) => {
     const date = new Intl.DateTimeFormat("ru-RU", {
       dateStyle: "short",
       timeStyle: "short"
-    }).format(/* @__PURE__ */ new Date());
+    }).format(randomDate(new Date(2024, 0, 1), /* @__PURE__ */ new Date()));
     return /* @__PURE__ */ _("div", { className: "hide-mode-item" }, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, Math.floor(Math.random() * 100), " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", Math.floor(Math.random() * 100)))));
   };
 
