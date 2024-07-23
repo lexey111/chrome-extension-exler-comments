@@ -4,7 +4,7 @@ import {LanguageContext} from './language.context'
 import {i18nKey, LANG_DATA} from '../index'
 
 type I18nProps = {
-    code?: i18nKey
+    code: i18nKey
 }
 
 export const I18n: FC<I18nProps> = ({code}) => {
