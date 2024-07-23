@@ -1,6 +1,5 @@
 import esbuild from 'esbuild'
 import {buildConfig, DEBOUNCE_BUILD_TIME} from './build.config.js'
-import {fillErrorLines} from './utils/error-processing.js'
 import {initWatcher} from './utils/source-watch.js'
 import {executeTSCheck} from './utils/ts-check.js'
 import {showResults} from './utils/build-results.js'
@@ -58,7 +57,7 @@ async function executeBuild() {
             result.errors.forEach(error => buildErrors.push(error.text))
         }
     } catch (error) {
-        fillErrorLines(buildErrors, error?.errors)
+        //
     }
     console.timeEnd('[Re]build time')
     return result && result.errors.length === 0

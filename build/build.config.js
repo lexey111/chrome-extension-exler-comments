@@ -1,11 +1,10 @@
-import {copyManifestPlugin} from './utils/copy-manifest.js'
-
-export const PORT = 3000
+import {copyStaticPlugin} from './utils/copy-static.js'
 
 export const SOURCE_DIR = './src'
+export const STATIC_DIR = './src/static'
 export const OUTPUT_DIR = './dist'
 
-export const DEBOUNCE_BUILD_TIME = 500
+export const DEBOUNCE_BUILD_TIME = 200
 
 export const buildConfig = {
     entryPoints: [
@@ -19,7 +18,7 @@ export const buildConfig = {
     bundle: true,
     minify: false,
     plugins: [
-        copyManifestPlugin()
+        copyStaticPlugin()
     ],
 }
 

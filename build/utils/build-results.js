@@ -34,13 +34,11 @@ function getReadableFileSizeString(fileSizeInBytes) {
 
 export function showResults(directory) {
     const fullDirPath = path.resolve(directory)
-    console.log()
-    console.log(`State of: '${fullDirPath}'...`)
-
     const fullFileList = listFilesSync(fullDirPath)
     const filesAndSizes = fullFileList.map(fileAndSize)
     const totalSize = getReadableFileSizeString(filesAndSizes.reduce((prev, currentValue) => prev + currentValue.size, 0))
 
+    console.log()
     const categories = filesAndSizes.reduce((prev, currentValue) => {
         const ext = currentValue.file
             .split('.')
@@ -49,9 +47,15 @@ export function showResults(directory) {
             .join('.')
 
         if (!prev[ext]) {
-            prev[ext] = 0
+            prev[ext] = {size: 0, count: 0}
         }
-        prev[ext] += currentValue.size
+
+        prev[ext].size += currentValue.size
+        prev[ext].count += 1
+
+        if (ext === 'js') {
+            console.log(' ', path.basename(currentValue.file), getReadableFileSizeString(currentValue.size))
+        }
 
         return prev
     }, {})
@@ -65,7 +69,8 @@ export function showResults(directory) {
     console.log(totalSizeLine)
     console.log(dividerLine)
     for (const property in categories) {
-        console.log(`    ${property + ''.padEnd(10 - property.length + 1, ' ')}| ${getReadableFileSizeString(categories[property])}`)
+        const title = `${property} (${categories[property].count})`
+        console.log(`    ${title + ''.padEnd(10 - title.length + 1, ' ')}| ${getReadableFileSizeString(categories[property].size)}`)
     }
     console.log()
 }
