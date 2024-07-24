@@ -3,7 +3,8 @@ import {Disclaimer, Header, HideMode} from './components/settings'
 import {LanguageAwareWrapper} from '../i18n'
 import {useEffect} from 'preact/compat'
 import {settingsPageStorageKey} from '../consts/storage-keys.consts'
-import {StatTable} from './components/shared'
+import {OnOff, StatTable} from './components/shared'
+import {useOnOff} from './hooks/useOnOff'
 
 const storeTabId = async () => {
     const tabs = await chrome.tabs.query({active: true, currentWindow: true})
@@ -12,13 +13,25 @@ const storeTabId = async () => {
 }
 
 export const SettingsPage = () => {
-    // register/unregister tab in storage
     useEffect(() => {
+        // register/unregister tab in storage
         void storeTabId()
     }, [])
+
+    const {on} = useOnOff()
+
+    useEffect(() => {
+        if (!on) {
+            document.body.classList.add('disabled')
+        } else {
+            document.body.classList.remove('disabled')
+        }
+    }, [on])
+
     return <div>
         <LanguageAwareWrapper>
             <Header/>
+            <OnOff/>
             <StatTable/>
             <HideMode/>
             <Disclaimer/>

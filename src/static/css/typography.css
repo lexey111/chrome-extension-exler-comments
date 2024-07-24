@@ -1,10 +1,13 @@
 :root {
     --page-color: #efe8e4;
     --accent-color: #883912;
-    --text-color: #221006;
+    --text-color: #673821;
     --headers-color: #883912;
     --headers-text-color: #352720;
     --cell-color: #fdf3ee;
+    --disabled-color: #ccc5c2;
+    --input-color: #f4eae6;
+    --border-color: #93654f;
     --cell-text-color: #883912;
 }
 
@@ -14,6 +17,12 @@ body {
     margin: 0;
     color: var(--text-color);
     background-color: var(--page-color);
+    transition: all .2s ease-in-out;
+}
+
+body.disabled {
+    filter: grayscale(1);
+    background-color: #eee;
 }
 
 a,
