@@ -47,11 +47,89 @@ h2 {
     }
 }
 
+summary {
+    background-color: var(--input-color);
+    font-weight: 500;
+    font-size: .7rem;
+    text-transform: uppercase;
+    margin: 0;
+    height: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    padding-left: 1.8rem;
+    align-items: center;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+summary:hover {
+    background-color: var(--input-hover-color);
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+summary:before {
+    content: '';
+    border-width: .3rem;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--accent-color);
+    position: absolute;
+    top: 0.72rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: .15rem center;
+    transition: all .2s ease;
+}
+
+details {
+    background-color: var(--target-bg-color);
+    margin: 1rem 0;
+    border-radius: 4px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+@keyframes details-show {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5em);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+details[open] > *:not(summary) {
+    animation: details-show 200ms ease-in-out;
+    animation-fill-mode: forwards;
+    animation-play-state: initial;
+}
+
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
+
+details[open] {
+    border: 1px solid var(--border-color);
+}
+
+details[open] summary {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
 
 .hide-mode-example {
     display: block;
-    margin: 1rem 0;
-    width: 100%;
+    padding: 1rem 2rem;
+    color: #000;
 
     .hide-mode-item {
         display: block;
@@ -59,7 +137,7 @@ h2 {
         width: 100%;
 
         p {
-            line-height: 1.2;
+            line-height: 1.4;
             margin-bottom: .5rem;
         }
 

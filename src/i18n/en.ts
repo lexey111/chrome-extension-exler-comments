@@ -7,5 +7,6 @@ export const EN = {
     for_all_time: 'For all the time',
     reset_stat: 'Reset statistics',
     settings: 'Settings',
+    preview: 'Preview',
     open_settings_page: 'Open settings page...'
 } as const
