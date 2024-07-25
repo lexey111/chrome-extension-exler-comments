@@ -291,6 +291,7 @@
     for_all_time: "\u0417\u0430 \u0432\u0435\u0441\u044C \u0447\u0430\u0441",
     reset_stat: "\u0421\u043A\u0438\u043D\u0443\u0442\u0438 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
     settings: "\u041D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F",
+    hide_mode: "\u0420\u0435\u0436\u0438\u043C \u043F\u0440\u0438\u0445\u043E\u0432\u0443\u0432\u0430\u043D\u043D\u044F",
     preview: "\u041F\u043E\u043F\u0435\u0440\u0435\u0434\u043D\u0456\u0439 \u043F\u0435\u0440\u0435\u0433\u043B\u044F\u0434",
     open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F..."
   };
@@ -305,6 +306,7 @@
     for_all_time: "For all the time",
     reset_stat: "Reset statistics",
     settings: "Settings",
+    hide_mode: "Hide mode",
     preview: "Preview",
     open_settings_page: "Open settings page..."
   };
@@ -319,6 +321,7 @@
     for_all_time: "\u0417\u0430 \u0432\u0441\u0451 \u0432\u0440\u0435\u043C\u044F",
     reset_stat: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
     settings: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438",
+    hide_mode: "\u0420\u0435\u0436\u0438\u043C \u0441\u043A\u0440\u044B\u0442\u0438\u044F",
     preview: "\u041F\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440",
     open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438..."
   };
@@ -638,6 +641,9 @@
     null != e3 && "textarea" === n2.type && "value" in t3 && t3.value !== e3.value && (e3.value = null == t3.value ? "" : t3.value), nn = null;
   };
 
+  // src/i18n/components/language.context.tsx
+  var LanguageContext = G("EN");
+
   // src/consts/storage-keys.consts.ts
   var onOffStorageKey = "activeState";
   var languageStorageKey = "activeLanguage";
@@ -645,20 +651,52 @@
   var allTimeStatStorageKey = "all_stat";
   var settingsPageStorageKey = "settings_page";
 
-  // src/i18n/components/language.context.tsx
-  var LanguageContext = G("EN");
+  // src/i18n/hooks/useLanguage.tsx
+  var getLanguageState = async () => {
+    const storedLanguage = await chrome.storage.sync.get([languageStorageKey]);
+    let actual = "EN";
+    if (LANGUAGE_CODES.includes(storedLanguage[languageStorageKey])) {
+      actual = storedLanguage[languageStorageKey];
+    }
+    return actual;
+  };
+  var useLanguage = () => {
+    const [activeLanguage, setActiveLanguage] = h2(null);
+    y2(() => {
+      const processCurrentState = async () => {
+        const actual = await getLanguageState();
+        setActiveLanguage(actual);
+      };
+      const handleStateChanges = (changes, areaName) => {
+        if (areaName === "sync" && changes?.[languageStorageKey]?.newValue) {
+          void processCurrentState();
+        }
+      };
+      chrome.storage.onChanged.addListener(handleStateChanges);
+      void processCurrentState();
+      return () => {
+        chrome.storage.onChanged.removeListener(handleStateChanges);
+      };
+    }, [setActiveLanguage]);
+    const setLanguage = q2(async (lang) => {
+      void chrome.storage.sync.set({ [languageStorageKey]: lang });
+      setActiveLanguage(lang);
+    }, [setActiveLanguage]);
+    return {
+      activeLanguage,
+      setLanguage
+    };
+  };
 
   // src/i18n/components/language-selector.component.tsx
   var LanguageSelector = () => {
-    const setCode = q2((code) => {
-      void chrome.storage.sync.set({ [languageStorageKey]: code });
-    }, []);
+    const { setLanguage } = useLanguage();
     const langCode = x2(LanguageContext);
     return /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _("ul", null, LANGUAGE_CODES.map((code) => /* @__PURE__ */ _("li", { key: code }, /* @__PURE__ */ _(
       "a",
       {
         href: "#",
-        onClick: () => setCode(code),
+        onClick: () => setLanguage(code),
         className: code === langCode ? "active" : ""
       },
       code
@@ -667,27 +705,7 @@
 
   // src/i18n/components/language-aware.wrapper.tsx
   var LanguageAwareWrapper = ({ children }) => {
-    const [activeLanguage, setActiveLanguage] = h2(null);
-    y2(() => {
-      const processCurrentLanguage = async () => {
-        const storedLanguage = await chrome.storage.sync.get([languageStorageKey]);
-        let actual = "EN";
-        if (LANGUAGE_CODES.includes(storedLanguage[languageStorageKey])) {
-          actual = storedLanguage[languageStorageKey];
-        }
-        setActiveLanguage(actual);
-      };
-      const handleLangChanges = (changes, areaName) => {
-        if (areaName === "sync" && changes?.[languageStorageKey]?.newValue) {
-          void processCurrentLanguage();
-        }
-      };
-      chrome.storage.onChanged.addListener(handleLangChanges);
-      void processCurrentLanguage();
-      return () => {
-        chrome.storage.onChanged.removeListener(handleLangChanges);
-      };
-    }, [setActiveLanguage]);
+    const { activeLanguage } = useLanguage();
     return /* @__PURE__ */ _(LanguageContext.Provider, { value: activeLanguage }, children);
   };
 

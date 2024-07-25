@@ -4,7 +4,7 @@ import {LanguageAwareWrapper} from '../i18n'
 import {useEffect} from 'preact/compat'
 import {settingsPageStorageKey} from '../consts/storage-keys.consts'
 import {OnOff, StatTable} from './components/shared'
-import {useOnOff} from './hooks/useOnOff'
+import {useOnOff} from './hooks'
 
 const storeTabId = async () => {
     const tabs = await chrome.tabs.query({active: true, currentWindow: true})

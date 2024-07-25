@@ -1,6 +1,6 @@
 import {FC} from 'preact/compat'
 import {h} from 'preact'
-import {useOnOff} from '../../hooks/useOnOff'
+import {useOnOff} from '../../hooks'
 import {I18n} from '../../../i18n'
 
 export const OnOff: FC = () => {

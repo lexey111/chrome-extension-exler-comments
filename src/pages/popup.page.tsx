@@ -2,7 +2,7 @@ import {h} from 'preact'
 import {I18n, LanguageAwareWrapper, LanguageSelector} from '../i18n'
 import {GoSettings} from './components/popup'
 import {OnOff, StatTable} from './components/shared'
-import {useOnOff} from './hooks/useOnOff'
+import {useOnOff} from './hooks'
 import {useEffect} from 'preact/compat'
 
 export const PopupPage = () => {

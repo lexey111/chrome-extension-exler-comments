@@ -9,6 +9,7 @@ export const RU: Record<i18nKey, string> = {
     for_all_time: 'За всё время',
     reset_stat: 'Сбросить статистику',
     settings: 'Настройки',
+    hide_mode: 'Режим скрытия',
     preview: 'Предварительный просмотр',
     open_settings_page: 'Открыть настройки...'
 } as const

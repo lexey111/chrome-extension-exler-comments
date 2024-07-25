@@ -9,6 +9,7 @@ export const UA:Record<i18nKey, string> = {
     for_all_time: 'За весь час',
     reset_stat: 'Скинути статистику',
     settings: 'Налагодження',
+    hide_mode: 'Режим приховування',
     preview: 'Попередній перегляд',
     open_settings_page: 'Відкрити налагодження...'
 } as const
