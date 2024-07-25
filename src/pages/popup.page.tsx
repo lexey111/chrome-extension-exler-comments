@@ -23,6 +23,7 @@ export const PopupPage = () => {
         <OnOff/>
 
         <StatTable/>
+
         <GoSettings/>
 
     </LanguageAwareWrapper>

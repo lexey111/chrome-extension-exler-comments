@@ -7,3 +7,5 @@ export const allTimeStatStorageKey = 'all_stat'
 
 export const settingsPageStorageKey = 'settings_page'
 
+export const hideModeStorageKey = 'hide_mode'
+

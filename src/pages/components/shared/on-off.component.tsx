@@ -2,6 +2,7 @@ import {FC} from 'preact/compat'
 import {h} from 'preact'
 import {useOnOff} from '../../hooks'
 import {I18n} from '../../../i18n'
+import {CurrentHideMode} from '../popup/current-hide-mode.component'
 
 export const OnOff: FC = () => {
     const {on, toggleOnOffState} = useOnOff()
@@ -20,6 +21,6 @@ export const OnOff: FC = () => {
             <input type="checkbox" checked={on === true} onChange={toggleOnOffState}/>
             <span className="slider round"></span>
         </label>
-        <I18n code={'enable_processing'}/>
+        <I18n code={'enable_processing'}/><CurrentHideMode/>
     </div>
 }

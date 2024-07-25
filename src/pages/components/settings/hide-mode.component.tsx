@@ -1,7 +1,8 @@
 import {h} from 'preact'
 import {HideModeItem} from './hide-mode-item.component'
 import {I18n} from '../../../i18n'
-import {useEffect} from 'preact/compat'
+import {useCallback, useEffect} from 'preact/compat'
+import {useHideMode} from '../../hooks'
 
 export const HideMode = () => {
 
@@ -32,24 +33,47 @@ export const HideMode = () => {
         }
     }, [])
 
+    const {hideMode, setHideMode} = useHideMode()
+
+    const handleHideMode = useCallback(async (event: any) => {
+        const target = event?.target?.value
+        if (target === 'default') {
+            await setHideMode('default')
+        }
+        if (target === 'collapse') {
+            await setHideMode('collapse')
+        }
+        if (target === 'overlay') {
+            await setHideMode('overlay')
+        }
+    }, [])
+
     return <div>
         <h2><I18n code={'hide_mode'}/></h2>
         <fieldset>
-            <legend>Select hide mode:</legend>
-
+            <legend><I18n code={'select_mode'}/></legend>
             <div>
-                <input type="radio" id="default" name="hide_mode" value="default" checked/>
-                <label htmlFor="default">Default (blur)</label>
+                <input
+                    type="radio" id="default" name="hide_mode" value="default" checked={hideMode === 'default'}
+                    onChange={handleHideMode}
+                    class="custom-radio"/>
+                <label htmlFor="default"><I18n code={'select_mode_default'}/></label>
             </div>
 
             <div>
-                <input type="radio" id="collapse" name="hide_mode" value="collapse" checked/>
-                <label htmlFor="collapse">Collapse</label>
+                <input
+                    type="radio" id="collapse" name="hide_mode" value="collapse" checked={hideMode === 'collapse'}
+                    onChange={handleHideMode}
+                    class="custom-radio"/>
+                <label htmlFor="collapse"><I18n code={'select_mode_collapse'}/></label>
             </div>
 
             <div>
-                <input type="radio" id="overlay" name="hide_mode" value="overlay" checked/>
-                <label htmlFor="overlay">Overlay</label>
+                <input
+                    type="radio" id="overlay" name="hide_mode" value="overlay" checked={hideMode === 'overlay'}
+                    onChange={handleHideMode}
+                    class="custom-radio"/>
+                <label htmlFor="overlay"><I18n code={'select_mode_overlay'}/></label>
             </div>
 
         </fieldset>

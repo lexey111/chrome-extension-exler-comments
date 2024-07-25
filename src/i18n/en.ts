@@ -8,6 +8,10 @@ export const EN = {
     reset_stat: 'Reset statistics',
     settings: 'Settings',
     hide_mode: 'Hide mode',
+    select_mode: 'Select mode:',
+    select_mode_default: 'Default (blur)',
+    select_mode_collapse: 'Collapse',
+    select_mode_overlay: 'Overlay',
     preview: 'Preview',
     open_settings_page: 'Open settings page...'
 } as const

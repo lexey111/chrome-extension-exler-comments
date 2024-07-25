@@ -9,6 +9,8 @@
     --input-color: #f4eae6;
     --input-hover-color: #f3ecec;
     --border-color: #93654f;
+    --tag-color: #93654f;
+    --tag-text-color: #e3d1c8;
     --cell-text-color: #883912;
     --target-bg-color: #edece0;
 }
@@ -55,4 +57,14 @@ hr {
     height: 1px;
     border: none;
     background-color: var(--accent-color);
+}
+
+span.tag {
+    font-size: .7rem;
+    font-weight: 200;
+    background-color: var(--tag-color);
+    color: var(--tag-text-color);
+    padding: 4px 6px;
+    border-radius: 4px;
+    margin-left: .5rem;
 }

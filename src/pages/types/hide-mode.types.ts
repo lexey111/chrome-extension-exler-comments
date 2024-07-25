@@ -1,0 +1,1 @@
+export type HideMode = 'default' | 'collapse' | 'overlay'
