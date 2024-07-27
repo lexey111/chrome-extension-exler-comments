@@ -8,35 +8,36 @@ export const HideModeExample = () => {
 
     useEffect(() => {
         const details = document.querySelector('details')
+
         if (!details) {
             return
         }
-        const handleOpen = (e: MouseEvent) => {
-            if (details.hasAttribute('open')) {
-                e.preventDefault()
-                details.classList.add('closing')
-            }
-        }
-        const handleClose = (e: AnimationEvent) => {
+
+        const handleCloseDone = (e: AnimationEvent) => {
             if (e.animationName === 'close') {
                 details.removeAttribute('open')
                 details.classList.remove('closing')
             }
         }
 
-        details.addEventListener('click', handleOpen)
-        details.addEventListener('animationend', handleClose)
+        details.addEventListener('animationend', handleCloseDone)
 
         return () => {
-            details.removeEventListener('click', handleOpen)
-            details.removeEventListener('animationend', handleClose)
+            details.removeEventListener('animationend', handleCloseDone)
         }
     }, [])
 
     const {hideMode} = useHideMode()
+    const handleOpen = (e: MouseEvent) => {
+        const details = document.querySelector('details')
+        if (details?.hasAttribute('open')) {
+            e.preventDefault()
+            details?.classList.add('closing')
+        }
+    }
 
     return <details className={'hide-mode-settings'} open>
-        <summary className={'hide-mode-selector'}>
+        <summary className={'hide-mode-selector'} onClick={handleOpen}>
             <I18n code={'preview'}/>
         </summary>
         <div className={'hide-mode-example'}>

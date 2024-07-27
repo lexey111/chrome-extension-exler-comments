@@ -9,7 +9,7 @@ export const EN = {
     settings: 'Settings',
     hide_mode: 'Hide mode',
     select_mode: 'Select mode:',
-    select_mode_default: 'Default (blur)',
+    select_mode_default: 'Default (simple blur)',
     select_mode_collapse: 'Collapse',
     select_mode_overlay: 'Overlay',
     preview: 'Preview',

@@ -11,7 +11,7 @@ export const UA:Record<i18nKey, string> = {
     settings: 'Налагодження',
     hide_mode: 'Режим приховування',
     select_mode: 'Оберіть режим приховування:',
-    select_mode_default: 'Стандартний (розмиття)',
+    select_mode_default: 'Стандартний (просте розмиття)',
     select_mode_collapse: 'Схлопування',
     select_mode_overlay: 'Перекриття',
     preview: 'Попередній перегляд',

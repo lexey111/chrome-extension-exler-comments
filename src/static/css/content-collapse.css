@@ -1,0 +1,32 @@
+body {
+    .hide-comment-collapse {
+        transition: all .2s ease-in;
+        height: 32px;
+        overflow: hidden;
+        position: relative;
+
+        .hide-comment-collapse-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 1;
+            background: var(--target-bg-color);
+            z-index: 1;
+            transform: none;
+            transition: all .2s ease-in;
+
+            .hide-comment-content-brief {
+                background: rgba(0, 0, 0, .1);
+                height: 100%;
+                border-radius: 6px;
+                padding: 0 .5rem;
+            }
+        }
+
+        .hide-comment-collapse:hover {
+            opacity: 1;
+        }
+    }
+}

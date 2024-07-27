@@ -11,7 +11,7 @@ export const RU: Record<i18nKey, string> = {
     settings: 'Настройки',
     hide_mode: 'Режим скрытия',
     select_mode: 'Выберите режим скрытия:',
-    select_mode_default: 'Стандартный (размытие)',
+    select_mode_default: 'Стандартный (простое размытие)',
     select_mode_collapse: 'Схлопывание',
     select_mode_overlay: 'Наложение',
     preview: 'Предварительный просмотр',

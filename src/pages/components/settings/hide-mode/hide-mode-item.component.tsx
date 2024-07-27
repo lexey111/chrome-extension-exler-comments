@@ -1,5 +1,5 @@
 import {h} from 'preact'
-import {FC, useMemo, useState} from 'preact/compat'
+import {FC, useCallback, useMemo, useState} from 'preact/compat'
 import {getRandomLine} from '../../../../consts/random-lipsum'
 import {HideMode} from '../../../types'
 
@@ -19,6 +19,15 @@ function randomDateText() {
     }).format(randomDate(new Date(2024, 0, 1), new Date()))
 }
 
+function traverseToClass(el: HTMLDivElement, className: string) {
+    let traversedEl: HTMLElement | null = el
+
+    while (traversedEl && !traversedEl.classList.contains(className)) {
+        traversedEl = traversedEl.parentElement
+    }
+    return traversedEl
+}
+
 export const HideModeItem: FC<HideModeItemProps> = ({index, hideMode}) => {
     const date = useMemo(() => randomDateText(), [])
 
@@ -35,29 +44,64 @@ export const HideModeItem: FC<HideModeItemProps> = ({index, hideMode}) => {
     const [randomMinus] = useState(Math.floor(Math.random() * 100))
 
     const classHideName = hideMode === 'default'
-        ? ' hide-comment'
+        ? ' hide-comment-blur'
         : hideMode === 'overlay'
             ? ' hide-comment-overlay'
             : hideMode === 'collapse'
                 ? ' hide-comment-collapse'
                 : ''
 
-    return <div className={'hide-mode-item' + classHideName}>
+    const handleDismiss = useCallback((e: MouseEvent) => {
+        e.preventDefault()
+        if (!e?.target) {
+            return false
+        }
+        const target = e.target as HTMLDivElement
+        const commentExtensionContent = traverseToClass(target, 'hide-comment-content')
+        const commentBody = traverseToClass(target, 'hide-comment')
+
+        if (!commentBody || !commentExtensionContent) {
+            return false
+        }
+
+        const classNames = Array.from(commentBody.classList).filter(name => name.startsWith('hide-comment'))
+        classNames.forEach((name) => {
+            commentBody.classList.remove(name)
+        })
+        commentExtensionContent.remove()
+    }, [])
+
+    return <div className={'hide-comment hide-mode-item' + classHideName}>
         {randomContent}
-        {hideMode === 'overlay' && <div className={'hide-comment-overlay-content'}>
-            <div className={'hide-comment-content-brief'}>
-                <span className={'hide-comment-content-user'}>User 2</span>,
-                <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
-                <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
+
+        {hideMode === 'default' && <div className={'hide-comment-content hide-comment-content-default'}>
+            <span className={'hide-comment-content-handler'} onClick={handleDismiss}>
+                <i className={'gg-eye'}></i>
+            </span>
+        </div>}
+
+        {hideMode === 'overlay' && <div className={'hide-comment-content hide-comment-content-overlay'}>
+            <span className={'hide-comment-content-handler'} onClick={handleDismiss}>
+                <i className={'gg-eye'}></i>
+            </span>
+            <div className={'hide-comment-overlay-content'}>
+                <div className={'hide-comment-content-brief'}>
+                    <span className={'hide-comment-content-user'}>User 2</span>,
+                    <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
+                    <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
+                </div>
             </div>
         </div>}
-        {hideMode === 'collapse' && <div className={'hide-comment-collapse-content'}>
+
+        {hideMode === 'collapse' && <div className={'hide-comment-content hide-comment-collapse-content'}>
             <div className={'hide-comment-content-brief'}>
+                <span className={'hide-comment-content-handler'} onClick={handleDismiss}>
+                    <i className={'gg-eye'}></i>
+                </span>
                 <span className={'hide-comment-content-user'}>User 2</span>,
                 <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
                 <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
             </div>
-
         </div>}
 
         <div className={'hide-mode-item-footer'}>
