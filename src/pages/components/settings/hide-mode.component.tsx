@@ -75,16 +75,16 @@ export const HideMode = () => {
                     class="custom-radio"/>
                 <label htmlFor="overlay"><I18n code={'select_mode_overlay'}/></label>
             </div>
-
         </fieldset>
-        <details className={'hide-mode-settings'}>
+
+        <details className={'hide-mode-settings'} open>
             <summary className={'hide-mode-selector'}>
                 <I18n code={'preview'}/>
             </summary>
             <div className={'hide-mode-example'}>
                 <div className={'hide-mode-items'}>
                     <HideModeItem index={1}/>
-                    <HideModeItem index={2}/>
+                    <HideModeItem index={2} hideMode={hideMode || 'default'}/>
                     <HideModeItem index={3}/>
                 </div>
             </div>

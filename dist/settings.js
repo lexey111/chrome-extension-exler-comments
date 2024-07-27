@@ -291,7 +291,7 @@
     title: "Exler's site | \u0432\u043E\u0433\u043D\u0435\u0433\u0430\u0441\u043D\u0438\u043A \u043A\u043E\u043C\u0435\u043D\u0442\u0430\u0440\u0456\u0432",
     enable_processing: "\u0423\u0432\u0456\u043C\u043A\u043D\u0443\u0442\u0438 \u043E\u0431\u0440\u043E\u0431\u043A\u0443",
     has_been_hidden: "\u043F\u0440\u0438\u0445\u043E\u0432\u0430\u043D\u043E",
-    total: "\u0432\u0441\u044C\u043E\u0433\u043E",
+    total: "\u0432\u0441\u044C\u043E\u0433\u043E \u043E\u0431\u0440\u043E\u0431\u043B\u0435\u043D\u043E",
     in_current_session: "\u0412 \u043F\u043E\u0442\u043E\u0447\u043D\u0456\u0439 \u0441\u0435\u0441\u0456\u0457",
     for_all_time: "\u0417\u0430 \u0432\u0435\u0441\u044C \u0447\u0430\u0441",
     reset_stat: "\u0421\u043A\u0438\u043D\u0443\u0442\u0438 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
@@ -310,7 +310,7 @@
     title: "Exler's site | comments fire extinguisher",
     enable_processing: "Enable processing",
     has_been_hidden: "was hidden",
-    total: "total",
+    total: "processed total",
     in_current_session: "In current session",
     for_all_time: "For all the time",
     reset_stat: "Reset statistics",
@@ -329,7 +329,7 @@
     title: "Exler's site | \u043E\u0433\u043D\u0435\u0442\u0443\u0448\u0438\u0442\u0435\u043B\u044C \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0435\u0432",
     enable_processing: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0443",
     has_been_hidden: "\u0441\u043A\u0440\u044B\u0442\u043E",
-    total: "\u0432\u0441\u0435\u0433\u043E",
+    total: "\u0432\u0441\u0435\u0433\u043E \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0430\u043D\u043E",
     in_current_session: "\u0412 \u0442\u0435\u043A\u0443\u0449\u0435\u0439 \u0441\u0435\u0441\u0441\u0438\u0438",
     for_all_time: "\u0417\u0430 \u0432\u0441\u0451 \u0432\u0440\u0435\u043C\u044F",
     reset_stat: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
@@ -783,12 +783,13 @@
   function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
-  var HideModeItem = ({ index }) => {
+  var HideModeItem = ({ index, hideMode }) => {
     const date = new Intl.DateTimeFormat("ru-RU", {
       dateStyle: "short",
       timeStyle: "short"
     }).format(randomDate(new Date(2024, 0, 1), /* @__PURE__ */ new Date()));
-    return /* @__PURE__ */ _("div", { className: "hide-mode-item" }, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, Math.floor(Math.random() * 100), " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", Math.floor(Math.random() * 100)))));
+    const classHideName = hideMode === "default" ? " hide-comment" : hideMode === "overlay" ? " hide-comment-overlay" : hideMode === "collapse" ? " hide-comment-collapse" : "";
+    return /* @__PURE__ */ _("div", { className: "hide-mode-item" + classHideName }, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, Math.floor(Math.random() * 100), " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", Math.floor(Math.random() * 100)))));
   };
 
   // src/pages/hooks/useOnOff.tsx
@@ -936,7 +937,7 @@
         onChange: handleHideMode,
         class: "custom-radio"
       }
-    ), /* @__PURE__ */ _("label", { htmlFor: "overlay" }, /* @__PURE__ */ _(I18n, { code: "select_mode_overlay" })))), /* @__PURE__ */ _("details", { className: "hide-mode-settings" }, /* @__PURE__ */ _("summary", { className: "hide-mode-selector" }, /* @__PURE__ */ _(I18n, { code: "preview" })), /* @__PURE__ */ _("div", { className: "hide-mode-example" }, /* @__PURE__ */ _("div", { className: "hide-mode-items" }, /* @__PURE__ */ _(HideModeItem, { index: 1 }), /* @__PURE__ */ _(HideModeItem, { index: 2 }), /* @__PURE__ */ _(HideModeItem, { index: 3 })))));
+    ), /* @__PURE__ */ _("label", { htmlFor: "overlay" }, /* @__PURE__ */ _(I18n, { code: "select_mode_overlay" })))), /* @__PURE__ */ _("details", { className: "hide-mode-settings", open: true }, /* @__PURE__ */ _("summary", { className: "hide-mode-selector" }, /* @__PURE__ */ _(I18n, { code: "preview" })), /* @__PURE__ */ _("div", { className: "hide-mode-example" }, /* @__PURE__ */ _("div", { className: "hide-mode-items" }, /* @__PURE__ */ _(HideModeItem, { index: 1 }), /* @__PURE__ */ _(HideModeItem, { index: 2, hideMode: hideMode || "default" }), /* @__PURE__ */ _(HideModeItem, { index: 3 })))));
   };
 
   // src/pages/components/shared/reset-stat.component.tsx

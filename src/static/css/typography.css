@@ -1,6 +1,7 @@
 :root {
     --page-color: #efe8e4;
     --accent-color: #883912;
+    --accent-text-color: #f8e5db;
     --text-color: #673821;
     --headers-color: #883912;
     --headers-text-color: #352720;
@@ -9,8 +10,8 @@
     --input-color: #f4eae6;
     --input-hover-color: #f3ecec;
     --border-color: #93654f;
-    --tag-color: #93654f;
-    --tag-text-color: #e3d1c8;
+    --tag-color: #e3cabc;
+    --tag-text-color: #3a3736;
     --cell-text-color: #883912;
     --target-bg-color: #edece0;
 }
@@ -22,6 +23,10 @@ body {
     color: var(--text-color);
     background-color: var(--page-color);
     transition: all .2s ease-in-out;
+
+    text-decoration-thickness: 2px;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 3px;
 }
 
 body.disabled {

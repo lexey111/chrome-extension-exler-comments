@@ -1,0 +1,65 @@
+fieldset {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 1rem 0;
+
+    div {
+        margin-right: 2rem;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+    }
+
+}
+
+input[type="radio"] {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.custom-radio {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0.2rem solid #fff;
+    background-color: var(--input-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+label {
+    margin-top: 0.1rem;
+    cursor: pointer;
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+.custom-radio:focus-visible {
+    outline-offset: 0;
+}
+
+.custom-radio {
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.custom-radio:hover {
+    border-width: 0;
+}
+
+.custom-radio:checked {
+    box-shadow: 0 0 0 2px var(--accent-color);
+    background-color: var(--accent-color);
+    border-width: 0.2rem;
+}
+
+@keyframes outline-checked {
+    0% {
+        outline-offset: 0;
+    }
+
+    100% {
+        outline-offset: -0.2rem;
+    }
+}
