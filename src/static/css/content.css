@@ -1,9 +1,8 @@
 body {
     .hide-comment {
-        transition: all .2s ease-in-out;
+        transition: all .2s ease-in;
         opacity: 0.3;
         filter: blur(8px) grayscale(1);
-        overflow: hidden;
     }
 
     .hide-comment:hover {
@@ -11,34 +10,91 @@ body {
         filter: none;
     }
 
-    .hide-comment-collapse {
-        transition: all .2s ease-in-out;
-        height: 24px;
-        overflow: hidden;
-        position: relative;
+    .hide-comment-content-brief {
+        font-size: .8rem;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        color: #aaa;
 
-        &:after {
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
-            justify-content: center;
-            border-radius: 100%;
-            line-height: 1;
-            font-size: .9rem;
-            vertical-align: center;
-            content: '+';
-            position: absolute;
-            top: 0;
-            left: -24px;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-color);
-            color: var(--accent-text-color);
-            z-index: 10;
+        .hide-comment-content-user {
+            font-weight: 500;
+        }
+
+        .hide-comment-content-minus {
+            color: var(--karma-minus);
+            margin: 0 .5rem;
+        }
+
+        .hide-comment-content-plus {
+            color: var(--karma-plus);
+            margin: 0 .5rem;
         }
     }
 
-    .hide-comment-collapse:hover {
-        opacity: 1;
+    .hide-comment-overlay {
+        position: relative;
+
+        .hide-comment-overlay-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            background-color: var(--target-bg-color);
+            opacity: 1;
+            transform: none;
+            transition: all .2s ease-in;
+
+            .hide-comment-content-brief {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, .1);
+                padding: .5rem 1rem;
+                border-radius: 6px;
+            }
+        }
+
+        &:hover {
+            .hide-comment-overlay-content {
+                opacity: 0.5;
+                transform: scaleY(0);
+            }
+        }
+    }
+
+    .hide-comment-collapse {
+        transition: all .2s ease-in;
+        height: 32px;
+        overflow: hidden;
+        position: relative;
+
+        .hide-comment-collapse-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 1;
+            background: var(--target-bg-color);
+            z-index: 1;
+            transform: none;
+            transition: all .2s ease-in;
+
+            .hide-comment-content-brief {
+                background: rgba(0, 0, 0, .1);
+                height: 100%;
+                border-radius: 6px;
+                padding: 0 1rem;
+            }
+
+        }
+
+        .hide-comment-collapse:hover {
+            opacity: 1;
+        }
     }
 }

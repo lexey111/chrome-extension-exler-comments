@@ -225,10 +225,10 @@ details[open] summary {
                 }
 
                 .karma-minus {
-                    color: #d5082f;
+                    color: var(--karma-minus);
 
                     b {
-                        border-color: #d5082f;
+                        border-color: var(--karma-minus);
 
                         &:after {
                             content: '-';
@@ -237,10 +237,10 @@ details[open] summary {
                 }
 
                 .karma-plus {
-                    color: #549f04;
+                    color: var(--karma-plus);
 
                     b {
-                        border-color: #549f04;
+                        border-color: var(--karma-plus);
 
                         &:after {
                             content: '+';

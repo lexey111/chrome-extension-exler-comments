@@ -31,6 +31,8 @@ input[type="radio"] {
 label {
     margin-top: 0.1rem;
     cursor: pointer;
+    user-select: none;
+
     &:hover, &:focus {
         text-decoration: underline;
     }

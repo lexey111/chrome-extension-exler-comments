@@ -44,6 +44,21 @@ export const HideModeItem: FC<HideModeItemProps> = ({index, hideMode}) => {
 
     return <div className={'hide-mode-item' + classHideName}>
         {randomContent}
+        {hideMode === 'overlay' && <div className={'hide-comment-overlay-content'}>
+            <div className={'hide-comment-content-brief'}>
+                <span className={'hide-comment-content-user'}>User 2</span>,
+                <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
+                <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
+            </div>
+        </div>}
+        {hideMode === 'collapse' && <div className={'hide-comment-collapse-content'}>
+            <div className={'hide-comment-content-brief'}>
+                <span className={'hide-comment-content-user'}>User 2</span>,
+                <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
+                <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
+            </div>
+
+        </div>}
 
         <div className={'hide-mode-item-footer'}>
             <span className={'user'}>User {index}</span>
