@@ -779,7 +779,7 @@
   ];
   var getRandomLine = () => lines[Math.floor(Math.random() * lines.length)];
 
-  // src/pages/components/settings/hide-mode-item.component.tsx
+  // src/pages/components/settings/hide-mode/hide-mode-item.component.tsx
   function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
@@ -865,8 +865,42 @@
     };
   };
 
-  // src/pages/components/settings/hide-mode.component.tsx
-  var HideMode = () => {
+  // src/pages/types/hide-mode.types.ts
+  var hideModeCodes = ["default", "collapse", "overlay"];
+
+  // src/pages/components/settings/hide-mode/hide-mode-selector.component.tsx
+  var HideModeSelector = () => {
+    const { hideMode, setHideMode } = useHideMode();
+    const handleHideMode = q2(async (event) => {
+      const target = event?.target?.value;
+      if (target === "default") {
+        await setHideMode("default");
+      }
+      if (target === "collapse") {
+        await setHideMode("collapse");
+      }
+      if (target === "overlay") {
+        await setHideMode("overlay");
+      }
+    }, []);
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "hide_mode" })), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _("legend", null, /* @__PURE__ */ _(I18n, { code: "select_mode" })), hideModeCodes.map((code) => {
+      return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(
+        "input",
+        {
+          type: "radio",
+          id: code,
+          name: "hide_mode",
+          value: code,
+          checked: hideMode === code,
+          onChange: handleHideMode,
+          className: "custom-radio"
+        }
+      ), /* @__PURE__ */ _("label", { htmlFor: code }, /* @__PURE__ */ _(I18n, { code: `select_mode_${code}` })));
+    })));
+  };
+
+  // src/pages/components/settings/hide-mode/hide-mode-example.component.tsx
+  var HideModeExample = () => {
     y2(() => {
       const details = document.querySelector("details");
       if (!details) {
@@ -891,53 +925,13 @@
         details.removeEventListener("animationend", handleClose);
       };
     }, []);
-    const { hideMode, setHideMode } = useHideMode();
-    const handleHideMode = q2(async (event) => {
-      const target = event?.target?.value;
-      if (target === "default") {
-        await setHideMode("default");
-      }
-      if (target === "collapse") {
-        await setHideMode("collapse");
-      }
-      if (target === "overlay") {
-        await setHideMode("overlay");
-      }
-    }, []);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "hide_mode" })), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _("legend", null, /* @__PURE__ */ _(I18n, { code: "select_mode" })), /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(
-      "input",
-      {
-        type: "radio",
-        id: "default",
-        name: "hide_mode",
-        value: "default",
-        checked: hideMode === "default",
-        onChange: handleHideMode,
-        class: "custom-radio"
-      }
-    ), /* @__PURE__ */ _("label", { htmlFor: "default" }, /* @__PURE__ */ _(I18n, { code: "select_mode_default" }))), /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(
-      "input",
-      {
-        type: "radio",
-        id: "collapse",
-        name: "hide_mode",
-        value: "collapse",
-        checked: hideMode === "collapse",
-        onChange: handleHideMode,
-        class: "custom-radio"
-      }
-    ), /* @__PURE__ */ _("label", { htmlFor: "collapse" }, /* @__PURE__ */ _(I18n, { code: "select_mode_collapse" }))), /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(
-      "input",
-      {
-        type: "radio",
-        id: "overlay",
-        name: "hide_mode",
-        value: "overlay",
-        checked: hideMode === "overlay",
-        onChange: handleHideMode,
-        class: "custom-radio"
-      }
-    ), /* @__PURE__ */ _("label", { htmlFor: "overlay" }, /* @__PURE__ */ _(I18n, { code: "select_mode_overlay" })))), /* @__PURE__ */ _("details", { className: "hide-mode-settings", open: true }, /* @__PURE__ */ _("summary", { className: "hide-mode-selector" }, /* @__PURE__ */ _(I18n, { code: "preview" })), /* @__PURE__ */ _("div", { className: "hide-mode-example" }, /* @__PURE__ */ _("div", { className: "hide-mode-items" }, /* @__PURE__ */ _(HideModeItem, { index: 1 }), /* @__PURE__ */ _(HideModeItem, { index: 2, hideMode: hideMode || "default" }), /* @__PURE__ */ _(HideModeItem, { index: 3 })))));
+    const { hideMode } = useHideMode();
+    return /* @__PURE__ */ _("details", { className: "hide-mode-settings", open: true }, /* @__PURE__ */ _("summary", { className: "hide-mode-selector" }, /* @__PURE__ */ _(I18n, { code: "preview" })), /* @__PURE__ */ _("div", { className: "hide-mode-example" }, /* @__PURE__ */ _("div", { className: "hide-mode-items" }, /* @__PURE__ */ _(HideModeItem, { index: 1 }), /* @__PURE__ */ _(HideModeItem, { index: 2, hideMode: hideMode || "default" }), /* @__PURE__ */ _(HideModeItem, { index: 3 }))));
+  };
+
+  // src/pages/components/settings/hide-mode/hide-mode.component.tsx
+  var HideMode = () => {
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(HideModeSelector, null), /* @__PURE__ */ _(HideModeExample, null));
   };
 
   // src/pages/components/shared/reset-stat.component.tsx
