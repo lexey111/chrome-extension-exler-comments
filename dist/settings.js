@@ -783,13 +783,21 @@
   function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
-  var HideModeItem = ({ index, hideMode }) => {
-    const date = new Intl.DateTimeFormat("ru-RU", {
+  function randomDateText() {
+    return new Intl.DateTimeFormat("ru-RU", {
       dateStyle: "short",
       timeStyle: "short"
     }).format(randomDate(new Date(2024, 0, 1), /* @__PURE__ */ new Date()));
+  }
+  var HideModeItem = ({ index, hideMode }) => {
+    const date = T2(() => randomDateText(), []);
+    const randomContent = T2(() => {
+      return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()));
+    }, []);
+    const [randomPlus] = h2(Math.floor(Math.random() * 100));
+    const [randomMinus] = h2(Math.floor(Math.random() * 100));
     const classHideName = hideMode === "default" ? " hide-comment" : hideMode === "overlay" ? " hide-comment-overlay" : hideMode === "collapse" ? " hide-comment-collapse" : "";
-    return /* @__PURE__ */ _("div", { className: "hide-mode-item" + classHideName }, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, Math.floor(Math.random() * 100), " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", Math.floor(Math.random() * 100)))));
+    return /* @__PURE__ */ _("div", { className: "hide-mode-item" + classHideName }, randomContent, /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, randomMinus, " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", randomPlus))));
   };
 
   // src/pages/hooks/useOnOff.tsx
