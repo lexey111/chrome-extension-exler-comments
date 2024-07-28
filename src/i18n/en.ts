@@ -13,5 +13,6 @@ export const EN = {
     select_mode_collapse: 'Collapse',
     select_mode_overlay: 'Overlay',
     preview: 'Preview',
-    open_settings_page: 'Open settings page...'
+    open_settings_page: 'Open settings page...',
+    rules: 'Rules'
 } as const

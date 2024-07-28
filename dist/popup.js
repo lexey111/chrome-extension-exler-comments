@@ -297,7 +297,8 @@
     select_mode_collapse: "\u0421\u0445\u043B\u043E\u043F\u0443\u0432\u0430\u043D\u043D\u044F",
     select_mode_overlay: "\u041F\u0435\u0440\u0435\u043A\u0440\u0438\u0442\u0442\u044F",
     preview: "\u041F\u043E\u043F\u0435\u0440\u0435\u0434\u043D\u0456\u0439 \u043F\u0435\u0440\u0435\u0433\u043B\u044F\u0434",
-    open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F..."
+    open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F...",
+    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
   };
 
   // src/i18n/en.ts
@@ -316,7 +317,8 @@
     select_mode_collapse: "Collapse",
     select_mode_overlay: "Overlay",
     preview: "Preview",
-    open_settings_page: "Open settings page..."
+    open_settings_page: "Open settings page...",
+    rules: "Rules"
   };
 
   // src/i18n/ru.ts
@@ -335,7 +337,8 @@
     select_mode_collapse: "\u0421\u0445\u043B\u043E\u043F\u044B\u0432\u0430\u043D\u0438\u0435",
     select_mode_overlay: "\u041D\u0430\u043B\u043E\u0436\u0435\u043D\u0438\u0435",
     preview: "\u041F\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440",
-    open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438..."
+    open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438...",
+    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
   };
 
   // node_modules/preact/hooks/dist/hooks.module.js

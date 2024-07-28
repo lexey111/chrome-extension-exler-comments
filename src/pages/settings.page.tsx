@@ -1,5 +1,5 @@
 import {h} from 'preact'
-import {Footer, Header, HideMode} from './components/settings'
+import {Footer, Header, HideMode, Rules} from './components/settings'
 import {LanguageAwareWrapper} from '../i18n'
 import {useEffect} from 'preact/compat'
 import {settingsPageStorageKey} from '../consts/storage-keys.consts'
@@ -33,6 +33,7 @@ export const SettingsPage = () => {
         <OnOff/>
         <StatTable/>
         <HideMode/>
+        <Rules/>
         <Footer/>
     </LanguageAwareWrapper>
 }

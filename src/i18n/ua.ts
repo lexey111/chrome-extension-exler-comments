@@ -15,5 +15,6 @@ export const UA:Record<i18nKey, string> = {
     select_mode_collapse: 'Схлопування',
     select_mode_overlay: 'Перекриття',
     preview: 'Попередній перегляд',
-    open_settings_page: 'Відкрити налагодження...'
+    open_settings_page: 'Відкрити налагодження...',
+    rules: 'Правила'
 } as const

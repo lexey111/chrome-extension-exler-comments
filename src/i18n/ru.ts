@@ -15,5 +15,6 @@ export const RU: Record<i18nKey, string> = {
     select_mode_collapse: 'Схлопывание',
     select_mode_overlay: 'Наложение',
     preview: 'Предварительный просмотр',
-    open_settings_page: 'Открыть настройки...'
+    open_settings_page: 'Открыть настройки...',
+    rules: 'Правила'
 } as const

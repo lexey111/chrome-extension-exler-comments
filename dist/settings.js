@@ -302,7 +302,8 @@
     select_mode_collapse: "\u0421\u0445\u043B\u043E\u043F\u0443\u0432\u0430\u043D\u043D\u044F",
     select_mode_overlay: "\u041F\u0435\u0440\u0435\u043A\u0440\u0438\u0442\u0442\u044F",
     preview: "\u041F\u043E\u043F\u0435\u0440\u0435\u0434\u043D\u0456\u0439 \u043F\u0435\u0440\u0435\u0433\u043B\u044F\u0434",
-    open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F..."
+    open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F...",
+    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
   };
 
   // src/i18n/en.ts
@@ -321,7 +322,8 @@
     select_mode_collapse: "Collapse",
     select_mode_overlay: "Overlay",
     preview: "Preview",
-    open_settings_page: "Open settings page..."
+    open_settings_page: "Open settings page...",
+    rules: "Rules"
   };
 
   // src/i18n/ru.ts
@@ -340,7 +342,8 @@
     select_mode_collapse: "\u0421\u0445\u043B\u043E\u043F\u044B\u0432\u0430\u043D\u0438\u0435",
     select_mode_overlay: "\u041D\u0430\u043B\u043E\u0436\u0435\u043D\u0438\u0435",
     preview: "\u041F\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440",
-    open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438..."
+    open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438...",
+    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
   };
 
   // node_modules/preact/hooks/dist/hooks.module.js
@@ -749,81 +752,6 @@
     return /* @__PURE__ */ _("div", { className: "app-header" }, /* @__PURE__ */ _("h1", null, /* @__PURE__ */ _(I18n, { code: "title" })), /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "settings" }), /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _(LanguageSelector, null))));
   };
 
-  // src/consts/random-lipsum.ts
-  var lines = [
-    `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi ipsum laborum quos sed. Cum
-    doloribus eos perferendis quo tempora! Aspernatur blanditiis consequuntur corporis culpa cupiditate explicabo iusto
-    nemo, officia quisquam!`,
-    `Accusantium ad, animi atque corporis dignissimos dolor doloremque eos ex inventore ipsam iure magni minus
-    molestias, nostrum numquam obcaecati odit recusandae repellendus similique soluta velit veniam voluptatibus.
-    Possimus quam, voluptas!`,
-    `Commodi, dicta inventore ipsam nesciunt suscipit totam voluptatum! Animi debitis ea, labore neque provident quae
-    quia! Beatae eaque eius error expedita fugiat incidunt inventore minus modi nam sunt! Quos, ut.`,
-    `Accusamus eaque, eius incidunt iusto mollitia, nostrum, odio odit repellat similique sunt voluptas voluptates!
-    Consequuntur deserunt in incidunt perspiciatis soluta totam voluptas! Accusamus corporis deserunt eum placeat quo
-    tempora totam.`,
-    `Cumque delectus libero nesciunt nisi perspiciatis quos, ratione reprehenderit sapiente sit. Accusamus aspernatur
-    cupiditate placeat reiciendis sit. Accusantium architecto, culpa eius eligendi harum iste modi nihil obcaecati sed
-    ut. Qui?`,
-    `Ab aliquid autem beatae cupiditate dolor dolore et eum facilis illum in ipsam iusto laboriosam minus nemo nisi
-    nobis, officia omnis, placeat quas sit tempore unde veritatis voluptas voluptatem voluptatum!`,
-    `Ab architecto at corporis dignissimos distinctio eius enim et excepturi fuga fugiat id iste, laboriosam, nesciunt,
-    non officia optio perferendis porro quae quibusdam recusandae soluta totam unde voluptas voluptate voluptatem.`,
-    `Culpa, delectus dicta earum eligendi error, est, id nemo nihil numquam perspiciatis provident sit tempore veniam?
-    Aliquid cum, dicta dolorem eaque est inventore ipsam mollitia pariatur quasi quia sed voluptas!`,
-    `Accusantium aperiam at consectetur culpa cupiditate dolor, dolore, dolorem dolorum, exercitationem natus provident
-    quam vitae voluptatem. Adipisci, aliquid blanditiis corporis, culpa deleniti ea eaque neque quia quo sed vitae
-    voluptatibus?`,
-    `A aut autem corporis cum cumque deserunt dolorum eligendi, enim error est illo incidunt ipsum, labore molestias
-    natus pariatur quo quod reiciendis repudiandae sequi soluta tenetur, veritatis vitae voluptas voluptatem.`
-  ];
-  var getRandomLine = () => lines[Math.floor(Math.random() * lines.length)];
-
-  // src/pages/components/settings/hide-mode/hide-mode-item.component.tsx
-  function randomDate(start, end) {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  }
-  function randomDateText() {
-    return new Intl.DateTimeFormat("ru-RU", {
-      dateStyle: "short",
-      timeStyle: "short"
-    }).format(randomDate(new Date(2024, 0, 1), /* @__PURE__ */ new Date()));
-  }
-  function traverseToClass(el, className) {
-    let traversedEl = el;
-    while (traversedEl && !traversedEl.classList.contains(className)) {
-      traversedEl = traversedEl.parentElement;
-    }
-    return traversedEl;
-  }
-  var HideModeItem = ({ index, hideMode }) => {
-    const date = T2(() => randomDateText(), []);
-    const randomContent = T2(() => {
-      return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()));
-    }, []);
-    const [randomPlus] = h2(Math.floor(Math.random() * 100));
-    const [randomMinus] = h2(Math.floor(Math.random() * 100));
-    const classHideName = hideMode === "default" ? " hide-comment-blur" : hideMode === "overlay" ? " hide-comment-overlay" : hideMode === "collapse" ? " hide-comment-collapse" : "";
-    const handleDismiss = q2((e3) => {
-      e3.preventDefault();
-      if (!e3?.target) {
-        return false;
-      }
-      const target = e3.target;
-      const commentExtensionContent = traverseToClass(target, "hide-comment-content");
-      const commentBody = traverseToClass(target, "hide-comment");
-      if (!commentBody || !commentExtensionContent) {
-        return false;
-      }
-      const classNames = Array.from(commentBody.classList).filter((name) => name.startsWith("hide-comment"));
-      classNames.forEach((name) => {
-        commentBody.classList.remove(name);
-      });
-      commentExtensionContent.remove();
-    }, []);
-    return /* @__PURE__ */ _("div", { className: "hide-comment hide-mode-item" + classHideName }, randomContent, hideMode === "default" && /* @__PURE__ */ _("div", { className: "hide-comment-content hide-comment-content-default" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-handler", onClick: handleDismiss }, /* @__PURE__ */ _("i", { className: "gg-eye" }))), hideMode === "overlay" && /* @__PURE__ */ _("div", { className: "hide-comment-content hide-comment-content-overlay" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-handler", onClick: handleDismiss }, /* @__PURE__ */ _("i", { className: "gg-eye" })), /* @__PURE__ */ _("div", { className: "hide-comment-overlay-content" }, /* @__PURE__ */ _("div", { className: "hide-comment-content-brief" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-user" }, "User 2"), ",", /* @__PURE__ */ _("span", { className: "hide-comment-content-minus" }, "-", randomMinus), "|", /* @__PURE__ */ _("span", { className: "hide-comment-content-plus" }, "+", randomPlus)))), hideMode === "collapse" && /* @__PURE__ */ _("div", { className: "hide-comment-content hide-comment-collapse-content" }, /* @__PURE__ */ _("div", { className: "hide-comment-content-brief" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-handler", onClick: handleDismiss }, /* @__PURE__ */ _("i", { className: "gg-eye" })), /* @__PURE__ */ _("span", { className: "hide-comment-content-user" }, "User 2"), ",", /* @__PURE__ */ _("span", { className: "hide-comment-content-minus" }, "-", randomMinus), "|", /* @__PURE__ */ _("span", { className: "hide-comment-content-plus" }, "+", randomPlus))), /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, randomMinus, " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", randomPlus))));
-  };
-
   // src/pages/hooks/useOnOff.tsx
   var getOnOffState = async () => {
     const storedState = await chrome.storage.sync.get([onOffStorageKey]);
@@ -915,7 +843,7 @@
         await setHideMode("overlay");
       }
     }, []);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "hide_mode" })), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _("legend", null, /* @__PURE__ */ _(I18n, { code: "select_mode" })), hideModeCodes.map((code) => {
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "hide_mode" })), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _("span", { className: "legend" }, /* @__PURE__ */ _(I18n, { code: "select_mode" })), hideModeCodes.map((code) => {
       return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(
         "input",
         {
@@ -929,6 +857,81 @@
         }
       ), /* @__PURE__ */ _("label", { htmlFor: code }, /* @__PURE__ */ _(I18n, { code: `select_mode_${code}` })));
     })));
+  };
+
+  // src/consts/random-lipsum.ts
+  var lines = [
+    `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi ipsum laborum quos sed. Cum
+    doloribus eos perferendis quo tempora! Aspernatur blanditiis consequuntur corporis culpa cupiditate explicabo iusto
+    nemo, officia quisquam!`,
+    `Accusantium ad, animi atque corporis dignissimos dolor doloremque eos ex inventore ipsam iure magni minus
+    molestias, nostrum numquam obcaecati odit recusandae repellendus similique soluta velit veniam voluptatibus.
+    Possimus quam, voluptas!`,
+    `Commodi, dicta inventore ipsam nesciunt suscipit totam voluptatum! Animi debitis ea, labore neque provident quae
+    quia! Beatae eaque eius error expedita fugiat incidunt inventore minus modi nam sunt! Quos, ut.`,
+    `Accusamus eaque, eius incidunt iusto mollitia, nostrum, odio odit repellat similique sunt voluptas voluptates!
+    Consequuntur deserunt in incidunt perspiciatis soluta totam voluptas! Accusamus corporis deserunt eum placeat quo
+    tempora totam.`,
+    `Cumque delectus libero nesciunt nisi perspiciatis quos, ratione reprehenderit sapiente sit. Accusamus aspernatur
+    cupiditate placeat reiciendis sit. Accusantium architecto, culpa eius eligendi harum iste modi nihil obcaecati sed
+    ut. Qui?`,
+    `Ab aliquid autem beatae cupiditate dolor dolore et eum facilis illum in ipsam iusto laboriosam minus nemo nisi
+    nobis, officia omnis, placeat quas sit tempore unde veritatis voluptas voluptatem voluptatum!`,
+    `Ab architecto at corporis dignissimos distinctio eius enim et excepturi fuga fugiat id iste, laboriosam, nesciunt,
+    non officia optio perferendis porro quae quibusdam recusandae soluta totam unde voluptas voluptate voluptatem.`,
+    `Culpa, delectus dicta earum eligendi error, est, id nemo nihil numquam perspiciatis provident sit tempore veniam?
+    Aliquid cum, dicta dolorem eaque est inventore ipsam mollitia pariatur quasi quia sed voluptas!`,
+    `Accusantium aperiam at consectetur culpa cupiditate dolor, dolore, dolorem dolorum, exercitationem natus provident
+    quam vitae voluptatem. Adipisci, aliquid blanditiis corporis, culpa deleniti ea eaque neque quia quo sed vitae
+    voluptatibus?`,
+    `A aut autem corporis cum cumque deserunt dolorum eligendi, enim error est illo incidunt ipsum, labore molestias
+    natus pariatur quo quod reiciendis repudiandae sequi soluta tenetur, veritatis vitae voluptas voluptatem.`
+  ];
+  var getRandomLine = () => lines[Math.floor(Math.random() * lines.length)];
+
+  // src/pages/components/settings/hide-mode/hide-mode-item.component.tsx
+  function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
+  function randomDateText() {
+    return new Intl.DateTimeFormat("ru-RU", {
+      dateStyle: "short",
+      timeStyle: "short"
+    }).format(randomDate(new Date(2024, 0, 1), /* @__PURE__ */ new Date()));
+  }
+  function traverseToClass(el, className) {
+    let traversedEl = el;
+    while (traversedEl && !traversedEl.classList.contains(className)) {
+      traversedEl = traversedEl.parentElement;
+    }
+    return traversedEl;
+  }
+  var HideModeItem = ({ index, hideMode }) => {
+    const date = T2(() => randomDateText(), []);
+    const randomContent = T2(() => {
+      return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("p", null, getRandomLine()), /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()), Math.random() > 0.5 && /* @__PURE__ */ _("p", null, getRandomLine()));
+    }, []);
+    const [randomPlus] = h2(Math.floor(Math.random() * 100));
+    const [randomMinus] = h2(Math.floor(Math.random() * 100));
+    const classHideName = hideMode === "default" ? " hide-comment-blur" : hideMode === "overlay" ? " hide-comment-overlay" : hideMode === "collapse" ? " hide-comment-collapse" : "";
+    const handleDismiss = q2((e3) => {
+      e3.preventDefault();
+      if (!e3?.target) {
+        return false;
+      }
+      const target = e3.target;
+      const commentExtensionContent = traverseToClass(target, "hide-comment-content");
+      const commentBody = traverseToClass(target, "hide-comment");
+      if (!commentBody || !commentExtensionContent) {
+        return false;
+      }
+      const classNames = Array.from(commentBody.classList).filter((name) => name.startsWith("hide-comment"));
+      classNames.forEach((name) => {
+        commentBody.classList.remove(name);
+      });
+      commentExtensionContent.remove();
+    }, []);
+    return /* @__PURE__ */ _("div", { className: "hide-comment hide-mode-item" + classHideName }, randomContent, hideMode === "default" && /* @__PURE__ */ _("div", { className: "hide-comment-content hide-comment-content-default" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-handler", onClick: handleDismiss }, /* @__PURE__ */ _("i", { className: "gg-eye" }))), hideMode === "overlay" && /* @__PURE__ */ _("div", { className: "hide-comment-content hide-comment-content-overlay" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-handler", onClick: handleDismiss }, /* @__PURE__ */ _("i", { className: "gg-eye" })), /* @__PURE__ */ _("div", { className: "hide-comment-overlay-content" }, /* @__PURE__ */ _("div", { className: "hide-comment-content-brief" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-user" }, "User 2"), ",", /* @__PURE__ */ _("span", { className: "hide-comment-content-minus" }, "-", randomMinus), "|", /* @__PURE__ */ _("span", { className: "hide-comment-content-plus" }, "+", randomPlus)))), hideMode === "collapse" && /* @__PURE__ */ _("div", { className: "hide-comment-content hide-comment-collapse-content" }, /* @__PURE__ */ _("div", { className: "hide-comment-content-brief" }, /* @__PURE__ */ _("span", { className: "hide-comment-content-handler", onClick: handleDismiss }, /* @__PURE__ */ _("i", { className: "gg-eye" })), /* @__PURE__ */ _("span", { className: "hide-comment-content-user" }, "User 2"), ",", /* @__PURE__ */ _("span", { className: "hide-comment-content-minus" }, "-", randomMinus), "|", /* @__PURE__ */ _("span", { className: "hide-comment-content-plus" }, "+", randomPlus))), /* @__PURE__ */ _("div", { className: "hide-mode-item-footer" }, /* @__PURE__ */ _("span", { className: "user" }, "User ", index), /* @__PURE__ */ _("span", { className: "time" }, date), /* @__PURE__ */ _("span", { className: "icons" }, /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null), /* @__PURE__ */ _("i", null)), /* @__PURE__ */ _("span", { className: "karma" }, /* @__PURE__ */ _("span", { className: "karma-minus" }, randomMinus, " ", /* @__PURE__ */ _("b", null)), /* @__PURE__ */ _("span", { className: "karma-plus" }, /* @__PURE__ */ _("b", null), " ", randomPlus))));
   };
 
   // src/pages/components/settings/hide-mode/hide-mode-example.component.tsx
@@ -963,6 +966,11 @@
   // src/pages/components/settings/hide-mode/hide-mode.component.tsx
   var HideMode = () => {
     return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(HideModeSelector, null), /* @__PURE__ */ _(HideModeExample, null));
+  };
+
+  // src/pages/components/settings/rules/rules.component.tsx
+  var Rules = () => {
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })));
   };
 
   // src/pages/components/shared/reset-stat.component.tsx
@@ -1039,7 +1047,7 @@
         document.body.classList.remove("disabled");
       }
     }, [on]);
-    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _(Header, null), /* @__PURE__ */ _(OnOff, null), /* @__PURE__ */ _(StatTable, null), /* @__PURE__ */ _(HideMode, null), /* @__PURE__ */ _(Footer, null));
+    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _(Header, null), /* @__PURE__ */ _(OnOff, null), /* @__PURE__ */ _(StatTable, null), /* @__PURE__ */ _(HideMode, null), /* @__PURE__ */ _(Rules, null), /* @__PURE__ */ _(Footer, null));
   };
 
   // src/settings.tsx
