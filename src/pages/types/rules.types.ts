@@ -3,7 +3,6 @@ export type Rule = {
     user: string
     hideFrom: boolean
     hideTo: boolean
-    hideBranch: boolean
     onlyNegativeBalance: boolean
 }
 

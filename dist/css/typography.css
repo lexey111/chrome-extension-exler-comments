@@ -12,9 +12,10 @@
     --cell-text-color: #883912;
 
     --disabled-color: #ccc5c2;
+    --disabled-text-color: #8e8987;
 
     --input-color: #ffffff;
-    --input-highlight-color: #f3ecec;
+    --input-highlight-color: #d8d2d2;
     --input-hover-color: #ffffff;
 
     --border-color: #93654f;
@@ -25,6 +26,10 @@
     --info-color: #b9e3fd;
     --info-accent-color: #198ad1;
     --info-text-color: #425875;
+
+    --warning-color: #fde0b9;
+    --warning-accent-color: #d19119;
+    --warning-text-color: #4e3e2a;
 
     --target-bg-color: #edece0;
 

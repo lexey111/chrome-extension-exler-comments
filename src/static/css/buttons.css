@@ -12,6 +12,13 @@
     cursor: pointer;
     border-radius: 6px;
     font-size: .9rem;
+
+    &:disabled {
+        pointer-events: none;
+        color: var(--disabled-text-color);
+        background-color: var(--disabled-color);
+        border-color: var(--disabled-color);
+    }
 }
 
 .primary {

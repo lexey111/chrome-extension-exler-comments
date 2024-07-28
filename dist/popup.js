@@ -902,13 +902,34 @@
     return /* @__PURE__ */ _("span", { className: "tag" }, modeName);
   };
 
-  // src/pages/components/shared/on-off.component.tsx
-  var OnOff = () => {
-    const { on, toggleOnOffState } = useOnOff();
+  // src/pages/components/shared/switch.component.tsx
+  var Switch = ({ on, onChange, title, titleKey, children }) => {
     if (typeof on !== "boolean") {
       return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("span", { className: "slider round" })), "...");
     }
-    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on === true, onChange: toggleOnOffState }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _(I18n, { code: "enable_processing" }), /* @__PURE__ */ _(CurrentHideMode, null));
+    const handleChange = q2((e3) => {
+      e3.preventDefault();
+      onChange(e3.target?.checked);
+      return false;
+    }, [onChange]);
+    const handleToggle = q2(() => {
+      onChange(!on);
+    }, [onChange, on]);
+    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on, onChange: handleChange }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _("div", { onClick: handleToggle }, titleKey && /* @__PURE__ */ _(I18n, { code: titleKey }), title, children));
+  };
+
+  // src/pages/components/shared/on-off.component.tsx
+  var OnOff = () => {
+    const { on, toggleOnOffState } = useOnOff();
+    return /* @__PURE__ */ _(
+      Switch,
+      {
+        on,
+        onChange: toggleOnOffState,
+        titleKey: "enable_processing"
+      },
+      /* @__PURE__ */ _(CurrentHideMode, null)
+    );
   };
 
   // src/pages/popup.page.tsx

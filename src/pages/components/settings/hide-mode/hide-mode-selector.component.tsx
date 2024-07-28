@@ -22,7 +22,7 @@ export const HideModeSelector = () => {
 
     return <div>
         <h2><I18n code={'hide_mode'}/></h2>
-        <fieldset>
+        <fieldset className={'radio'}>
             <span className={'legend'}><I18n code={'select_mode'}/></span>
             {hideModeCodes.map(code => {
                 return <div>

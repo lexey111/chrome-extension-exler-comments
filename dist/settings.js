@@ -859,7 +859,7 @@
         await setHideMode("overlay");
       }
     }, []);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "hide_mode" })), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _("span", { className: "legend" }, /* @__PURE__ */ _(I18n, { code: "select_mode" })), hideModeCodes.map((code) => {
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "hide_mode" })), /* @__PURE__ */ _("fieldset", { className: "radio" }, /* @__PURE__ */ _("span", { className: "legend" }, /* @__PURE__ */ _(I18n, { code: "select_mode" })), hideModeCodes.map((code) => {
       return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(
         "input",
         {
@@ -1037,44 +1037,6 @@
     return /* @__PURE__ */ _("div", { className: "add-rules" }, /* @__PURE__ */ _("button", { className: "primary", onClick }, /* @__PURE__ */ _(I18n, { code: "add_rule" })));
   };
 
-  // src/pages/components/settings/rules/rule-dialog.component.tsx
-  var RuleDialog = ({ id, open, onConfirm, onCancel }) => {
-    const isNew = !id;
-    y2(() => {
-      const dialog = document.querySelector("dialog");
-      if (open) {
-        dialog?.showModal();
-      } else {
-        dialog?.close();
-      }
-    }, [open]);
-    return /* @__PURE__ */ _("dialog", { onCancel }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "dialog-cancel" }, "\xD7"), /* @__PURE__ */ _("p", null, "Greetings, one and all!"), /* @__PURE__ */ _("form", { method: "dialog" }, /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "ghost" }, /* @__PURE__ */ _(I18n, { code: "cancel" })), /* @__PURE__ */ _("button", { onClick: onConfirm, className: "primary" }, /* @__PURE__ */ _(I18n, { code: isNew ? "create" : "save" })))));
-  };
-
-  // src/pages/components/settings/rules/rules.component.tsx
-  var Rules = () => {
-    const { rules } = useRules();
-    const [open, setOpen] = h2(false);
-    const [, setId] = h2("");
-    const handleConfirm = q2(() => {
-      setOpen(() => false);
-    }, []);
-    const handleCreateIntent = q2(() => {
-      setId(() => "");
-      setOpen(() => true);
-    }, []);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })), rules.length === 0 && /* @__PURE__ */ _(NoRules, null), /* @__PURE__ */ _(AddRule, { onClick: handleCreateIntent }), rules.map((r3) => {
-      return /* @__PURE__ */ _(RuleRecord, { rule: r3, key: r3.id });
-    }), /* @__PURE__ */ _(
-      RuleDialog,
-      {
-        open,
-        onConfirm: handleConfirm,
-        onCancel: () => setOpen(false)
-      }
-    ));
-  };
-
   // src/pages/components/shared/reset-stat.component.tsx
   var ResetStat = () => {
     const resetStat = q2(async () => {
@@ -1122,13 +1084,162 @@
     return /* @__PURE__ */ _("span", { className: "tag" }, modeName);
   };
 
-  // src/pages/components/shared/on-off.component.tsx
-  var OnOff = () => {
-    const { on, toggleOnOffState } = useOnOff();
+  // src/pages/components/shared/switch.component.tsx
+  var Switch = ({ on, onChange, title, titleKey, children }) => {
     if (typeof on !== "boolean") {
       return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("span", { className: "slider round" })), "...");
     }
-    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on === true, onChange: toggleOnOffState }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _(I18n, { code: "enable_processing" }), /* @__PURE__ */ _(CurrentHideMode, null));
+    const handleChange = q2((e3) => {
+      e3.preventDefault();
+      onChange(e3.target?.checked);
+      return false;
+    }, [onChange]);
+    const handleToggle = q2(() => {
+      onChange(!on);
+    }, [onChange, on]);
+    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on, onChange: handleChange }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _("div", { onClick: handleToggle }, titleKey && /* @__PURE__ */ _(I18n, { code: titleKey }), title, children));
+  };
+
+  // src/pages/components/shared/on-off.component.tsx
+  var OnOff = () => {
+    const { on, toggleOnOffState } = useOnOff();
+    return /* @__PURE__ */ _(
+      Switch,
+      {
+        on,
+        onChange: toggleOnOffState,
+        titleKey: "enable_processing"
+      },
+      /* @__PURE__ */ _(CurrentHideMode, null)
+    );
+  };
+
+  // src/pages/components/settings/rules/rule-dialog.component.tsx
+  var RuleDialog = ({ id, open, onConfirm, onCancel }) => {
+    const { rules } = useRules();
+    const [rule, setRule] = h2(null);
+    const isNew = !id;
+    y2(() => {
+      const dialog = document.querySelector("dialog");
+      if (open) {
+        const knownRule = rules.find((r3) => r3.id === id);
+        if (!knownRule) {
+          setRule(() => ({
+            id: "",
+            user: "",
+            hideFrom: true,
+            hideTo: false,
+            onlyNegativeBalance: true
+          }));
+        } else {
+          setRule(() => ({ ...knownRule }));
+        }
+        dialog?.showModal();
+      } else {
+        dialog?.close();
+      }
+    }, [open]);
+    const handleNameChange = q2((e3) => {
+      setRule((v3) => {
+        if (!v3) {
+          return null;
+        }
+        return { ...v3, user: e3.target?.value || "" };
+      });
+    }, []);
+    const handleFromChange = q2((checked) => {
+      setRule((v3) => {
+        if (!v3) {
+          return null;
+        }
+        return { ...v3, hideFrom: checked || false };
+      });
+    }, []);
+    const handleToChange = q2((checked) => {
+      setRule((v3) => {
+        if (!v3) {
+          return null;
+        }
+        return { ...v3, hideTo: checked || false };
+      });
+    }, []);
+    const handleNegativeChange = q2((checked) => {
+      setRule((v3) => {
+        if (!v3) {
+          return null;
+        }
+        return { ...v3, onlyNegativeBalance: checked || false };
+      });
+    }, []);
+    const userExists = isNew ? rules.findIndex((r3) => r3.user === (rule?.user || "").trim()) !== -1 : false;
+    const isNameValid = userExists ? false : (rule?.user || "").trim() !== "";
+    const isCheckboxesValid = rule?.hideTo || rule?.hideFrom;
+    const hasUser = !!(rule?.user || "").trim();
+    const userClassName = isNameValid ? "valid" : "invalid";
+    return /* @__PURE__ */ _("dialog", { onCancel }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "dialog-cancel" }, "\xD7"), isNew && /* @__PURE__ */ _("h2", null, "Create record"), !isNew && /* @__PURE__ */ _("h2", null, "Update record"), /* @__PURE__ */ _("form", { method: "dialog" }, /* @__PURE__ */ _("fieldset", { className: userClassName }, /* @__PURE__ */ _("label", null, "* User name (nickname)"), /* @__PURE__ */ _(
+      "input",
+      {
+        type: "text",
+        value: rule?.user,
+        onChange: handleNameChange,
+        autofocus: true
+      }
+    )), /* @__PURE__ */ _("div", { className: "switches" }, /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _(
+      Switch,
+      {
+        on: rule?.hideFrom,
+        onChange: handleFromChange,
+        title: /* @__PURE__ */ _("span", null, "Hide From")
+      },
+      hasUser && /* @__PURE__ */ _("span", { className: "tag" }, rule?.user)
+    )), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _(
+      Switch,
+      {
+        on: rule?.hideTo,
+        onChange: handleToChange,
+        title: /* @__PURE__ */ _("span", null, "Hide To")
+      },
+      hasUser && /* @__PURE__ */ _("span", { className: "tag" }, rule?.user)
+    )), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _(
+      Switch,
+      {
+        on: rule?.onlyNegativeBalance,
+        onChange: handleNegativeChange,
+        title: /* @__PURE__ */ _("span", null, "Only if negative +/- balance")
+      }
+    ))), !isCheckboxesValid && /* @__PURE__ */ _("div", { className: "alert-warning" }, "Please select rule when hide"), userExists && /* @__PURE__ */ _("div", { className: "alert-warning" }, "This user name already exists in rules"), /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "ghost" }, /* @__PURE__ */ _(I18n, { code: "cancel" })), /* @__PURE__ */ _(
+      "button",
+      {
+        onClick: onConfirm,
+        className: "primary",
+        disabled: !isNameValid || !isCheckboxesValid
+      },
+      /* @__PURE__ */ _(I18n, { code: isNew ? "create" : "save" })
+    ))));
+  };
+
+  // src/pages/components/settings/rules/rules.component.tsx
+  var Rules = () => {
+    const { rules } = useRules();
+    const [open, setOpen] = h2(false);
+    const [, setId] = h2("");
+    const handleConfirm = q2(() => {
+      setOpen(() => false);
+    }, []);
+    const handleCreateIntent = q2(() => {
+      setId(() => "");
+      setOpen(() => true);
+    }, []);
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })), rules.length === 0 && /* @__PURE__ */ _(NoRules, null), /* @__PURE__ */ _(AddRule, { onClick: handleCreateIntent }), rules.map((r3) => {
+      return /* @__PURE__ */ _(RuleRecord, { rule: r3, key: r3.id });
+    }), /* @__PURE__ */ _(
+      RuleDialog,
+      {
+        open,
+        onConfirm: handleConfirm,
+        onCancel: () => setOpen(false)
+      }
+    ));
   };
 
   // src/pages/settings.page.tsx

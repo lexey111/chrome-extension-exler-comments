@@ -1,4 +1,4 @@
-fieldset {
+fieldset.radio {
     display: flex;
     flex-flow: row nowrap;
     margin: 1rem 0;
