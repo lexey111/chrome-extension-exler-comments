@@ -281,9 +281,9 @@
   var i2;
   null != (i2 = "undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : void 0) && i2.__PREACT_DEVTOOLS__ && i2.__PREACT_DEVTOOLS__.attachPreact("10.22.1", l, { Fragment: k, Component: b });
 
-  // src/pages/components/settings/disclaimer.component.tsx
-  var Disclaimer = () => {
-    return /* @__PURE__ */ _("div", null, "All rights reserved. \xA9 2024, lexey111");
+  // src/pages/components/settings/footer.component.tsx
+  var Footer = () => {
+    return /* @__PURE__ */ _("div", { className: "footer" }, "All rights reserved. \xA9 2024, lexey111");
   };
 
   // src/i18n/ua.ts
@@ -957,7 +957,7 @@
         details?.classList.add("closing");
       }
     };
-    return /* @__PURE__ */ _("details", { className: "hide-mode-settings", open: true }, /* @__PURE__ */ _("summary", { className: "hide-mode-selector", onClick: handleOpen }, /* @__PURE__ */ _(I18n, { code: "preview" })), /* @__PURE__ */ _("div", { className: "hide-mode-example" }, /* @__PURE__ */ _("div", { className: "hide-mode-items" }, /* @__PURE__ */ _(HideModeItem, { index: 1 }), /* @__PURE__ */ _(HideModeItem, { index: 2, hideMode: hideMode || "default" }), /* @__PURE__ */ _(HideModeItem, { index: 3 }))));
+    return /* @__PURE__ */ _("details", { className: "hide-mode-settings" }, /* @__PURE__ */ _("summary", { className: "hide-mode-selector", onClick: handleOpen }, /* @__PURE__ */ _(I18n, { code: "preview" })), /* @__PURE__ */ _("div", { className: "hide-mode-example" }, /* @__PURE__ */ _("div", { className: "hide-mode-items" }, /* @__PURE__ */ _(HideModeItem, { index: 1 }), /* @__PURE__ */ _(HideModeItem, { index: 2, hideMode: hideMode || "default" }), /* @__PURE__ */ _(HideModeItem, { index: 3 }))));
   };
 
   // src/pages/components/settings/hide-mode/hide-mode.component.tsx
@@ -1039,7 +1039,7 @@
         document.body.classList.remove("disabled");
       }
     }, [on]);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _(Header, null), /* @__PURE__ */ _(OnOff, null), /* @__PURE__ */ _(StatTable, null), /* @__PURE__ */ _(HideMode, null), /* @__PURE__ */ _(Disclaimer, null)));
+    return /* @__PURE__ */ _(LanguageAwareWrapper, null, /* @__PURE__ */ _(Header, null), /* @__PURE__ */ _(OnOff, null), /* @__PURE__ */ _(StatTable, null), /* @__PURE__ */ _(HideMode, null), /* @__PURE__ */ _(Footer, null));
   };
 
   // src/settings.tsx

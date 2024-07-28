@@ -6,19 +6,18 @@
 @import "stat.css";
 @import "radio.css";
 @import "content.css";
+@import "details.css";
 
 body {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
 }
 
 #root {
     max-width: 960px;
-    margin: 2rem auto;
-    padding: 0 32px;
+    margin: 0 auto;
     width: clamp(300px, 90vw, 960px);
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
 }
 
 h1 {
@@ -31,7 +30,7 @@ h1 {
 }
 
 .extension-stat {
-    max-width: 600px;
+    min-width: 100%;
     margin: 2rem auto;
 }
 
@@ -48,103 +47,13 @@ h2 {
     }
 }
 
-summary {
-    background-color: var(--input-color);
-    font-weight: 500;
-    font-size: .7rem;
-    text-transform: uppercase;
-    margin: 0;
-    height: 2rem;
+.footer {
+    margin-top: auto;
+    height: 64px;
     display: flex;
-    flex-flow: row nowrap;
-    padding-left: 1.8rem;
+    flex-flow: row wrap;
     align-items: center;
-    position: relative;
-    user-select: none;
-    cursor: pointer;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-}
-
-summary:hover {
-    background-color: var(--input-hover-color);
-}
-
-details summary::-webkit-details-marker {
-    display: none;
-}
-
-summary:before {
-    content: '';
-    border-width: .3rem;
-    border-style: solid;
-    border-color: transparent transparent transparent var(--accent-color);
-    position: absolute;
-    top: 0.72rem;
-    left: 1rem;
-    transform: rotate(0);
-    transform-origin: .15rem center;
-    transition: all .2s ease;
-}
-
-details {
-    background-color: var(--target-bg-color);
-    margin: 1rem 0;
-    border-radius: 4px;
-    display: flex;
-    flex-flow: column wrap;
-}
-
-@keyframes open {
-    0% {
-        opacity: 0;
-        transform: translateY(-2rem);
-        max-height: 0;
-    }
-    100% {
-        opacity: 1;
-        max-height: 20000px;
-        transform: translateY(0);
-    }
-}
-
-@keyframes close {
-    0% {
-        opacity: 1;
-        max-height: 20000px;
-        transform: translateY(0);
-    }
-    100% {
-        max-height: 0;
-        opacity: 0;
-        transform: translateY(-2rem);
-    }
-}
-
-details[open] summary ~ * {
-    transform-origin: top center;
-    max-height: 2000px;
-    animation: open 0.2s;
-}
-
-details.closing summary ~ * {
-    animation: close 0.2s;
-}
-
-details[open] > summary:before {
-    transform: rotate(90deg);
-}
-
-details[open] {
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-}
-
-details[open] summary {
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    justify-content: center;
 }
 
 .hide-mode-example {

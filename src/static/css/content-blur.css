@@ -23,24 +23,25 @@ body {
                 border: 2px solid #3E291D20;
                 top: 50%;
                 left: -32px;
-                transform: translateY(-50%) translateX(10px);
+                transform: translateY(-50%) translateX(10px) scale(.5);
                 opacity: 0;
             }
         }
-    }
 
-    .hide-comment-blur:hover {
-        color: unset;
 
-        .hide-comment-content-handler {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
-        }
+        &:hover {
+            color: unset;
 
-        .hide-comment-content-default {
-            backdrop-filter: none;
-            box-shadow: none;
-            mix-blend-mode: unset;
+            .hide-comment-content-handler {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0) scale(1);
+            }
+
+            .hide-comment-content-default {
+                backdrop-filter: none;
+                box-shadow: none;
+                mix-blend-mode: unset;
+            }
         }
     }
 }

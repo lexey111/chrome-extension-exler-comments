@@ -8,7 +8,7 @@ body {
             border: 2px solid #3E291D20;
             top: 50%;
             left: -40px;
-            transform: translateY(-50%) translateX(10px);
+            transform: translateY(-50%) translateX(10px) scale(.5);
             opacity: 0;
         }
 
@@ -38,7 +38,7 @@ body {
         &:hover {
             .hide-comment-content-handler {
                 opacity: 1;
-                transform: translateY(-50%) translateX(0);
+                transform: translateY(-50%) translateX(0) scale(1);
             }
 
             .hide-comment-overlay-content {

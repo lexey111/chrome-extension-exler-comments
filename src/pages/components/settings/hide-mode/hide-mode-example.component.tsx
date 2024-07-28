@@ -36,7 +36,7 @@ export const HideModeExample = () => {
         }
     }
 
-    return <details className={'hide-mode-settings'} open>
+    return <details className={'hide-mode-settings'}>
         <summary className={'hide-mode-selector'} onClick={handleOpen}>
             <I18n code={'preview'}/>
         </summary>
