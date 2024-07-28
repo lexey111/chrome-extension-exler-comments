@@ -5,6 +5,10 @@
     --accent-color: #81492d;
     --accent-text-color: #f8e5db;
 
+    --focus-color: #ffa700;
+    --focus-text-color: #3a2d13;
+    --focus-border-color: #ac7517;
+
     --headers-color: #883912;
     --headers-text-color: #352720;
 
@@ -19,6 +23,7 @@
     --input-hover-color: #ffffff;
 
     --border-color: #93654f;
+    --invalid-border-color: #d50808;
 
     --tag-color: #e3cabc;
     --tag-text-color: #3a3736;
@@ -35,6 +40,8 @@
 
     --karma-minus: #d5082f;
     --karma-plus: #549f04;
+
+    --on-bg: #84bc55;
 }
 
 

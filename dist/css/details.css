@@ -1,6 +1,6 @@
 summary {
-    background-color: var(--input-highlight-color);
-    transition: background-color .2s ease-in-out;
+    background-color: var(--page-color);
+    transition: all .4s ease-in-out;
     font-weight: 500;
     font-size: .7rem;
     text-transform: uppercase;
@@ -13,8 +13,8 @@ summary {
     position: relative;
     user-select: none;
     cursor: pointer;
-    border: 2px solid var(--border-color);
     border-radius: 6px;
+    box-shadow: 0 0 0 2px var(--accent-color);
 }
 
 summary:hover {
@@ -35,15 +35,23 @@ summary:before {
     left: 1rem;
     transform: rotate(0);
     transform-origin: .15rem center;
-    transition: all .2s ease;
+    transition: all .4s ease;
 }
 
 details {
+    transition: all .4s ease;
     background-color: var(--target-bg-color);
     margin: 2rem 0;
     border-radius: 6px;
     display: flex;
     flex-flow: column wrap;
+}
+
+summary:focus, summary:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-border-color);
+    background-color: var(--page-color);
+    color: var(--focus-text-color);
 }
 
 @keyframes open {
@@ -75,11 +83,11 @@ details {
 details[open] summary ~ * {
     transform-origin: top center;
     max-height: 2000px;
-    animation: open 0.2s;
+    animation: open 0.4s;
 }
 
 details.closing summary ~ * {
-    animation: close 0.2s;
+    animation: close 0.4s;
 }
 
 details[open] > summary:before {
@@ -87,13 +95,12 @@ details[open] > summary:before {
 }
 
 details[open] {
-    border: 2px solid var(--border-color);
     overflow: hidden;
+    box-shadow: inset 0 0 0 2px var(--focus-border-color);
 }
 
 details[open] summary {
-    border: none;
-    border-bottom: 1px solid var(--border-color);
+    box-shadow: inset 0 0 0 2px var(--focus-border-color);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }

@@ -42,11 +42,8 @@ fieldset.radio {
 
         &:hover, &:focus {
             text-decoration: underline;
+            outline: none;
         }
-    }
-
-    .custom-radio:focus-visible {
-        outline-offset: 0;
     }
 
     .custom-radio {
@@ -59,10 +56,18 @@ fieldset.radio {
     }
 
     .custom-radio:checked {
-        box-shadow: 0 0 0 2px var(--accent-color);
-        background-color: var(--accent-color);
-        border-width: 0.2rem;
+        box-shadow: 0 0 0 2px var(--border-color);
+        background-color: var(--border-color);
+        border-width: 4px;
     }
+
+    .custom-radio:focus-visible, .custom-radio:checked:focus-visible, .custom-radio:focus, .custom-radio:checked:focus {
+        outline-offset: 2px;
+        outline: none;
+        border-color: var(--focus-color);
+        box-shadow: 0 0 0 2px var(--focus-border-color);
+    }
+
 }
 
 @keyframes outline-checked {

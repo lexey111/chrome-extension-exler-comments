@@ -3,6 +3,10 @@
     backdrop-filter: blur(2px);
 }
 
+::placeholder {
+    color: #bfb1a5;
+}
+
 dialog {
     border: none !important;
     color: var(--text-color);
@@ -92,10 +96,10 @@ dialog {
         }
 
         &.invalid {
-            color: var(--karma-minus);
+            color: var(--invalid-border-color);
 
             input[type=text] {
-                border-color: var(--karma-minus);
+                border-color: var(--invalid-border-color);
             }
         }
     }

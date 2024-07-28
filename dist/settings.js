@@ -1180,6 +1180,8 @@
       "input",
       {
         type: "text",
+        maxLength: 64,
+        placeholder: "User name",
         value: rule?.user,
         onChange: handleNameChange,
         autofocus: true
@@ -1207,7 +1209,7 @@
         onChange: handleNegativeChange,
         title: /* @__PURE__ */ _("span", null, "Only if negative +/- balance")
       }
-    ))), !isCheckboxesValid && /* @__PURE__ */ _("div", { className: "alert-warning" }, "Please select rule when hide"), userExists && /* @__PURE__ */ _("div", { className: "alert-warning" }, "This user name already exists in rules"), /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "ghost" }, /* @__PURE__ */ _(I18n, { code: "cancel" })), /* @__PURE__ */ _(
+    ))), !isCheckboxesValid && /* @__PURE__ */ _("div", { className: "alert-warning" }, "Please select From, To, or both"), userExists && /* @__PURE__ */ _("div", { className: "alert-warning" }, "This user name already exists in rules"), /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "ghost" }, /* @__PURE__ */ _(I18n, { code: "cancel" })), /* @__PURE__ */ _(
       "button",
       {
         onClick: onConfirm,

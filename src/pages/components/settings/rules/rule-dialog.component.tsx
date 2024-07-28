@@ -94,6 +94,8 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                 <label>* User name (nickname)</label>
                 <input
                     type="text"
+                    maxLength={64}
+                    placeholder={'User name'}
                     value={rule?.user}
                     onChange={handleNameChange} autofocus={true}/>
             </fieldset>
@@ -125,7 +127,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                 </fieldset>
             </div>
 
-            {!isCheckboxesValid && <div className={'alert-warning'}>Please select rule when hide</div>}
+            {!isCheckboxesValid && <div className={'alert-warning'}>Please select From, To, or both</div>}
             {userExists && <div className={'alert-warning'}>This user name already exists in rules</div>}
 
             <div className={'actions'}>
