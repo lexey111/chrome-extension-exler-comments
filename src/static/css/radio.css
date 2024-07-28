@@ -55,6 +55,7 @@ fieldset {
 
     .custom-radio:hover {
         border-width: 0;
+        background-color: var(--input-highlight-color);
     }
 
     .custom-radio:checked {

@@ -14,5 +14,10 @@ export const EN = {
     select_mode_overlay: 'Overlay',
     preview: 'Preview',
     open_settings_page: 'Open settings page...',
-    rules: 'Rules'
+    rules: 'Rules',
+    no_rules: 'Nothing has been created yet. Please click the "Add" button below to create your first one.',
+    add_rule: 'Add rule',
+    cancel: 'Cancel',
+    save: 'Save',
+    create: 'Create',
 } as const

@@ -9,3 +9,5 @@ export const settingsPageStorageKey = 'settings_page'
 
 export const hideModeStorageKey = 'hide_mode'
 
+export const rulesStorageKey = 'rules'
+

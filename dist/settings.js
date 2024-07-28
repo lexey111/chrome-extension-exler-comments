@@ -303,7 +303,12 @@
     select_mode_overlay: "\u041F\u0435\u0440\u0435\u043A\u0440\u0438\u0442\u0442\u044F",
     preview: "\u041F\u043E\u043F\u0435\u0440\u0435\u0434\u043D\u0456\u0439 \u043F\u0435\u0440\u0435\u0433\u043B\u044F\u0434",
     open_settings_page: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u0430\u043B\u0430\u0433\u043E\u0434\u0436\u0435\u043D\u043D\u044F...",
-    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
+    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430",
+    no_rules: '\u041F\u043E\u043A\u0438 \u0449\u043E \u043D\u0435\u043C\u0430\u0454 \u0436\u043E\u0434\u043D\u043E\u0433\u043E \u043F\u0440\u0430\u0432\u0438\u043B\u0430. \u0411\u0443\u0434\u044C \u043B\u0430\u0441\u043A\u0430, \u043D\u0430\u0442\u0438\u0441\u043D\u0456\u0442\u044C \u043A\u043D\u043E\u043F\u043A\u0443 "\u0414\u043E\u0434\u0430\u0442\u0438" \u043D\u0438\u0436\u0447\u0435, \u0449\u043E\u0431 \u0441\u0442\u0432\u043E\u0440\u0438\u0442\u0438 \u043F\u0435\u0440\u0448\u0435.',
+    add_rule: "\u0414\u043E\u0434\u0430\u0442\u0438 \u043F\u0440\u0430\u0432\u0438\u043B\u043E",
+    cancel: "\u0412\u0456\u0434\u043C\u0456\u043D\u0430",
+    save: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438",
+    create: "\u0421\u0442\u0432\u043E\u0440\u0438\u0442\u0438"
   };
 
   // src/i18n/en.ts
@@ -323,7 +328,12 @@
     select_mode_overlay: "Overlay",
     preview: "Preview",
     open_settings_page: "Open settings page...",
-    rules: "Rules"
+    rules: "Rules",
+    no_rules: 'Nothing has been created yet. Please click the "Add" button below to create your first one.',
+    add_rule: "Add rule",
+    cancel: "Cancel",
+    save: "Save",
+    create: "Create"
   };
 
   // src/i18n/ru.ts
@@ -343,7 +353,12 @@
     select_mode_overlay: "\u041D\u0430\u043B\u043E\u0436\u0435\u043D\u0438\u0435",
     preview: "\u041F\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440",
     open_settings_page: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438...",
-    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
+    rules: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430",
+    no_rules: '\u041F\u043E\u043A\u0430 \u043D\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u0433\u043E \u043F\u0440\u0430\u0432\u0438\u043B\u0430. \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043A\u043D\u043E\u043F\u043A\u0443 "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C" \u043D\u0438\u0436\u0435, \u0447\u0442\u043E\u0431\u044B \u0441\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0435\u0440\u0432\u043E\u0435.',
+    add_rule: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043F\u0440\u0430\u0432\u0438\u043B\u043E",
+    cancel: "\u041E\u0442\u043C\u0435\u043D\u0430",
+    save: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
+    create: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C"
   };
 
   // node_modules/preact/hooks/dist/hooks.module.js
@@ -671,6 +686,7 @@
   var allTimeStatStorageKey = "all_stat";
   var settingsPageStorageKey = "settings_page";
   var hideModeStorageKey = "hide_mode";
+  var rulesStorageKey = "rules";
 
   // src/i18n/hooks/useLanguage.tsx
   var getLanguageState = async () => {
@@ -968,9 +984,95 @@
     return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _(HideModeSelector, null), /* @__PURE__ */ _(HideModeExample, null));
   };
 
+  // src/pages/hooks/useRules.tsx
+  var getRuleState = async () => {
+    const storedState = await chrome.storage.sync.get([rulesStorageKey]);
+    let actual = [];
+    try {
+      actual = JSON.parse(storedState[rulesStorageKey]);
+    } catch (e3) {
+    }
+    return actual;
+  };
+  var useRules = () => {
+    const [_rules, set_rules] = h2([]);
+    y2(() => {
+      const processCurrentState = async () => {
+        const actual = await getRuleState();
+        set_rules(actual);
+      };
+      const handleStateChanges = (changes, areaName) => {
+        if (areaName === "sync" && changes?.[rulesStorageKey]?.newValue) {
+          void processCurrentState();
+        }
+      };
+      chrome.storage.onChanged.addListener(handleStateChanges);
+      void processCurrentState();
+      return () => {
+        chrome.storage.onChanged.removeListener(handleStateChanges);
+      };
+    }, [set_rules]);
+    const setRules = q2(async (rules) => {
+      void chrome.storage.sync.set({ [rulesStorageKey]: rules });
+      set_rules(rules);
+    }, [set_rules]);
+    return {
+      rules: _rules,
+      setRules
+    };
+  };
+
+  // src/pages/components/settings/rules/rule-record.component.tsx
+  var RuleRecord = ({ rule }) => {
+    return /* @__PURE__ */ _("div", { className: "rule-record" }, JSON.stringify(rule, null, 2));
+  };
+
+  // src/pages/components/settings/rules/no-rules.component.tsx
+  var NoRules = () => {
+    return /* @__PURE__ */ _("div", { className: "alert-info" }, /* @__PURE__ */ _(I18n, { code: "no_rules" }));
+  };
+
+  // src/pages/components/settings/rules/add-rule.component.tsx
+  var AddRule = ({ onClick }) => {
+    return /* @__PURE__ */ _("div", { className: "add-rules" }, /* @__PURE__ */ _("button", { className: "primary", onClick }, /* @__PURE__ */ _(I18n, { code: "add_rule" })));
+  };
+
+  // src/pages/components/settings/rules/rule-dialog.component.tsx
+  var RuleDialog = ({ id, open, onConfirm, onCancel }) => {
+    const isNew = !id;
+    y2(() => {
+      const dialog = document.querySelector("dialog");
+      if (open) {
+        dialog?.showModal();
+      } else {
+        dialog?.close();
+      }
+    }, [open]);
+    return /* @__PURE__ */ _("dialog", { onCancel }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "dialog-cancel" }, "\xD7"), /* @__PURE__ */ _("p", null, "Greetings, one and all!"), /* @__PURE__ */ _("form", { method: "dialog" }, /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "ghost" }, /* @__PURE__ */ _(I18n, { code: "cancel" })), /* @__PURE__ */ _("button", { onClick: onConfirm, className: "primary" }, /* @__PURE__ */ _(I18n, { code: isNew ? "create" : "save" })))));
+  };
+
   // src/pages/components/settings/rules/rules.component.tsx
   var Rules = () => {
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })));
+    const { rules } = useRules();
+    const [open, setOpen] = h2(false);
+    const [, setId] = h2("");
+    const handleConfirm = q2(() => {
+      setOpen(() => false);
+    }, []);
+    const handleCreateIntent = q2(() => {
+      setId(() => "");
+      setOpen(() => true);
+    }, []);
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })), rules.length === 0 && /* @__PURE__ */ _(NoRules, null), /* @__PURE__ */ _(AddRule, { onClick: handleCreateIntent }), rules.map((r3) => {
+      return /* @__PURE__ */ _(RuleRecord, { rule: r3, key: r3.id });
+    }), /* @__PURE__ */ _(
+      RuleDialog,
+      {
+        open,
+        onConfirm: handleConfirm,
+        onCancel: () => setOpen(false)
+      }
+    ));
   };
 
   // src/pages/components/shared/reset-stat.component.tsx

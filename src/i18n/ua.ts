@@ -16,5 +16,10 @@ export const UA:Record<i18nKey, string> = {
     select_mode_overlay: 'Перекриття',
     preview: 'Попередній перегляд',
     open_settings_page: 'Відкрити налагодження...',
-    rules: 'Правила'
+    rules: 'Правила',
+    no_rules: 'Поки що немає жодного правила. Будь ласка, натисніть кнопку "Додати" нижче, щоб створити перше.',
+    add_rule: 'Додати правило',
+    cancel: 'Відміна',
+    save: 'Зберегти',
+    create: 'Створити',
 } as const

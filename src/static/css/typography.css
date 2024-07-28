@@ -1,18 +1,31 @@
 :root {
     --page-color: #f4ede8;
+    --text-color: #673821;
+
     --accent-color: #81492d;
     --accent-text-color: #f8e5db;
-    --text-color: #673821;
+
     --headers-color: #883912;
     --headers-text-color: #352720;
+
     --cell-color: #fdf3ee;
+    --cell-text-color: #883912;
+
     --disabled-color: #ccc5c2;
-    --input-color: #f4eae6;
-    --input-hover-color: #f3ecec;
+
+    --input-color: #ffffff;
+    --input-highlight-color: #f3ecec;
+    --input-hover-color: #ffffff;
+
     --border-color: #93654f;
+
     --tag-color: #e3cabc;
     --tag-text-color: #3a3736;
-    --cell-text-color: #883912;
+
+    --info-color: #b9e3fd;
+    --info-accent-color: #198ad1;
+    --info-text-color: #425875;
+
     --target-bg-color: #edece0;
 
     --karma-minus: #d5082f;

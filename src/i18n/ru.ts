@@ -16,5 +16,10 @@ export const RU: Record<i18nKey, string> = {
     select_mode_overlay: 'Наложение',
     preview: 'Предварительный просмотр',
     open_settings_page: 'Открыть настройки...',
-    rules: 'Правила'
+    rules: 'Правила',
+    no_rules: 'Пока нет ни одного правила. Пожалуйста, нажмите кнопку "Добавить" ниже, чтобы создать первое.',
+    add_rule: 'Добавить правило',
+    cancel: 'Отмена',
+    save: 'Сохранить',
+    create: 'Создать',
 } as const
