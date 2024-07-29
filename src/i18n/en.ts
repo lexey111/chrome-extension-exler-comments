@@ -20,4 +20,13 @@ export const EN = {
     cancel: 'Cancel',
     save: 'Save',
     create: 'Create',
+    user_placeholder: 'John Doe',
+    user_name_nick: 'User name (nickname)',
+    create_record: 'Create record',
+    save_record: 'Save record',
+    hide_from: 'Hide if "from"',
+    hide_to: 'Hide if "to"',
+    only_negative: 'Only if negative +/- balance',
+    please_select_from_to: 'Please select From, To, or both',
+    user_already_exists: 'This user name already exists in rules'
 } as const

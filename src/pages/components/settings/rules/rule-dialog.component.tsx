@@ -1,6 +1,6 @@
 import {h} from 'preact'
-import {FC, useCallback, useEffect, useState} from 'preact/compat'
-import {I18n} from '../../../../i18n'
+import {FC, useCallback, useContext, useEffect, useState} from 'preact/compat'
+import {I18n, LanguageContext} from '../../../../i18n'
 import {useRules} from '../../../hooks/useRules'
 import {Rule} from '../../../types'
 import {Switch} from '../../shared'
@@ -13,6 +13,9 @@ export type RuleDialogProps = {
 }
 
 export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel}) => {
+    const { translate} = useContext(LanguageContext)
+    const placeholder = translate('user_placeholder')
+
     const {rules} = useRules()
 
     const [rule, setRule] = useState<Rule | null>(null)
@@ -86,16 +89,16 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
 
     return <dialog onCancel={onCancel}>
         <button onClick={onCancel} className={'dialog-cancel'}>&times;</button>
-        {isNew && <h2>Create record</h2>}
-        {!isNew && <h2>Update record</h2>}
+        {isNew && <h2><I18n code={'create_record'}/></h2>}
+        {!isNew && <h2><I18n code={'save_record'}/></h2>}
 
         <form method="dialog">
             <fieldset className={userClassName}>
-                <label>* User name (nickname)</label>
+                <label>* <I18n code={'user_name_nick'}/></label>
                 <input
                     type="text"
                     maxLength={64}
-                    placeholder={'User name'}
+                    placeholder={placeholder}
                     value={rule?.user}
                     onChange={handleNameChange} autofocus={true}/>
             </fieldset>
@@ -105,7 +108,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                     <Switch
                         on={rule?.hideFrom}
                         onChange={handleFromChange}
-                        title={<span>Hide From</span>}>
+                        title={<I18n code={'hide_from'}/>}>
                         {hasUser && <span className={'tag'}>{rule?.user}</span>}
                     </Switch>
                 </fieldset>
@@ -114,7 +117,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                     <Switch
                         on={rule?.hideTo}
                         onChange={handleToChange}
-                        title={<span>Hide To</span>}>
+                        title={<I18n code={'hide_to'}/>}>
                         {hasUser && <span className={'tag'}>{rule?.user}</span>}
                     </Switch>
                 </fieldset>
@@ -123,12 +126,12 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                     <Switch
                         on={rule?.onlyNegativeBalance}
                         onChange={handleNegativeChange}
-                        title={<span>Only if negative +/- balance</span>}/>
+                        title={<I18n code={'only_negative'}/>}/>
                 </fieldset>
             </div>
 
-            {!isCheckboxesValid && <div className={'alert-warning'}>Please select From, To, or both</div>}
-            {userExists && <div className={'alert-warning'}>This user name already exists in rules</div>}
+            {!isCheckboxesValid && <div className={'alert-warning'}><I18n code={'please_select_from_to'}/></div>}
+            {userExists && <div className={'alert-warning'}><I18n code={'user_already_exists'}/></div>}
 
             <div className={'actions'}>
                 <button onClick={onCancel} className={'ghost'}><I18n code={'cancel'}/></button>

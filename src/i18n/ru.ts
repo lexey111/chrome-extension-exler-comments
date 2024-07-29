@@ -22,4 +22,13 @@ export const RU: Record<i18nKey, string> = {
     cancel: 'Отмена',
     save: 'Сохранить',
     create: 'Создать',
+    user_placeholder: 'Иван Иванов',
+    user_name_nick: 'Имя пользователя (ник)',
+    create_record: 'Создать запись',
+    save_record: 'Сохранить запись',
+    hide_from: 'Скрыть если "от кого"',
+    hide_to: 'Скрыть если "кому"',
+    only_negative: 'Только если отрицательный +/- баланс',
+    please_select_from_to: 'Пожалуйста, выберите "От кого", "Кому" или оба варианта',
+    user_already_exists: 'Это имя пользователя уже существует в правилах'
 } as const

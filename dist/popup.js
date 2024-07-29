@@ -303,7 +303,16 @@
     add_rule: "\u0414\u043E\u0434\u0430\u0442\u0438 \u043F\u0440\u0430\u0432\u0438\u043B\u043E",
     cancel: "\u0412\u0456\u0434\u043C\u0456\u043D\u0430",
     save: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438",
-    create: "\u0421\u0442\u0432\u043E\u0440\u0438\u0442\u0438"
+    create: "\u0421\u0442\u0432\u043E\u0440\u0438\u0442\u0438",
+    user_placeholder: "\u0413\u0440\u0438\u0446\u044C \u042F\u043A\u043E\u0432\u0438\u0447 \u0412\u0430\u0440\u0435\u043D\u0438\u043A",
+    user_name_nick: "\u0406\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 (\u043D\u0456\u043A)",
+    create_record: "\u0421\u0442\u0432\u043E\u0440\u0438\u0442\u0438 \u0437\u0430\u043F\u0438\u0441",
+    save_record: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0437\u0430\u043F\u0438\u0441",
+    hide_from: '\u041F\u0440\u0438\u0445\u043E\u0432\u0430\u0442\u0438 "\u0432\u0456\u0434 \u043A\u043E\u0433\u043E"',
+    hide_to: '\u041F\u0440\u0438\u0445\u043E\u0432\u0430\u0442\u0438 "\u043A\u043E\u043C\u0443"',
+    only_negative: "\u0422\u0456\u043B\u044C\u043A\u0438 \u044F\u043A\u0449\u043E \u0431\u0430\u043B\u0430\u043D\u0441 +/- \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u0439",
+    please_select_from_to: '\u0411\u0443\u0434\u044C \u043B\u0430\u0441\u043A\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044C "\u0432\u0456\u0434 \u043A\u043E\u0433\u043E", "\u043A\u043E\u043C\u0443" \u0430\u0431\u043E \u043E\u0431\u0438\u0434\u0432\u0430 \u0432\u0430\u0440\u0456\u0430\u043D\u0442\u0438',
+    user_already_exists: "\u0426\u0435 \u0456\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0432\u0436\u0435 \u0456\u0441\u043D\u0443\u0454 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445"
   };
 
   // src/i18n/en.ts
@@ -328,7 +337,16 @@
     add_rule: "Add rule",
     cancel: "Cancel",
     save: "Save",
-    create: "Create"
+    create: "Create",
+    user_placeholder: "John Doe",
+    user_name_nick: "User name (nickname)",
+    create_record: "Create record",
+    save_record: "Save record",
+    hide_from: 'Hide if "from"',
+    hide_to: 'Hide if "to"',
+    only_negative: "Only if negative +/- balance",
+    please_select_from_to: "Please select From, To, or both",
+    user_already_exists: "This user name already exists in rules"
   };
 
   // src/i18n/ru.ts
@@ -353,7 +371,16 @@
     add_rule: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043F\u0440\u0430\u0432\u0438\u043B\u043E",
     cancel: "\u041E\u0442\u043C\u0435\u043D\u0430",
     save: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
-    create: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C"
+    create: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+    user_placeholder: "\u0418\u0432\u0430\u043D \u0418\u0432\u0430\u043D\u043E\u0432",
+    user_name_nick: "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F (\u043D\u0438\u043A)",
+    create_record: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C",
+    save_record: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C",
+    hide_from: '\u0421\u043A\u0440\u044B\u0442\u044C \u0435\u0441\u043B\u0438 "\u043E\u0442 \u043A\u043E\u0433\u043E"',
+    hide_to: '\u0421\u043A\u0440\u044B\u0442\u044C \u0435\u0441\u043B\u0438 "\u043A\u043E\u043C\u0443"',
+    only_negative: "\u0422\u043E\u043B\u044C\u043A\u043E \u0435\u0441\u043B\u0438 \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439 +/- \u0431\u0430\u043B\u0430\u043D\u0441",
+    please_select_from_to: '\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 "\u041E\u0442 \u043A\u043E\u0433\u043E", "\u041A\u043E\u043C\u0443" \u0438\u043B\u0438 \u043E\u0431\u0430 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
+    user_already_exists: "\u042D\u0442\u043E \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445"
   };
 
   // node_modules/preact/hooks/dist/hooks.module.js
@@ -671,9 +698,6 @@
     null != e3 && "textarea" === n2.type && "value" in t3 && t3.value !== e3.value && (e3.value = null == t3.value ? "" : t3.value), nn = null;
   };
 
-  // src/i18n/components/language.context.tsx
-  var LanguageContext = G("EN");
-
   // src/consts/storage-keys.consts.ts
   var onOffStorageKey = "activeState";
   var languageStorageKey = "activeLanguage";
@@ -721,32 +745,41 @@
 
   // src/i18n/components/language-selector.component.tsx
   var LanguageSelector = () => {
-    const { setLanguage } = useLanguage();
-    const langCode = x2(LanguageContext);
+    const { activeLanguage, setLanguage } = useLanguage();
     return /* @__PURE__ */ _("span", { className: "language-selector" }, /* @__PURE__ */ _("ul", null, LANGUAGE_CODES.map((code) => /* @__PURE__ */ _("li", { key: code }, /* @__PURE__ */ _(
       "a",
       {
         href: "#",
         onClick: () => setLanguage(code),
-        className: code === langCode ? "active" : ""
+        className: code === activeLanguage ? "active" : ""
       },
       code
     )))));
   };
 
+  // src/i18n/components/language.context.tsx
+  var LanguageContext = G({
+    langCode: "EN",
+    translate: (code) => code
+  });
+
   // src/i18n/components/language-aware.wrapper.tsx
   var LanguageAwareWrapper = ({ children }) => {
     const { activeLanguage } = useLanguage();
-    return /* @__PURE__ */ _(LanguageContext.Provider, { value: activeLanguage }, children);
+    const translate = q2((code) => {
+      return LANG_DATA[activeLanguage || "EN"][code] || code;
+    }, [activeLanguage]);
+    return /* @__PURE__ */ _(LanguageContext.Provider, { value: { langCode: activeLanguage || "EN", translate } }, children);
   };
 
   // src/i18n/components/i18n.component.tsx
   var I18n = ({ code }) => {
-    const langCode = x2(LanguageContext);
+    const { langCode, translate } = x2(LanguageContext);
     if (!code || !langCode) {
       return /* @__PURE__ */ _("span", null, "...");
     }
-    return /* @__PURE__ */ _("span", null, LANG_DATA[langCode][code]);
+    const text = T2(() => translate(code), [code, langCode]);
+    return /* @__PURE__ */ _("span", null, text);
   };
 
   // src/i18n/index.ts

@@ -22,4 +22,13 @@ export const UA:Record<i18nKey, string> = {
     cancel: 'Відміна',
     save: 'Зберегти',
     create: 'Створити',
+    user_placeholder: 'Гриць Якович Вареник',
+    user_name_nick: 'Ім\'я користувача (нік)',
+    create_record: 'Створити запис',
+    save_record: 'Зберегти запис',
+    hide_from: 'Приховати "від кого"',
+    hide_to: 'Приховати "кому"',
+    only_negative: 'Тільки якщо баланс +/- від\'ємний',
+    please_select_from_to: 'Будь ласка, виберіть "від кого", "кому" або обидва варіанти',
+    user_already_exists: 'Це ім\'я користувача вже існує в правилах'
 } as const

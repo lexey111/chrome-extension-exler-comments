@@ -1,4 +1,12 @@
 import {createContext} from 'preact'
-import {LanguageCode} from '../index'
+import {i18nKey, LanguageCode} from '../index'
 
-export const LanguageContext = createContext<LanguageCode | null>('EN')
+export type I18nContext = {
+    langCode: LanguageCode,
+    translate: (code: i18nKey) => string
+}
+
+export const LanguageContext = createContext<I18nContext>({
+    langCode: 'EN',
+    translate: (code) => code
+})

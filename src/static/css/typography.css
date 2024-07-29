@@ -1,8 +1,8 @@
 :root {
     --page-color: #f4ede8;
-    --text-color: #673821;
+    --text-color: #493022;
 
-    --accent-color: #81492d;
+    --accent-color: #5e4d45;
     --accent-text-color: #f8e5db;
 
     --focus-color: #ffa700;
@@ -22,7 +22,8 @@
     --input-highlight-color: #d8d2d2;
     --input-hover-color: #ffffff;
 
-    --border-color: #93654f;
+    --border-color: #5e4d45;
+    --active-border-color: #887d7b;
     --invalid-border-color: #d50808;
 
     --tag-color: #e3cabc;

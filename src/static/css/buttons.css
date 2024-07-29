@@ -32,6 +32,7 @@
 .primary:hover, .primary:focus {
     background-color: transparent;
     border-color: var(--focus-border-color);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
     color: var(--focus-text-color);
     outline: none;
 }
@@ -46,5 +47,6 @@
     background-color: transparent;
     border-color: var(--focus-border-color);
     color: var(--focus-text-color);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
     outline: none;
 }
