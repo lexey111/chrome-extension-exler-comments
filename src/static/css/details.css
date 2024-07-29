@@ -1,6 +1,6 @@
 summary {
     background-color: var(--page-color);
-    transition: all .4s ease-in-out;
+    transition: all .2s ease-in-out;
     font-weight: 500;
     font-size: .7rem;
     text-transform: uppercase;
@@ -54,6 +54,10 @@ summary:focus, summary:focus-within {
     color: var(--focus-text-color);
 }
 
+summary:hover {
+    box-shadow: 0 0 0 2px var(--focus-border-color), 0 0 0 6px rgba(0, 0, 0, .1);
+}
+
 @keyframes open {
     0% {
         opacity: 0;
@@ -99,7 +103,7 @@ details[open] {
     box-shadow: inset 0 0 0 2px var(--focus-border-color);
 }
 
-details[open]:focus-within {
+details[open]:hover, details[open]:focus-within{
     box-shadow: inset 0 0 0 2px var(--focus-border-color), 0 0 0 4px rgba(0, 0, 0, .1);
 }
 

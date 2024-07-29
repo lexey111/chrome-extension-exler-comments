@@ -948,7 +948,7 @@
     const handleToggle = q2(() => {
       onChange(!on);
     }, [onChange, on]);
-    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on, onChange: handleChange }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _("div", { onClick: handleToggle }, titleKey && /* @__PURE__ */ _(I18n, { code: titleKey }), title, children));
+    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on, onChange: handleChange }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _("div", { onClick: handleToggle, className: "switch-label" }, titleKey && /* @__PURE__ */ _(I18n, { code: titleKey }), title, children));
   };
 
   // src/pages/components/shared/on-off.component.tsx

@@ -35,7 +35,7 @@ export const Switch: FC<SwitchProps> = ({on, onChange, title, titleKey, children
             <input type="checkbox" checked={on} onChange={handleChange}/>
             <span className="slider round"></span>
         </label>
-        <div onClick={handleToggle}>
+        <div onClick={handleToggle} className={'switch-label'}>
             {titleKey && <I18n code={titleKey}/>}
             {title}
             {children}

@@ -1,4 +1,4 @@
-import {h} from 'preact'
+import {Fragment, h} from 'preact'
 import {FC, useCallback, useContext, useEffect, useState} from 'preact/compat'
 import {I18n, LanguageContext} from '../../../../i18n'
 import {useRules} from '../../../hooks/useRules'
@@ -13,7 +13,7 @@ export type RuleDialogProps = {
 }
 
 export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel}) => {
-    const { translate} = useContext(LanguageContext)
+    const {translate} = useContext(LanguageContext)
     const placeholder = translate('user_placeholder')
 
     const {rules} = useRules()
@@ -109,7 +109,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                         on={rule?.hideFrom}
                         onChange={handleFromChange}
                         title={<I18n code={'hide_from'}/>}>
-                        {hasUser && <span className={'tag'}>{rule?.user}</span>}
+                        {hasUser && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
                     </Switch>
                 </fieldset>
 
@@ -118,7 +118,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                         on={rule?.hideTo}
                         onChange={handleToChange}
                         title={<I18n code={'hide_to'}/>}>
-                        {hasUser && <span className={'tag'}>{rule?.user}</span>}
+                        {hasUser && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
                     </Switch>
                 </fieldset>
 
