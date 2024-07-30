@@ -46,7 +46,7 @@
         border: 2px solid var(--border-color);
         box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
         box-sizing: content-box;
-        transition: color .2s ease-in-out, background-color .2s ease-in-out, transform .2s ease-in-out;
+        transition: all .2s ease-in-out;
     }
 
     input:checked + .slider {
@@ -65,7 +65,7 @@
         &:before {
             border-color: var(--focus-border-color);
             background-color: var(--focus-color) !important;
-            box-shadow: 0 0 0 4px rgba(0, 0, 0, .15);
+            box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(0, 0, 0, .15);
         }
     }
 
@@ -74,7 +74,7 @@
         input:checked + .slider,
         input:focus + .slider {
             &:before {
-                box-shadow: 0 0 0 4px rgba(0, 0, 0, .15);
+                box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(0, 0, 0, .15);
             }
         }
     }

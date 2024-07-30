@@ -47,17 +47,6 @@ details {
     flex-flow: column wrap;
 }
 
-summary:focus, summary:focus-within {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--focus-border-color), 0 0 0 6px rgba(0, 0, 0, .1);
-    background-color: var(--page-color);
-    color: var(--focus-text-color);
-}
-
-summary:hover {
-    box-shadow: 0 0 0 2px var(--focus-border-color), 0 0 0 6px rgba(0, 0, 0, .1);
-}
-
 @keyframes open {
     0% {
         opacity: 0;
@@ -98,13 +87,20 @@ details[open] > summary:before {
     transform: rotate(90deg);
 }
 
+summary:hover {
+    box-shadow: 0 0 0 2px var(--focus-border-color), 0 0 0 6px rgba(0, 0, 0, .1);
+}
+
+summary:focus, summary:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-border-color), 0 0 0 6px rgba(0, 0, 0, .1);
+    background-color: var(--page-color);
+    color: var(--focus-text-color);
+}
+
 details[open] {
     overflow: hidden;
     box-shadow: inset 0 0 0 2px var(--focus-border-color);
-}
-
-details[open]:hover, details[open]:focus-within{
-    box-shadow: inset 0 0 0 2px var(--focus-border-color), 0 0 0 4px rgba(0, 0, 0, .1);
 }
 
 details[open] summary {
@@ -112,3 +108,18 @@ details[open] summary {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+details[open]:hover, details[open]:focus-within {
+    box-shadow: inset 0 0 0 2px var(--focus-color), 0 0 0 4px rgba(0, 0, 0, .1);
+
+    summary {
+        box-shadow: inset 0 0 0 2px var(--focus-color);
+    }
+}
+
+details[open]:focus-within {
+    summary {
+        background-color: #fff;
+    }
+}
+

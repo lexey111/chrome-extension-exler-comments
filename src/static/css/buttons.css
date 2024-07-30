@@ -31,7 +31,7 @@
 
 .primary:hover, .primary:focus {
     background-color: transparent;
-    border-color: var(--focus-border-color);
+    border-color: var(--focus-color);
     box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
     color: var(--focus-text-color);
     outline: none;
@@ -45,7 +45,7 @@
 
 .ghost:hover, .ghost:focus {
     background-color: transparent;
-    border-color: var(--focus-border-color);
+    border-color: var(--focus-color);
     color: var(--focus-text-color);
     box-shadow: 0 0 0 4px rgba(0, 0, 0, .1);
     outline: none;

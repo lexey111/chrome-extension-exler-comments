@@ -13,7 +13,6 @@ fieldset.radio {
 
     span.legend {
         margin-right: .5rem;
-        font-weight: 500;
     }
 
 
@@ -39,9 +38,9 @@ fieldset.radio {
         cursor: pointer;
         user-select: none;
         padding-left: .4rem;
+        font-weight: 500;
 
         &:hover, &:focus {
-            text-decoration: underline;
             outline: none;
         }
     }
@@ -52,13 +51,18 @@ fieldset.radio {
 
     .custom-radio:hover {
         border-width: 0;
-        background-color: var(--input-highlight-color);
+        background-color: #fff;
+        box-shadow: 0 0 0 2px var(--accent-color), 0 0 0 6px rgba(0, 0, 0, .1);
     }
 
     .custom-radio:checked {
         box-shadow: 0 0 0 2px var(--border-color);
         background-color: var(--border-color);
         border-width: 4px;
+    }
+
+    .custom-radio:checked:hover {
+        box-shadow: 0 0 0 2px var(--border-color), 0 0 0 6px rgba(0, 0, 0, .1);
     }
 
     .custom-radio:focus-visible, .custom-radio:checked:focus-visible, .custom-radio:focus, .custom-radio:checked:focus {
