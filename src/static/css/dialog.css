@@ -55,6 +55,10 @@ dialog {
         }
     }
 
+    .dialog-body {
+        margin-bottom: 4rem;
+    }
+
     .switches {
         margin-top: 1rem;
         margin-left: 2rem;

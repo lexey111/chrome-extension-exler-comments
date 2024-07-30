@@ -1,29 +1,30 @@
 import {Fragment, h} from 'preact'
 import {FC, useCallback, useContext, useEffect, useState} from 'preact/compat'
 import {I18n, LanguageContext} from '../../../../i18n'
-import {useRules} from '../../../hooks/useRules'
-import {Rule} from '../../../types'
+import {Rule, Rules} from '../../../types'
 import {Switch} from '../../shared'
 
 export type RuleDialogProps = {
     open: boolean
     id?: string
-    onConfirm: () => void
+    rules: Rules
+    onConfirm: (rule: Rule | null) => void
     onCancel: () => void
 }
 
-export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel}) => {
+export const RuleDialog: FC<RuleDialogProps> = ({id, rules, open, onConfirm, onCancel}) => {
     const {translate} = useContext(LanguageContext)
     const placeholder = translate('user_placeholder')
-
-    const {rules} = useRules()
 
     const [rule, setRule] = useState<Rule | null>(null)
 
     const isNew = !id
 
     useEffect(() => {
-        const dialog = document.querySelector('dialog')
+        const dialog = document.querySelector('dialog#rule_dialog')
+        if (!dialog) {
+            return
+        }
 
         if (open) {
             const knownRule = rules.find((r) => r.id === id)
@@ -38,9 +39,9 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
             } else {
                 setRule(() => ({...knownRule}))
             }
-            dialog?.showModal()
+            (dialog as HTMLDialogElement).showModal()
         } else {
-            dialog?.close()
+            (dialog as HTMLDialogElement)?.close()
         }
     }, [open])
 
@@ -80,14 +81,20 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
         })
     }, [])
 
-    const userExists = isNew ? rules.findIndex(r => r.user === (rule?.user || '').trim()) !== -1 : false
-    const isNameValid = userExists ? false : (rule?.user || '').trim() !== ''
+    const userExists = !!rules.find(r => ((r.id !== id) && (r.user === (rule?.user || '').trim())))
+
+    const isNameValid = (rule?.user || '').trim() !== ''
     const isCheckboxesValid = rule?.hideTo || rule?.hideFrom
-    const hasUser = !!(rule?.user || '').trim()
 
     const userClassName = isNameValid ? 'valid' : 'invalid'
 
-    return <dialog onCancel={onCancel}>
+    const canSave = isNameValid && isCheckboxesValid && !userExists
+
+    const commitChanges = useCallback(() => {
+        onConfirm(rule)
+    }, [rule, onConfirm])
+
+    return <dialog onCancel={onCancel} id={'rule_dialog'}>
         <button onClick={onCancel} className={'dialog-cancel'}>&times;</button>
         {isNew && <h2><I18n code={'create_record'}/></h2>}
         {!isNew && <h2><I18n code={'save_record'}/></h2>}
@@ -109,7 +116,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                         on={rule?.hideFrom}
                         onChange={handleFromChange}
                         title={<I18n code={'hide_from'}/>}>
-                        {hasUser && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
+                        {isNameValid && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
                     </Switch>
                 </fieldset>
 
@@ -118,7 +125,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
                         on={rule?.hideTo}
                         onChange={handleToChange}
                         title={<I18n code={'hide_to'}/>}>
-                        {hasUser && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
+                        {isNameValid && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
                     </Switch>
                 </fieldset>
 
@@ -136,9 +143,9 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, open, onConfirm, onCancel})
             <div className={'actions'}>
                 <button onClick={onCancel} className={'ghost'}><I18n code={'cancel'}/></button>
                 <button
-                    onClick={onConfirm}
+                    onClick={commitChanges}
                     className={'primary'}
-                    disabled={!isNameValid || !isCheckboxesValid}>
+                    disabled={!canSave}>
                     <I18n code={isNew ? 'create' : 'save'}/></button>
             </div>
         </form>

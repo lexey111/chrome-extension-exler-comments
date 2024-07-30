@@ -1,6 +1,6 @@
 import {i18nKey} from './index'
 
-export const UA:Record<i18nKey, string> = {
+export const UA: Record<i18nKey, string> = {
     title: 'Exler\'s site | вогнегасник коментарів',
     enable_processing: 'Увімкнути обробку',
     has_been_hidden: 'приховано',
@@ -30,5 +30,8 @@ export const UA:Record<i18nKey, string> = {
     hide_to: 'Приховати "кому"',
     only_negative: 'Тільки якщо баланс +/- від\'ємний',
     please_select_from_to: 'Будь ласка, виберіть "від кого", "кому" або обидва варіанти',
-    user_already_exists: 'Це ім\'я користувача вже існує в правилах'
+    user_already_exists: 'Це ім\'я користувача вже існує в правилах',
+    delete: 'Видалити',
+    confirm: 'Підтвердження',
+    are_you_sure: 'Ви впевнені, що хочете видалити запис?',
 } as const

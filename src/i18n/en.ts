@@ -28,5 +28,8 @@ export const EN = {
     hide_to: 'Hide if "to"',
     only_negative: 'Only if negative +/- balance',
     please_select_from_to: 'Please select From, To, or both',
-    user_already_exists: 'This user name already exists in rules'
+    user_already_exists: 'This user name already exists in rules',
+    delete: 'Delete',
+    confirm: 'Confirm',
+    are_you_sure: 'Are you sure you want to delete record?',
 } as const

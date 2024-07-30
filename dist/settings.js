@@ -317,7 +317,10 @@
     hide_to: '\u041F\u0440\u0438\u0445\u043E\u0432\u0430\u0442\u0438 "\u043A\u043E\u043C\u0443"',
     only_negative: "\u0422\u0456\u043B\u044C\u043A\u0438 \u044F\u043A\u0449\u043E \u0431\u0430\u043B\u0430\u043D\u0441 +/- \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u0439",
     please_select_from_to: '\u0411\u0443\u0434\u044C \u043B\u0430\u0441\u043A\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044C "\u0432\u0456\u0434 \u043A\u043E\u0433\u043E", "\u043A\u043E\u043C\u0443" \u0430\u0431\u043E \u043E\u0431\u0438\u0434\u0432\u0430 \u0432\u0430\u0440\u0456\u0430\u043D\u0442\u0438',
-    user_already_exists: "\u0426\u0435 \u0456\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0432\u0436\u0435 \u0456\u0441\u043D\u0443\u0454 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445"
+    user_already_exists: "\u0426\u0435 \u0456\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0432\u0436\u0435 \u0456\u0441\u043D\u0443\u0454 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445",
+    delete: "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438",
+    confirm: "\u041F\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043D\u043D\u044F",
+    are_you_sure: "\u0412\u0438 \u0432\u043F\u0435\u0432\u043D\u0435\u043D\u0456, \u0449\u043E \u0445\u043E\u0447\u0435\u0442\u0435 \u0432\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u0430\u043F\u0438\u0441?"
   };
 
   // src/i18n/en.ts
@@ -351,7 +354,10 @@
     hide_to: 'Hide if "to"',
     only_negative: "Only if negative +/- balance",
     please_select_from_to: "Please select From, To, or both",
-    user_already_exists: "This user name already exists in rules"
+    user_already_exists: "This user name already exists in rules",
+    delete: "Delete",
+    confirm: "Confirm",
+    are_you_sure: "Are you sure you want to delete record?"
   };
 
   // src/i18n/ru.ts
@@ -385,7 +391,10 @@
     hide_to: '\u0421\u043A\u0440\u044B\u0442\u044C \u0435\u0441\u043B\u0438 "\u043A\u043E\u043C\u0443"',
     only_negative: "\u0422\u043E\u043B\u044C\u043A\u043E \u0435\u0441\u043B\u0438 \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439 +/- \u0431\u0430\u043B\u0430\u043D\u0441",
     please_select_from_to: '\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 "\u041E\u0442 \u043A\u043E\u0433\u043E", "\u041A\u043E\u043C\u0443" \u0438\u043B\u0438 \u043E\u0431\u0430 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
-    user_already_exists: "\u042D\u0442\u043E \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445"
+    user_already_exists: "\u042D\u0442\u043E \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445",
+    delete: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C",
+    confirm: "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C",
+    are_you_sure: "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C?"
   };
 
   // node_modules/preact/hooks/dist/hooks.module.js
@@ -1024,6 +1033,7 @@
     try {
       actual = JSON.parse(storedState[rulesStorageKey]);
     } catch (e3) {
+      console.error(e3);
     }
     return actual;
   };
@@ -1046,18 +1056,13 @@
       };
     }, [set_rules]);
     const setRules = q2(async (rules) => {
-      void chrome.storage.sync.set({ [rulesStorageKey]: rules });
+      void chrome.storage.sync.set({ [rulesStorageKey]: JSON.stringify(rules) });
       set_rules(rules);
     }, [set_rules]);
     return {
       rules: _rules,
       setRules
     };
-  };
-
-  // src/pages/components/settings/rules/rule-record.component.tsx
-  var RuleRecord = ({ rule }) => {
-    return /* @__PURE__ */ _("div", { className: "rule-record" }, JSON.stringify(rule, null, 2));
   };
 
   // src/pages/components/settings/rules/no-rules.component.tsx
@@ -1148,14 +1153,16 @@
   };
 
   // src/pages/components/settings/rules/rule-dialog.component.tsx
-  var RuleDialog = ({ id, open, onConfirm, onCancel }) => {
+  var RuleDialog = ({ id, rules, open, onConfirm, onCancel }) => {
     const { translate } = x2(LanguageContext);
     const placeholder = translate("user_placeholder");
-    const { rules } = useRules();
     const [rule, setRule] = h2(null);
     const isNew = !id;
     y2(() => {
-      const dialog = document.querySelector("dialog");
+      const dialog = document.querySelector("dialog#rule_dialog");
+      if (!dialog) {
+        return;
+      }
       if (open) {
         const knownRule = rules.find((r3) => r3.id === id);
         if (!knownRule) {
@@ -1169,7 +1176,7 @@
         } else {
           setRule(() => ({ ...knownRule }));
         }
-        dialog?.showModal();
+        dialog.showModal();
       } else {
         dialog?.close();
       }
@@ -1206,12 +1213,15 @@
         return { ...v3, onlyNegativeBalance: checked || false };
       });
     }, []);
-    const userExists = isNew ? rules.findIndex((r3) => r3.user === (rule?.user || "").trim()) !== -1 : false;
-    const isNameValid = userExists ? false : (rule?.user || "").trim() !== "";
+    const userExists = !!rules.find((r3) => r3.id !== id && r3.user === (rule?.user || "").trim());
+    const isNameValid = (rule?.user || "").trim() !== "";
     const isCheckboxesValid = rule?.hideTo || rule?.hideFrom;
-    const hasUser = !!(rule?.user || "").trim();
     const userClassName = isNameValid ? "valid" : "invalid";
-    return /* @__PURE__ */ _("dialog", { onCancel }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "dialog-cancel" }, "\xD7"), isNew && /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "create_record" })), !isNew && /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "save_record" })), /* @__PURE__ */ _("form", { method: "dialog" }, /* @__PURE__ */ _("fieldset", { className: userClassName }, /* @__PURE__ */ _("label", null, "* ", /* @__PURE__ */ _(I18n, { code: "user_name_nick" })), /* @__PURE__ */ _(
+    const canSave = isNameValid && isCheckboxesValid && !userExists;
+    const commitChanges = q2(() => {
+      onConfirm(rule);
+    }, [rule, onConfirm]);
+    return /* @__PURE__ */ _("dialog", { onCancel, id: "rule_dialog" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "dialog-cancel" }, "\xD7"), isNew && /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "create_record" })), !isNew && /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "save_record" })), /* @__PURE__ */ _("form", { method: "dialog" }, /* @__PURE__ */ _("fieldset", { className: userClassName }, /* @__PURE__ */ _("label", null, "* ", /* @__PURE__ */ _(I18n, { code: "user_name_nick" })), /* @__PURE__ */ _(
       "input",
       {
         type: "text",
@@ -1228,7 +1238,7 @@
         onChange: handleFromChange,
         title: /* @__PURE__ */ _(I18n, { code: "hide_from" })
       },
-      hasUser && /* @__PURE__ */ _(k, null, "=", /* @__PURE__ */ _("span", { className: "tag" }, rule?.user))
+      isNameValid && /* @__PURE__ */ _(k, null, "=", /* @__PURE__ */ _("span", { className: "tag" }, rule?.user))
     )), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _(
       Switch,
       {
@@ -1236,7 +1246,7 @@
         onChange: handleToChange,
         title: /* @__PURE__ */ _(I18n, { code: "hide_to" })
       },
-      hasUser && /* @__PURE__ */ _(k, null, "=", /* @__PURE__ */ _("span", { className: "tag" }, rule?.user))
+      isNameValid && /* @__PURE__ */ _(k, null, "=", /* @__PURE__ */ _("span", { className: "tag" }, rule?.user))
     )), /* @__PURE__ */ _("fieldset", null, /* @__PURE__ */ _(
       Switch,
       {
@@ -1247,34 +1257,121 @@
     ))), !isCheckboxesValid && /* @__PURE__ */ _("div", { className: "alert-warning" }, /* @__PURE__ */ _(I18n, { code: "please_select_from_to" })), userExists && /* @__PURE__ */ _("div", { className: "alert-warning" }, /* @__PURE__ */ _(I18n, { code: "user_already_exists" })), /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "ghost" }, /* @__PURE__ */ _(I18n, { code: "cancel" })), /* @__PURE__ */ _(
       "button",
       {
-        onClick: onConfirm,
+        onClick: commitChanges,
         className: "primary",
-        disabled: !isNameValid || !isCheckboxesValid
+        disabled: !canSave
       },
       /* @__PURE__ */ _(I18n, { code: isNew ? "create" : "save" })
     ))));
   };
 
+  // src/pages/components/settings/rules/rule-utils.ts
+  var generateUID = () => {
+    const _firstPart = Math.random() * 46656 | 0;
+    const _secondPart = Math.random() * 46656 | 0;
+    const _thirdPart = Math.random() * 46656 | 0;
+    const firstPart = ("000" + _firstPart.toString(36)).slice(-3);
+    const secondPart = ("000" + _secondPart.toString(36)).slice(-3);
+    const thirdPart = ("000" + _thirdPart.toString(36)).slice(-3);
+    return firstPart + "-" + secondPart + "-" + thirdPart;
+  };
+
+  // src/pages/components/settings/rules/rule-record.component.tsx
+  var RuleRecord = ({ rule, onClick, onDelete }) => {
+    const handleClick = q2(() => {
+      onClick(rule.id);
+    }, [rule, onClick]);
+    return /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { onClick: handleClick }, rule.user), /* @__PURE__ */ _("td", { onClick: handleClick }, rule.hideTo && /* @__PURE__ */ _("span", { className: "checkmark" })), /* @__PURE__ */ _("td", { onClick: handleClick }, rule.hideFrom && /* @__PURE__ */ _("span", { className: "checkmark" })), /* @__PURE__ */ _("td", { onClick: handleClick }, rule.onlyNegativeBalance && /* @__PURE__ */ _("span", { className: "checkmark" })), /* @__PURE__ */ _("td", { className: "actions" }, /* @__PURE__ */ _("button", { className: "action-danger", onClick: () => onDelete(rule.id) }, /* @__PURE__ */ _(I18n, { code: "delete" }))));
+  };
+
+  // src/pages/components/settings/rules/rule-records.component.tsx
+  var RuleRecords = ({ rules, onClick, onDelete }) => {
+    if (!rules || rules.length === 0) {
+      return null;
+    }
+    return /* @__PURE__ */ _("table", { className: "records" }, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "user_name_nick" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "hide_from" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "hide_to" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "only_negative" })), /* @__PURE__ */ _("th", { className: "actions" }))), /* @__PURE__ */ _("tbody", null, rules.map((r3) => {
+      return /* @__PURE__ */ _(RuleRecord, { rule: r3, key: r3.id, onClick, onDelete });
+    })));
+  };
+
+  // src/pages/components/settings/rules/delete-confirmation-dialog.component.tsx
+  var DeleteConfirmationDialog = ({ open, onConfirm, onCancel }) => {
+    y2(() => {
+      const dialog = document.querySelector("dialog#confirm_delete");
+      if (!dialog) {
+        return;
+      }
+      if (open) {
+        dialog.showModal();
+      } else {
+        dialog?.close();
+      }
+    }, [open]);
+    return /* @__PURE__ */ _("dialog", { onCancel, id: "confirm_delete" }, /* @__PURE__ */ _("button", { onClick: onCancel, className: "dialog-cancel" }, "\xD7"), /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "confirm" })), /* @__PURE__ */ _("div", { className: "dialog-body" }, /* @__PURE__ */ _(I18n, { code: "are_you_sure" })), /* @__PURE__ */ _("form", { method: "dialog" }, /* @__PURE__ */ _("div", { className: "actions" }, /* @__PURE__ */ _(
+      "button",
+      {
+        onClick: onCancel,
+        className: "ghost",
+        autofocus: true
+      },
+      /* @__PURE__ */ _(I18n, { code: "cancel" })
+    ), /* @__PURE__ */ _(
+      "button",
+      {
+        onClick: onConfirm,
+        className: "danger"
+      },
+      /* @__PURE__ */ _(I18n, { code: "delete" })
+    ))));
+  };
+
   // src/pages/components/settings/rules/rules.component.tsx
   var Rules = () => {
-    const { rules } = useRules();
+    const { rules, setRules } = useRules();
     const [open, setOpen] = h2(false);
-    const [, setId] = h2("");
-    const handleConfirm = q2(() => {
+    const [confirmationOpen, setConfirmationOpen] = h2(false);
+    const [id, setId] = h2("");
+    const handleConfirm = q2(async (rule) => {
+      if (!rule) {
+        setOpen(() => false);
+        return;
+      }
+      const newRules = rule.id === "" ? [...rules, { ...rule, id: generateUID() }] : rules.map((r3) => r3.id === rule.id ? rule : r3);
+      await setRules(newRules);
       setOpen(() => false);
-    }, []);
+    }, [rules, setRules]);
     const handleCreateIntent = q2(() => {
       setId(() => "");
       setOpen(() => true);
     }, []);
-    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })), rules.length === 0 && /* @__PURE__ */ _(NoRules, null), /* @__PURE__ */ _(AddRule, { onClick: handleCreateIntent }), rules.map((r3) => {
-      return /* @__PURE__ */ _(RuleRecord, { rule: r3, key: r3.id });
-    }), /* @__PURE__ */ _(
+    const handleRecordClick = q2((id2) => {
+      setId(() => id2);
+      setOpen(() => true);
+    }, []);
+    const handleDeleteClick = q2((id2) => {
+      setId(() => id2);
+      setConfirmationOpen(() => true);
+    }, []);
+    const handleRemove = q2(async () => {
+      const newRules = rules.filter((r3) => r3.id !== id);
+      await setRules(newRules);
+      setConfirmationOpen(() => false);
+    }, [id]);
+    return /* @__PURE__ */ _("div", null, /* @__PURE__ */ _("h2", null, /* @__PURE__ */ _(I18n, { code: "rules" })), rules.length === 0 && /* @__PURE__ */ _(NoRules, null), /* @__PURE__ */ _(AddRule, { onClick: handleCreateIntent }), /* @__PURE__ */ _(RuleRecords, { rules, onClick: handleRecordClick, onDelete: handleDeleteClick }), /* @__PURE__ */ _(
       RuleDialog,
       {
         open,
+        id,
+        rules,
         onConfirm: handleConfirm,
         onCancel: () => setOpen(false)
+      }
+    ), /* @__PURE__ */ _(
+      DeleteConfirmationDialog,
+      {
+        open: confirmationOpen,
+        onConfirm: handleRemove,
+        onCancel: () => setConfirmationOpen(false)
       }
     ));
   };

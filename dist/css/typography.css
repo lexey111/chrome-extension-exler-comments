@@ -3,6 +3,8 @@
     --text-color: #3c312c;
 
     --accent-color: #5e4d45;
+    --accent-active-color: #352b27;
+    --accent-active-text-color: #dcd8d4;
     --accent-text-color: #f8e5db;
 
     --focus-color: #ffa700;
@@ -38,6 +40,10 @@
     --warning-text-color: #4e3e2a;
 
     --target-bg-color: #edece0;
+
+    --danger-color: #ff002f;
+    --danger-active-color: #c80025;
+    --danger-text-color: #ffdede;
 
     --karma-minus: #d5082f;
     --karma-plus: #549f04;

@@ -8,7 +8,7 @@ export const getRuleState = async (): Promise<Rules> => {
     try {
         actual = JSON.parse(storedState[rulesStorageKey])
     } catch (e) {
-        //
+        console.error(e)
     }
     return actual
 }
@@ -40,7 +40,7 @@ export const useRules = () => {
     }, [set_rules])
 
     const setRules = useCallback(async (rules: Rules) => {
-        void chrome.storage.sync.set({[rulesStorageKey]: rules})
+        void chrome.storage.sync.set({[rulesStorageKey]: JSON.stringify(rules)})
         set_rules(rules)
     }, [set_rules])
 

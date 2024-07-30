@@ -10,9 +10,8 @@
 @import "buttons.css";
 @import "dialog.css";
 @import "alerts.css";
-
-body {
-}
+@import "rules.css";
+@import "example.css";
 
 #root {
     max-width: 960px;
@@ -57,109 +56,4 @@ h2 {
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-}
-
-.hide-mode-example {
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 1rem 3rem;
-    color: #000;
-
-    .hide-mode-item {
-        display: block;
-        margin: 2rem 0;
-
-        p {
-            line-height: 1.4;
-            margin-bottom: .5rem;
-        }
-
-        .hide-mode-item-footer {
-            font-size: .815rem; /* 13px */
-            border-bottom: 1px solid #bfbeb6;
-            padding: 1rem 0;
-            display: flex;
-            align-items: center;
-
-
-            span {
-                display: flex;
-                align-items: center;
-            }
-
-            .user {
-                font-weight: 600;
-                color: #00439f;
-            }
-
-            .time {
-                font-weight: 200;
-                margin: 0 1rem;
-            }
-
-            .icons {
-                i {
-                    display: inline-flex;
-                    width: 17px;
-                    height: 17px;
-                    padding: 0;
-                    background-color: #bfbeb6;
-                    border-radius: 2px;
-                    margin-right: .6rem;
-                }
-            }
-
-            .karma {
-                margin-left: auto;
-
-                b {
-                    font-weight: 200;
-                    border: 1px solid #bfbeb6;
-                    width: 11px;
-                    height: 11px;
-                    padding: 0;
-                    border-radius: 2px;
-                    margin: 0.3rem;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    line-height: 11px;
-                    position: relative;
-
-                    &:after {
-                        position: absolute;
-                        display: block;
-                        top: 50%;
-                        left: 50%;
-                        transform: translateX(-50%) translateY(-55%);
-                        font-size: 12px;
-                    }
-                }
-
-                .karma-minus {
-                    color: var(--karma-minus);
-
-                    b {
-                        border-color: var(--karma-minus);
-
-                        &:after {
-                            content: '-';
-                        }
-                    }
-                }
-
-                .karma-plus {
-                    color: var(--karma-plus);
-
-                    b {
-                        border-color: var(--karma-plus);
-
-                        &:after {
-                            content: '+';
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
