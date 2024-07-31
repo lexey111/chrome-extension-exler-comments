@@ -8,7 +8,7 @@ import {I18n} from '../../../i18n'
 
 export const OnOff: FC = () => {
     const {on, toggleOnOffState} = useOnOff()
-    const {rules,} = useRules()
+    const {rules} = useRules()
 
     return <Switch
         on={on}

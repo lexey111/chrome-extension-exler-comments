@@ -1,6 +1,81 @@
-import {allTimeStatStorageKey, languageStorageKey, statStorageKey} from './consts/storage-keys.consts'
+import {
+    allTimeStatStorageKey,
+    hideModeStorageKey,
+    onOffStorageKey,
+    rulesStorageKey,
+    statStorageKey
+} from './consts/storage-keys.consts'
 
-console.log('Loaded!')
+import {HideMode, Rules} from './pages/types'
+
+console.log('> Loaded!')
+
+const state: { on: boolean, hideMode: HideMode, rules: Rules } = {
+    on: false,
+    hideMode: 'default',
+    rules: []
+}
+
+async function init() {
+    const getOnOffState = async () => {
+        const storedState = await chrome.storage.sync.get([onOffStorageKey])
+        state.on = storedState[onOffStorageKey] !== 'off'
+    }
+
+    const getRuleState = async () => {
+        const storedState = await chrome.storage.sync.get([rulesStorageKey])
+        let actual: Rules = []
+        try {
+            actual = JSON.parse(storedState[rulesStorageKey])
+        } catch (e) {
+            console.error(e)
+        }
+        if (actual) {
+            state.rules = actual
+        }
+    }
+
+    const getHideModeState = async () => {
+        const storedState = await chrome.storage.sync.get([hideModeStorageKey])
+        let actual: HideMode = 'default'
+        if (storedState[hideModeStorageKey] === 'collapse') {
+            actual = 'collapse'
+        }
+        if (storedState[hideModeStorageKey] === 'overlay') {
+            actual = 'overlay'
+        }
+        state.hideMode = actual
+    }
+
+    const updateState = async () => {
+        console.log('Update state...')
+        await getOnOffState()
+        await getRuleState()
+        await getHideModeState()
+
+        await processPage()
+    }
+
+    const handleStateChanges = (changes: {
+        [p: string]: chrome.storage.StorageChange
+    }, areaName: chrome.storage.AreaName) => {
+        let needProcess = false
+        if (areaName === 'sync' && changes?.[onOffStorageKey]?.newValue) {
+            needProcess = true
+        }
+
+        if (areaName === 'sync' && changes?.[rulesStorageKey]?.newValue) {
+            needProcess = true
+        }
+
+        if (needProcess) {
+            void updateState()
+        }
+    }
+    chrome.storage.onChanged.addListener(handleStateChanges)
+
+    void updateState()
+}
 
 async function processPage() {
     console.log('Processing page...')
@@ -39,18 +114,6 @@ async function processPage() {
     console.log('new totalStat', {[allTimeStatStorageKey]: {processed: newProcessed, total: newTotal}})
 }
 
-const processCurrentLanguage = async () => {
-    const storedLanguage = await chrome.storage.sync.get([languageStorageKey])
-    console.log('Lang', storedLanguage[languageStorageKey])
-}
-
-void processCurrentLanguage()
-void processPage()
+void init()
 
 // todo: send badge/counter to background process (icon counter, stat)
-// todo: on:off extension (without reloading, use class list)
-// todo: different hide modes (blur, collapse)
-// todo: and expand mode (on click, on hover)
-// todo: content modes (hide full branch, hide only when [from], hide when [to])
-// todo: UI
-// todo: ru-en

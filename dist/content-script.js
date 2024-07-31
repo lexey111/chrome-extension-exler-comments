@@ -1,12 +1,69 @@
 "use strict";
 (() => {
   // src/consts/storage-keys.consts.ts
-  var languageStorageKey = "activeLanguage";
+  var onOffStorageKey = "activeState";
   var statStorageKey = "stat";
   var allTimeStatStorageKey = "all_stat";
+  var hideModeStorageKey = "hide_mode";
+  var rulesStorageKey = "rules";
 
   // src/content-script.ts
-  console.log("Loaded!");
+  console.log("> Loaded!");
+  var state = {
+    on: false,
+    hideMode: "default",
+    rules: []
+  };
+  async function init() {
+    const getOnOffState = async () => {
+      const storedState = await chrome.storage.sync.get([onOffStorageKey]);
+      state.on = storedState[onOffStorageKey] !== "off";
+    };
+    const getRuleState = async () => {
+      const storedState = await chrome.storage.sync.get([rulesStorageKey]);
+      let actual = [];
+      try {
+        actual = JSON.parse(storedState[rulesStorageKey]);
+      } catch (e) {
+        console.error(e);
+      }
+      if (actual) {
+        state.rules = actual;
+      }
+    };
+    const getHideModeState = async () => {
+      const storedState = await chrome.storage.sync.get([hideModeStorageKey]);
+      let actual = "default";
+      if (storedState[hideModeStorageKey] === "collapse") {
+        actual = "collapse";
+      }
+      if (storedState[hideModeStorageKey] === "overlay") {
+        actual = "overlay";
+      }
+      state.hideMode = actual;
+    };
+    const updateState = async () => {
+      console.log("Update state...");
+      await getOnOffState();
+      await getRuleState();
+      await getHideModeState();
+      await processPage();
+    };
+    const handleStateChanges = (changes, areaName) => {
+      let needProcess = false;
+      if (areaName === "sync" && changes?.[onOffStorageKey]?.newValue) {
+        needProcess = true;
+      }
+      if (areaName === "sync" && changes?.[rulesStorageKey]?.newValue) {
+        needProcess = true;
+      }
+      if (needProcess) {
+        void updateState();
+      }
+    };
+    chrome.storage.onChanged.addListener(handleStateChanges);
+    void updateState();
+  }
   async function processPage() {
     console.log("Processing page...");
     const container = document.querySelector(".comments-list");
@@ -36,10 +93,5 @@
     await chrome.storage.sync.set({ [allTimeStatStorageKey]: { processed: newProcessed, total: newTotal } });
     console.log("new totalStat", { [allTimeStatStorageKey]: { processed: newProcessed, total: newTotal } });
   }
-  var processCurrentLanguage = async () => {
-    const storedLanguage = await chrome.storage.sync.get([languageStorageKey]);
-    console.log("Lang", storedLanguage[languageStorageKey]);
-  };
-  void processCurrentLanguage();
-  void processPage();
+  void init();
 })();
