@@ -3,7 +3,7 @@ import {Footer, Header, HideMode, Rules} from './components/settings'
 import {LanguageAwareWrapper} from '../i18n'
 import {useEffect} from 'preact/compat'
 import {settingsPageStorageKey} from '../consts/storage-keys.consts'
-import {OnOff, StatTable} from './components/shared'
+import {OnOff} from './components/shared'
 import {useOnOff} from './hooks'
 
 const storeTabId = async () => {
@@ -31,9 +31,8 @@ export const SettingsPage = () => {
     return <LanguageAwareWrapper>
         <Header/>
         <OnOff/>
-        <StatTable/>
-        <HideMode/>
         <Rules/>
+        <HideMode/>
         <Footer/>
     </LanguageAwareWrapper>
 }

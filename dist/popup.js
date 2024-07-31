@@ -285,6 +285,7 @@
   var UA = {
     title: "Exler's site | \u0432\u043E\u0433\u043D\u0435\u0433\u0430\u0441\u043D\u0438\u043A \u043A\u043E\u043C\u0435\u043D\u0442\u0430\u0440\u0456\u0432",
     enable_processing: "\u0423\u0432\u0456\u043C\u043A\u043D\u0443\u0442\u0438 \u043E\u0431\u0440\u043E\u0431\u043A\u0443",
+    statistics: "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
     has_been_hidden: "\u043F\u0440\u0438\u0445\u043E\u0432\u0430\u043D\u043E",
     total: "\u0432\u0441\u044C\u043E\u0433\u043E \u043E\u0431\u0440\u043E\u0431\u043B\u0435\u043D\u043E",
     in_current_session: "\u0412 \u043F\u043E\u0442\u043E\u0447\u043D\u0456\u0439 \u0441\u0435\u0441\u0456\u0457",
@@ -315,13 +316,15 @@
     user_already_exists: "\u0426\u0435 \u0456\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0432\u0436\u0435 \u0456\u0441\u043D\u0443\u0454 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445",
     delete: "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438",
     confirm: "\u041F\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043D\u043D\u044F",
-    are_you_sure: "\u0412\u0438 \u0432\u043F\u0435\u0432\u043D\u0435\u043D\u0456, \u0449\u043E \u0445\u043E\u0447\u0435\u0442\u0435 \u0432\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u0430\u043F\u0438\u0441?"
+    are_you_sure: "\u0412\u0438 \u0432\u043F\u0435\u0432\u043D\u0435\u043D\u0456, \u0449\u043E \u0445\u043E\u0447\u0435\u0442\u0435 \u0432\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u0430\u043F\u0438\u0441?",
+    star_user_hint: `\u0412\u0438 \u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u0438\u043A\u043E\u0440\u0438\u0441\u0442\u043E\u0432\u0443\u0432\u0430\u0442\u0438 \u0456\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 "*" \u0442\u0430 "\u0422\u0456\u043B\u044C\u043A\u0438 \u044F\u043A\u0449\u043E \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u0439...", \u0449\u043E\u0431 \u043F\u0440\u0438\u0445\u043E\u0432\u0430\u0442\u0438 \u0432\u0441\u0456 \u043A\u043E\u043C\u0435\u043D\u0442\u0430\u0440\u0456 \u0437 \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u043C \u0431\u0430\u043B\u0430\u043D\u0441\u043E\u043C`
   };
 
   // src/i18n/en.ts
   var EN = {
     title: "Exler's site | comments fire extinguisher",
     enable_processing: "Enable processing",
+    statistics: "Statistics",
     has_been_hidden: "was hidden",
     total: "processed total",
     in_current_session: "In current session",
@@ -352,13 +355,15 @@
     user_already_exists: "This user name already exists in rules",
     delete: "Delete",
     confirm: "Confirm",
-    are_you_sure: "Are you sure you want to delete record?"
+    are_you_sure: "Are you sure you want to delete record?",
+    star_user_hint: 'You can use username "*" and "Only if negative..." to hide all comments with a negative balance'
   };
 
   // src/i18n/ru.ts
   var RU = {
     title: "Exler's site | \u043E\u0433\u043D\u0435\u0442\u0443\u0448\u0438\u0442\u0435\u043B\u044C \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0435\u0432",
     enable_processing: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0443",
+    statistics: "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
     has_been_hidden: "\u0441\u043A\u0440\u044B\u0442\u043E",
     total: "\u0432\u0441\u0435\u0433\u043E \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0430\u043D\u043E",
     in_current_session: "\u0412 \u0442\u0435\u043A\u0443\u0449\u0435\u0439 \u0441\u0435\u0441\u0441\u0438\u0438",
@@ -389,7 +394,8 @@
     user_already_exists: "\u042D\u0442\u043E \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u0445",
     delete: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C",
     confirm: "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C",
-    are_you_sure: "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C?"
+    are_you_sure: "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C?",
+    star_user_hint: '\u0412\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F "*" \u0438 "\u0422\u043E\u043B\u044C\u043A\u043E \u0435\u0441\u043B\u0438 \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439...", \u0447\u0442\u043E\u0431\u044B \u0441\u043A\u0440\u044B\u0442\u044C \u0432\u0441\u0435 \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0438 \u0441 \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u0431\u0430\u043B\u0430\u043D\u0441\u043E\u043C'
   };
 
   // node_modules/preact/hooks/dist/hooks.module.js
@@ -714,6 +720,7 @@
   var allTimeStatStorageKey = "all_stat";
   var settingsPageStorageKey = "settings_page";
   var hideModeStorageKey = "hide_mode";
+  var rulesStorageKey = "rules";
 
   // src/i18n/hooks/useLanguage.tsx
   var getLanguageState = async () => {
@@ -945,24 +952,71 @@
   };
 
   // src/pages/components/shared/switch.component.tsx
-  var Switch = ({ on, onChange, title, titleKey, children }) => {
+  var Switch = ({
+    on,
+    disabled,
+    onChange,
+    title,
+    titleKey,
+    children
+  }) => {
     if (typeof on !== "boolean") {
       return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("span", { className: "slider round" })), "...");
     }
     const handleChange = q2((e3) => {
       e3.preventDefault();
-      onChange(e3.target?.checked);
+      onChange?.(e3.target?.checked);
       return false;
     }, [onChange]);
     const handleToggle = q2(() => {
-      onChange(!on);
+      onChange?.(!on);
     }, [onChange, on]);
-    return /* @__PURE__ */ _("div", { className: "switch-container" }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on, onChange: handleChange }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _("div", { onClick: handleToggle, className: "switch-label" }, titleKey && /* @__PURE__ */ _(I18n, { code: titleKey }), title, children));
+    return /* @__PURE__ */ _("div", { className: "switch-container" + (disabled ? " disabled" : "") }, /* @__PURE__ */ _("label", { className: "switch" }, /* @__PURE__ */ _("input", { type: "checkbox", checked: on, onChange: handleChange, disabled }), /* @__PURE__ */ _("span", { className: "slider round" })), /* @__PURE__ */ _("div", { onClick: handleToggle, className: "switch-label" }, titleKey && /* @__PURE__ */ _(I18n, { code: titleKey }), title, children));
+  };
+
+  // src/pages/hooks/useRules.tsx
+  var getRuleState = async () => {
+    const storedState = await chrome.storage.sync.get([rulesStorageKey]);
+    let actual = [];
+    try {
+      actual = JSON.parse(storedState[rulesStorageKey]);
+    } catch (e3) {
+      console.error(e3);
+    }
+    return actual;
+  };
+  var useRules = () => {
+    const [_rules, set_rules] = h2([]);
+    y2(() => {
+      const processCurrentState = async () => {
+        const actual = await getRuleState();
+        set_rules(actual);
+      };
+      const handleStateChanges = (changes, areaName) => {
+        if (areaName === "sync" && changes?.[rulesStorageKey]?.newValue) {
+          void processCurrentState();
+        }
+      };
+      chrome.storage.onChanged.addListener(handleStateChanges);
+      void processCurrentState();
+      return () => {
+        chrome.storage.onChanged.removeListener(handleStateChanges);
+      };
+    }, [set_rules]);
+    const setRules = q2(async (rules) => {
+      void chrome.storage.sync.set({ [rulesStorageKey]: JSON.stringify(rules) });
+      set_rules(rules);
+    }, [set_rules]);
+    return {
+      rules: _rules,
+      setRules
+    };
   };
 
   // src/pages/components/shared/on-off.component.tsx
   var OnOff = () => {
     const { on, toggleOnOffState } = useOnOff();
+    const { rules } = useRules();
     return /* @__PURE__ */ _(
       Switch,
       {
@@ -970,7 +1024,8 @@
         onChange: toggleOnOffState,
         titleKey: "enable_processing"
       },
-      /* @__PURE__ */ _(CurrentHideMode, null)
+      /* @__PURE__ */ _(CurrentHideMode, null),
+      rules.length > 0 && /* @__PURE__ */ _("span", { className: "tag" }, /* @__PURE__ */ _(I18n, { code: "rules" }), ": ", rules.length)
     );
   };
 

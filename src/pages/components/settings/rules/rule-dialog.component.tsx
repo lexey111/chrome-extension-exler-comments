@@ -1,4 +1,4 @@
-import {Fragment, h} from 'preact'
+import {h} from 'preact'
 import {FC, useCallback, useContext, useEffect, useState} from 'preact/compat'
 import {I18n, LanguageContext} from '../../../../i18n'
 import {Rule, Rules} from '../../../types'
@@ -84,7 +84,7 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, rules, open, onConfirm, onC
     const userExists = !!rules.find(r => ((r.id !== id) && (r.user === (rule?.user || '').trim())))
 
     const isNameValid = (rule?.user || '').trim() !== ''
-    const isCheckboxesValid = rule?.hideTo || rule?.hideFrom
+    const isCheckboxesValid = rule?.user === '*' ? true : rule?.hideTo || rule?.hideFrom
 
     const userClassName = isNameValid ? 'valid' : 'invalid'
 
@@ -109,24 +109,28 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, rules, open, onConfirm, onC
                     value={rule?.user}
                     onChange={handleNameChange} autofocus={true}/>
             </fieldset>
-            <div className={'switches'}>
 
-                <fieldset>
+            {rule?.user !== '*' && <div className={'switches'}>
+                <fieldset className={'short'}>
                     <Switch
                         on={rule?.hideFrom}
                         onChange={handleFromChange}
                         title={<I18n code={'hide_from'}/>}>
-                        {isNameValid && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
                     </Switch>
+                    {isNameValid && <span className={'example-tag'}>
+                        <span className={'tag'}>{rule?.user}</span>
+                    </span>}
                 </fieldset>
 
-                <fieldset>
+                <fieldset className={'short'}>
                     <Switch
                         on={rule?.hideTo}
                         onChange={handleToChange}
                         title={<I18n code={'hide_to'}/>}>
-                        {isNameValid && <Fragment>=<span className={'tag'}>{rule?.user}</span></Fragment>}
                     </Switch>
+                    {isNameValid && <span className={'example-tag'}>
+                        <span className={'tag'}>{rule?.user}</span>
+                    </span>}
                 </fieldset>
 
                 <fieldset>
@@ -135,10 +139,22 @@ export const RuleDialog: FC<RuleDialogProps> = ({id, rules, open, onConfirm, onC
                         onChange={handleNegativeChange}
                         title={<I18n code={'only_negative'}/>}/>
                 </fieldset>
-            </div>
+            </div>}
 
-            {!isCheckboxesValid && <div className={'alert-warning'}><I18n code={'please_select_from_to'}/></div>}
+            {rule?.user === '*' && <div className={'switches'}>
+                <fieldset>
+                    <Switch
+                        on={true}
+                        disabled={true}
+                        title={<I18n code={'only_negative'}/>}/>
+                </fieldset>
+            </div>}
+
+            {!isCheckboxesValid && rule?.user !== '*' &&
+                <div className={'alert-warning'}><I18n code={'please_select_from_to'}/></div>}
             {userExists && <div className={'alert-warning'}><I18n code={'user_already_exists'}/></div>}
+
+            <div className={'alert-hint'}><I18n code={'star_user_hint'}/></div>
 
             <div className={'actions'}>
                 <button onClick={onCancel} className={'ghost'}><I18n code={'cancel'}/></button>

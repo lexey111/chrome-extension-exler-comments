@@ -23,7 +23,7 @@ export const DeleteConfirmationDialog: FC<DeleteConfirmationDialogProps> = ({ope
     }, [open])
 
     return <dialog onCancel={onCancel} id={'confirm_delete'}>
-        <button onClick={onCancel} className={'dialog-cancel'}>&times;</button>
+        <button onClick={onCancel} className={'dialog-cancel'} autofocus>&times;</button>
         <h2><I18n code={'confirm'}/></h2>
 
         <div className={'dialog-body'}>
@@ -34,8 +34,7 @@ export const DeleteConfirmationDialog: FC<DeleteConfirmationDialogProps> = ({ope
             <div className={'actions'}>
                 <button
                     onClick={onCancel}
-                    className={'ghost'}
-                    autofocus>
+                    className={'ghost'}>
                     <I18n code={'cancel'}/>
                 </button>
 

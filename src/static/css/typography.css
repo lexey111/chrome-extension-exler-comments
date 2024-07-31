@@ -7,9 +7,9 @@
     --accent-active-text-color: #dcd8d4;
     --accent-text-color: #f8e5db;
 
-    --focus-color: #ffa700;
+    --focus-color: #ffc400;
     --focus-text-color: #3a2d13;
-    --focus-border-color: #ac7517;
+    --focus-border-color: #d68c00;
 
     --headers-color: #883912;
     --headers-text-color: #352720;
@@ -36,7 +36,7 @@
     --info-text-color: #425875;
 
     --warning-color: #fde0b9;
-    --warning-accent-color: #d19119;
+    --warning-accent-color: #ffa600;
     --warning-text-color: #4e3e2a;
 
     --target-bg-color: #edece0;

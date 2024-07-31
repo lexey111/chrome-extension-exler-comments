@@ -3,6 +3,7 @@ import {i18nKey} from './index'
 export const RU: Record<i18nKey, string> = {
     title: 'Exler\'s site | огнетушитель комментариев',
     enable_processing: 'Включить обработку',
+    statistics: 'Статистика',
     has_been_hidden: 'скрыто',
     total: 'всего обработано',
     in_current_session: 'В текущей сессии',
@@ -34,4 +35,5 @@ export const RU: Record<i18nKey, string> = {
     delete: 'Удалить',
     confirm: 'Подтвердить',
     are_you_sure: 'Вы уверены, что хотите удалить запись?',
+    star_user_hint: 'Вы можете использовать имя пользователя "*" и "Только если отрицательный...", чтобы скрыть все комментарии с отрицательным балансом'
 } as const

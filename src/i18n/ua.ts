@@ -3,6 +3,7 @@ import {i18nKey} from './index'
 export const UA: Record<i18nKey, string> = {
     title: 'Exler\'s site | вогнегасник коментарів',
     enable_processing: 'Увімкнути обробку',
+    statistics: 'Статистика',
     has_been_hidden: 'приховано',
     total: 'всього оброблено',
     in_current_session: 'В поточній сесії',
@@ -34,4 +35,5 @@ export const UA: Record<i18nKey, string> = {
     delete: 'Видалити',
     confirm: 'Підтвердження',
     are_you_sure: 'Ви впевнені, що хочете видалити запис?',
+    star_user_hint: 'Ви можете використовувати ім\'я користувача "*" та "Тільки якщо від\'ємний...", щоб приховати всі коментарі з від\'ємним балансом'
 } as const

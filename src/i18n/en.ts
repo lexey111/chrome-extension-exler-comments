@@ -1,6 +1,7 @@
 export const EN = {
     title: 'Exler\'s site | comments fire extinguisher',
     enable_processing: 'Enable processing',
+    statistics: 'Statistics',
     has_been_hidden: 'was hidden',
     total: 'processed total',
     in_current_session: 'In current session',
@@ -32,4 +33,5 @@ export const EN = {
     delete: 'Delete',
     confirm: 'Confirm',
     are_you_sure: 'Are you sure you want to delete record?',
+    star_user_hint: 'You can use username "*" and "Only if negative..." to hide all comments with a negative balance'
 } as const

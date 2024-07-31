@@ -4,13 +4,22 @@ import {I18n, i18nKey} from '../../../i18n'
 
 export type SwitchProps = {
     on?: boolean | null
-    onChange: (state?: boolean) => void
+    onChange?: (state?: boolean) => void
     titleKey?: i18nKey
     title?: any
+    disabled?: boolean
     children?: ComponentChildren
 }
 
-export const Switch: FC<SwitchProps> = ({on, onChange, title, titleKey, children}) => {
+export const Switch: FC<SwitchProps> = (
+    {
+        on,
+        disabled,
+        onChange,
+        title,
+        titleKey,
+        children
+    }) => {
     if (typeof on !== 'boolean') {
         return <div className="switch-container">
             <label className="switch">
@@ -22,17 +31,17 @@ export const Switch: FC<SwitchProps> = ({on, onChange, title, titleKey, children
 
     const handleChange = useCallback((e: Event) => {
         e.preventDefault()
-        onChange((e.target as HTMLInputElement)?.checked)
+        onChange?.((e.target as HTMLInputElement)?.checked)
         return false
     }, [onChange])
 
     const handleToggle = useCallback(() => {
-        onChange(!on)
+        onChange?.(!on)
     }, [onChange, on])
 
-    return <div className="switch-container">
+    return <div className={'switch-container' + (disabled ? ' disabled' : '')}>
         <label className="switch">
-            <input type="checkbox" checked={on} onChange={handleChange}/>
+            <input type="checkbox" checked={on} onChange={handleChange} disabled={disabled}/>
             <span className="slider round"></span>
         </label>
         <div onClick={handleToggle} className={'switch-label'}>

@@ -16,8 +16,8 @@ export const RuleRecord: FC<RuleProps> = ({rule, onClick, onDelete}) => {
 
     return <tr>
         <td onClick={handleClick}>{rule.user}</td>
-        <td onClick={handleClick}>{rule.hideTo && <span className={'checkmark'}></span>}</td>
         <td onClick={handleClick}>{rule.hideFrom && <span className={'checkmark'}></span>}</td>
+        <td onClick={handleClick}>{rule.hideTo && <span className={'checkmark'}></span>}</td>
         <td onClick={handleClick}>{rule.onlyNegativeBalance && <span className={'checkmark'}></span>}</td>
         <td className={'actions'}>
             <button className={'action-danger'} onClick={() => onDelete(rule.id)}><I18n code={'delete'}/></button>

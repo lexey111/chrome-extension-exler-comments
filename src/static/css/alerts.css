@@ -1,12 +1,14 @@
 
-.alert-info, .alert-warning {
+.alert-info, .alert-warning, .alert-hint {
     margin: 2rem 0;
-    padding: 2rem 2rem 2rem 3rem;
+    padding: 1rem 2rem 1rem 3rem;
     border-radius: 6px;
     background: var(--info-color);
     color: var(--info-text-color);
     border-left: 2px solid var(--info-accent-color);
+    border-right: 2px solid var(--info-accent-color);
     position: relative;
+    font-size: .8rem;
 
     &:after {
         content: 'i';
@@ -17,7 +19,7 @@
         justify-content: center;
         line-height: 1;
         top: 50%;
-        left: 1rem;
+        left: 1.2rem;
         background: var(--info-accent-color);
         color: white;
         border-radius: 100%;
@@ -32,9 +34,21 @@
 .alert-warning {
     background: var(--warning-color);
     color: var(--warning-text-color);
-    border-left-color: var(--warning-accent-color);
+    border-color: var(--warning-accent-color);
+
     &:after {
         content: '!';
         background: var(--warning-accent-color);
+    }
+}
+
+.alert-hint {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.4);
+
+    &:after {
+        content: '?';
+        background: rgba(0, 0, 0, 0.4);
+        font-style: normal;
     }
 }

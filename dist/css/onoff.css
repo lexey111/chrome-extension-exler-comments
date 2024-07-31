@@ -92,4 +92,10 @@
         flex-flow: row nowrap;
         align-items: center;
     }
+
+    &.disabled {
+        pointer-events: none;
+        filter: grayscale(100%);
+        opacity: .7;
+    }
 }

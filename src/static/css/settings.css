@@ -28,12 +28,12 @@ h1 {
     align-items: center;
     font-weight: 200;
     font-size: clamp(1.5rem, 5vw, 3rem);
-    margin: .5rem 0 2rem 0;
+    margin: 1.5rem 0 2rem 0;
 }
 
 .extension-stat {
     min-width: 100%;
-    margin: 2rem auto;
+    margin: 0 auto;
 }
 
 h2 {
@@ -42,7 +42,7 @@ h2 {
     align-items: center;
     font-weight: 200;
     font-size: clamp(1.2rem, 5vw, 2rem);
-    margin: 1rem 0 2rem 0;
+    margin: 2rem 0 2rem 0;
 
     .language-selector {
         margin-left: auto;

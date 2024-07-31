@@ -22,9 +22,19 @@ export const Rules = () => {
             return
         }
 
+        let normalizedRule = {...rule, user: rule.user.trim()}
+
+        if (normalizedRule.user === '*') {
+            normalizedRule.hideFrom = false
+            normalizedRule.hideTo = false
+            normalizedRule.onlyNegativeBalance = true
+        }
+
         const newRules = rule.id === ''
-            ? [...rules, {...rule, id: generateUID()}]
-            : rules.map(r => (r.id === rule.id ? rule : r))
+            ? [...rules, {...normalizedRule, id: generateUID()}]
+            : rules.map(r => (r.id === rule.id ? normalizedRule : r))
+
+        newRules.sort((a, b) => a.user.localeCompare(b.user))
 
         await setRules(newRules)
 
