@@ -1,16 +1,17 @@
-import {
-    allTimeStatStorageKey,
-    hideModeStorageKey,
-    onOffStorageKey,
-    rulesStorageKey,
-    statStorageKey
-} from './consts/storage-keys.consts'
+import {hideModeStorageKey, onOffStorageKey, rulesStorageKey} from './consts/storage-keys.consts'
 
 import {HideMode, Rules} from './pages/types'
+import {processPage} from './content-process'
 
 console.log('> Loaded!')
 
-const state: { on: boolean, hideMode: HideMode, rules: Rules } = {
+export type ProcessSettings = {
+    on: boolean,
+    hideMode: HideMode,
+    rules: Rules
+}
+
+const settings: ProcessSettings = {
     on: false,
     hideMode: 'default',
     rules: []
@@ -19,7 +20,7 @@ const state: { on: boolean, hideMode: HideMode, rules: Rules } = {
 async function init() {
     const getOnOffState = async () => {
         const storedState = await chrome.storage.sync.get([onOffStorageKey])
-        state.on = storedState[onOffStorageKey] !== 'off'
+        settings.on = storedState[onOffStorageKey] !== 'off'
     }
 
     const getRuleState = async () => {
@@ -28,10 +29,10 @@ async function init() {
         try {
             actual = JSON.parse(storedState[rulesStorageKey])
         } catch (e) {
-            console.error(e)
+            //console.error(e)
         }
         if (actual) {
-            state.rules = actual
+            settings.rules = actual
         }
     }
 
@@ -44,7 +45,7 @@ async function init() {
         if (storedState[hideModeStorageKey] === 'overlay') {
             actual = 'overlay'
         }
-        state.hideMode = actual
+        settings.hideMode = actual
     }
 
     const updateState = async () => {
@@ -53,7 +54,7 @@ async function init() {
         await getRuleState()
         await getHideModeState()
 
-        await processPage()
+        await processPage(settings)
     }
 
     const handleStateChanges = (changes: {
@@ -75,43 +76,6 @@ async function init() {
     chrome.storage.onChanged.addListener(handleStateChanges)
 
     void updateState()
-}
-
-async function processPage() {
-    console.log('Processing page...')
-    const container = document.querySelector('.comments-list')
-    if (!container) {
-        return
-    }
-
-    const comments = container.querySelectorAll('.comments-item')
-    if (!comments || comments.length === 0) {
-        return
-    }
-    // .comments-list -> .comments-item-section -> div -> .comments-item | .comments-item-child -> .comments-item
-    let counter = 0
-    comments.forEach(comment => {
-        const from = (comment.querySelector('a.profile-link:not(.reply-to)')?.textContent || '').trim()
-        const to = (comment.querySelector('a.reply-to')?.textContent || '').trim()
-
-        console.log(`  ${from} -> ${to}`)
-
-        if (from === 'BorNeo' || to === 'BorNeo') {
-            comment.classList.add('hide-comment')
-            counter++
-        }
-    })
-
-    console.log('counter', counter)
-    await chrome.storage.sync.set({[statStorageKey]: {processed: counter, total: comments.length}})
-
-    const totalStat = await chrome.storage.sync.get([allTimeStatStorageKey])
-    console.log('totalStat', totalStat)
-    const newProcessed = (totalStat?.[allTimeStatStorageKey]?.processed ?? 0) + counter
-    const newTotal = (totalStat?.[allTimeStatStorageKey]?.total ?? 0) + comments.length
-    await chrome.storage.sync.set({[allTimeStatStorageKey]: {processed: newProcessed, total: newTotal}})
-
-    console.log('new totalStat', {[allTimeStatStorageKey]: {processed: newProcessed, total: newTotal}})
 }
 
 void init()

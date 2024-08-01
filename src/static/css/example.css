@@ -2,7 +2,7 @@
 .hide-mode-example {
     display: flex;
     flex-flow: column nowrap;
-    padding: 1rem 3rem;
+    padding: 1rem 5rem;
     color: #000;
 
     .hide-mode-item {
