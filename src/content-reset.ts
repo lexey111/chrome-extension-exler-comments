@@ -1,7 +1,5 @@
-console.log('> Rest Loaded!')
-
 export const resetPage = async (comments: NodeListOf<Element>) => {
-    console.log('Reset page...')
+
     if (!comments || comments.length === 0) {
         return
     }
@@ -16,7 +14,6 @@ export const resetPage = async (comments: NodeListOf<Element>) => {
         // remove handlers
         const target = comment.querySelector('.hide-comment-content')
         if (target) {
-            console.log('remove handler')
             target.remove()
         }
     })

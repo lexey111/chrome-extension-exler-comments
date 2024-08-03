@@ -1,3 +1,3 @@
-export const hideModeCodes = ['default', 'collapse', 'overlay'] as const
+export const hideModeCodes = ['default', 'overlay', 'collapse'] as const
 
 export type HideMode = typeof hideModeCodes[number]

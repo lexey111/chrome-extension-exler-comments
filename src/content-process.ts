@@ -1,23 +1,9 @@
 import {storeStat} from './content-stat'
 import {ProcessSettings} from './content-script'
 import {resetPage} from './content-reset'
-
-console.log('> Processing Loaded!')
-
-function prepareBlurFragment() {
-    const div = document.createElement('div')
-    div.classList.add('hide-comment-content')
-    div.classList.add('hide-comment-content-default')
-    div.innerHTML = `<span class="hide-comment-content-handler" onClick={handleDismiss}>
-                <i class="gg-eye"></i>
-            </span>`
-
-    return div
-}
+import {getHideFragment} from './content-fragments'
 
 export const processPage = async (settings: ProcessSettings) => {
-    console.log('Processing page...')
-
     const container = document.querySelector('.comments-list')
     if (!container) {
         return
@@ -25,9 +11,23 @@ export const processPage = async (settings: ProcessSettings) => {
 
     const comments = container.querySelectorAll('.comments-item')
     if (!comments || comments.length === 0) {
+        // nothing to process - no comments
         return
     }
-    resetPage(comments)
+    await resetPage(comments)
+
+    if (!settings.on) {
+        // nothing to process - deactivated
+        return
+    }
+
+    if (settings.rules.length === 0) {
+        // nothing to process - no rules
+        return
+    }
+
+    const globalHideNegative = settings.rules.some(r => r.user === '*')
+
     // .comments-list -> .comments-item-section -> div -> .comments-item | .comments-item-child -> .comments-item
     let counter = 0
 
@@ -46,21 +46,35 @@ export const processPage = async (settings: ProcessSettings) => {
         const plusStr = (comment.querySelector('span.plus-value')?.textContent || '').trim()
         const minusStr = (comment.querySelector('span.minus-value')?.textContent || '').trim()
 
+        const dateStr = (comment.querySelector('.blog-item-date')?.textContent || '').trim()
+
         const plus = parseInt(plusStr, 10)
         const minus = parseInt(minusStr, 10)
+        const isNegativeBalance = plus - minus < 0
+
+        let shouldProcess = globalHideNegative && isNegativeBalance
+
+        if (!shouldProcess) {
+            const userInRules = settings.rules.find(r => (r.user === from || r.user === to))
+            if (userInRules) {
+                if ((from === userInRules.user && userInRules.hideFrom) || (to === userInRules.user && userInRules.hideTo)) {
+                    shouldProcess = !userInRules.onlyNegativeBalance || (userInRules.onlyNegativeBalance && isNegativeBalance)
+                }
+            }
+        }
 
 
-        if (from === 'Alex Exler' || to === 'Alex Exler') {
-            console.log('APPLY 1', classHideName)
-            console.log('APPLY 2', comment)
-            console.log(`  ${from} -> ${to}`)
-            console.log(` -${minus} | +${plus}`)
-
+        if (shouldProcess) {
             comment.classList.add('hide-comment')
             comment.classList.add(classHideName)
 
-            comment.appendChild(prepareBlurFragment())
-            console.log('append!')
+            comment.appendChild(getHideFragment(settings.hideMode, {
+                user: from,
+                toUser: to,
+                plus,
+                minus,
+                dateStr
+            }))
             counter++
         }
     })

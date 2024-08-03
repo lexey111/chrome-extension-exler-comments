@@ -86,19 +86,21 @@ export const HideModeItem: FC<HideModeItemProps> = ({index, hideMode}) => {
             </span>
             <div className={'hide-comment-overlay-content'}>
                 <div className={'hide-comment-content-brief'}>
-                    <span className={'hide-comment-content-user'}>User 2</span>,
+                    <span className={'hide-comment-content-user'}>User 2</span>
+                    <span className={'hide-comment-content-date'}>{date}</span>
                     <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
                     <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
                 </div>
             </div>
         </div>}
 
-        {hideMode === 'collapse' && <div className={'hide-comment-content hide-comment-collapse-content'}>
+        {hideMode === 'collapse' && <div className={'hide-comment-content hide-comment-content-collapse'}>
             <div className={'hide-comment-content-brief'}>
                 <span className={'hide-comment-content-handler'} onClick={handleDismiss}>
                     <i className={'gg-eye'}></i>
                 </span>
-                <span className={'hide-comment-content-user'}>User 2</span>,
+                <span className={'hide-comment-content-user'}>User 2</span>
+                <span className={'hide-comment-content-date'}>{date}</span>
                 <span className={'hide-comment-content-minus'}>-{randomMinus}</span>|
                 <span className={'hide-comment-content-plus'}>+{randomPlus}</span>
             </div>

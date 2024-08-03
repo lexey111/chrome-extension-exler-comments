@@ -3,8 +3,6 @@ import {hideModeStorageKey, onOffStorageKey, rulesStorageKey} from './consts/sto
 import {HideMode, Rules} from './pages/types'
 import {processPage} from './content-process'
 
-console.log('> Loaded!')
-
 export type ProcessSettings = {
     on: boolean,
     hideMode: HideMode,
@@ -49,7 +47,6 @@ async function init() {
     }
 
     const updateState = async () => {
-        console.log('Update state...')
         await getOnOffState()
         await getRuleState()
         await getHideModeState()
@@ -61,11 +58,7 @@ async function init() {
         [p: string]: chrome.storage.StorageChange
     }, areaName: chrome.storage.AreaName) => {
         let needProcess = false
-        if (areaName === 'sync' && changes?.[onOffStorageKey]?.newValue) {
-            needProcess = true
-        }
-
-        if (areaName === 'sync' && changes?.[rulesStorageKey]?.newValue) {
+        if (areaName === 'sync' && (changes?.[onOffStorageKey]?.newValue || changes?.[hideModeStorageKey]?.newValue || changes?.[rulesStorageKey]?.newValue)) {
             needProcess = true
         }
 
@@ -79,5 +72,3 @@ async function init() {
 }
 
 void init()
-
-// todo: send badge/counter to background process (icon counter, stat)
