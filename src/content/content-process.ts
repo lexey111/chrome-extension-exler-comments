@@ -1,5 +1,5 @@
 import {storeStat} from './content-stat'
-import {ProcessSettings} from './content-script'
+import {ProcessSettings} from '../content-script'
 import {resetPage} from './content-reset'
 import {getHideFragment} from './content-fragments'
 

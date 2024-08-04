@@ -1,4 +1,5 @@
-import {allTimeStatStorageKey, statStorageKey} from './consts/storage-keys.consts'
+import {allTimeStatStorageKey, statStorageKey} from '../consts/storage-keys.consts'
+
 
 export const storeStat = async (applied: number, totalCommentsProcessed: number) => {
     // todo: send badge/counter to background process (icon counter, stat)

@@ -7,7 +7,7 @@
   var hideModeStorageKey = "hide_mode";
   var rulesStorageKey = "rules";
 
-  // src/content-stat.ts
+  // src/content/content-stat.ts
   var storeStat = async (applied, totalCommentsProcessed) => {
     await chrome.storage.sync.set({ [statStorageKey]: { processed: applied, total: totalCommentsProcessed } });
     const currentTotalStat = await chrome.storage.sync.get([allTimeStatStorageKey]);
@@ -16,7 +16,7 @@
     await chrome.storage.sync.set({ [allTimeStatStorageKey]: { processed: newProcessed, total: newTotal } });
   };
 
-  // src/content-reset.ts
+  // src/content/content-reset.ts
   var resetPage = async (comments) => {
     if (!comments || comments.length === 0) {
       return;
@@ -33,7 +33,7 @@
     });
   };
 
-  // src/content-fragments.ts
+  // src/content/content-fragments.ts
   var traverseToClass = (el, className) => {
     let traversedEl = el;
     while (traversedEl && !traversedEl.classList.contains(className)) {
@@ -117,7 +117,7 @@
     return getFragmentForBlur();
   };
 
-  // src/content-process.ts
+  // src/content/content-process.ts
   var processPage = async (settings2) => {
     const container = document.querySelector(".comments-list");
     if (!container) {

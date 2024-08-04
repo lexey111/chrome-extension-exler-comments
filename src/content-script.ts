@@ -1,7 +1,7 @@
 import {hideModeStorageKey, onOffStorageKey, rulesStorageKey} from './consts/storage-keys.consts'
 
 import {HideMode, Rules} from './pages/types'
-import {processPage} from './content-process'
+import {processPage} from './content/content-process'
 
 export type ProcessSettings = {
     on: boolean,

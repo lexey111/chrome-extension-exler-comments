@@ -10,7 +10,8 @@ export const buildConfig = {
     entryPoints: [
         'src/content-script.ts',
         'src/popup.tsx',
-        'src/settings.tsx'
+        'src/settings.tsx',
+        'src/background.ts'
     ],
     assetNames: 'assets/[name]',
     chunkNames: '[ext]/[name]',

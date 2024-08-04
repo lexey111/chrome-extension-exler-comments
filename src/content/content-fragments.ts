@@ -1,4 +1,4 @@
-import {HideMode} from './pages/types'
+import {HideMode} from '../pages/types'
 
 export type ModeParams = {
     user: string
