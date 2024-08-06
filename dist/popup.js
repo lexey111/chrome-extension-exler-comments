@@ -844,6 +844,8 @@
   var StatTable = () => {
     const [stat, setStat] = h2({ processed: 0, total: 0 });
     const [allStat, setAllStat] = h2({ processed: 0, total: 0 });
+    const [currentPercentage, setCurrentPercentage] = h2(0);
+    const [totalPercentage, setTotalPercentage] = h2(0);
     y2(() => {
       const processCurrentStat = async () => {
         const storedStat = await chrome.storage.sync.get([statStorageKey]);
@@ -851,11 +853,15 @@
           processed: storedStat?.[statStorageKey]?.processed ?? 0,
           total: storedStat?.[statStorageKey]?.total ?? 0
         });
+        const percent = (storedStat?.[statStorageKey]?.processed ?? 0) > 0 && (storedStat?.[statStorageKey]?.total ?? 0 > 0) ? storedStat?.[statStorageKey]?.processed / storedStat?.[statStorageKey]?.total * 100 : 0;
+        setCurrentPercentage(() => percent);
         const storedAllStat = await chrome.storage.sync.get([allTimeStatStorageKey]);
         setAllStat({
           processed: storedAllStat?.[allTimeStatStorageKey]?.processed ?? 0,
           total: storedAllStat?.[allTimeStatStorageKey]?.total ?? 0
         });
+        const percentTotal = (storedAllStat?.[allTimeStatStorageKey]?.processed ?? 0) > 0 && (storedAllStat?.[allTimeStatStorageKey]?.total ?? 0 > 0) ? storedAllStat?.[allTimeStatStorageKey]?.processed / storedAllStat?.[allTimeStatStorageKey]?.total * 100 : 0;
+        setTotalPercentage(() => percentTotal);
       };
       const handleLangChanges = (changes, areaName) => {
         if (areaName === "sync" && changes?.[statStorageKey]?.newValue) {
@@ -868,7 +874,7 @@
         chrome.storage.onChanged.removeListener(handleLangChanges);
       };
     }, [setStat, setAllStat]);
-    return /* @__PURE__ */ _("div", { className: "extension-stat" }, /* @__PURE__ */ _("table", null, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "has_been_hidden" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "total" })))), /* @__PURE__ */ _("tbody", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "in_current_session" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, stat.processed), /* @__PURE__ */ _("td", null, stat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "for_all_time" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, allStat.processed), /* @__PURE__ */ _("td", null, allStat.total)))), /* @__PURE__ */ _(ResetStat, null));
+    return /* @__PURE__ */ _("div", { className: "extension-stat" }, /* @__PURE__ */ _("table", null, /* @__PURE__ */ _("thead", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "has_been_hidden" })), /* @__PURE__ */ _("th", null, /* @__PURE__ */ _(I18n, { code: "total" })))), /* @__PURE__ */ _("tbody", null, /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "in_current_session" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, stat.processed), /* @__PURE__ */ _("td", null, stat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _("div", { className: "progress" }, /* @__PURE__ */ _("span", { style: { width: currentPercentage + "%" } }), /* @__PURE__ */ _("i", null, currentPercentage.toFixed(1), "%")))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _(I18n, { code: "for_all_time" }))), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", null, allStat.processed), /* @__PURE__ */ _("td", null, allStat.total)), /* @__PURE__ */ _("tr", null, /* @__PURE__ */ _("td", { colSpan: 2 }, /* @__PURE__ */ _("div", { className: "progress" }, /* @__PURE__ */ _("span", { style: { width: totalPercentage + "%" } }), /* @__PURE__ */ _("i", null, totalPercentage.toFixed(1), "%")))))), /* @__PURE__ */ _(ResetStat, null));
   };
 
   // src/pages/hooks/useOnOff.tsx
