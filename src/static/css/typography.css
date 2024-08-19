@@ -111,3 +111,14 @@ span.tag {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.no-rules-info {
+    margin: 1rem 0;
+    font-weight: 200;
+    background-color: #198ad1;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

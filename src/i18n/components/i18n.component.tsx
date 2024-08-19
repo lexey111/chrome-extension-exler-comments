@@ -1,13 +1,14 @@
 import {h} from 'preact'
 import {FC, useContext, useMemo} from 'preact/compat'
 import {LanguageContext} from './language.context'
-import {i18nKey} from '../index'
+import {I18nKey} from '../index'
 
 type I18nProps = {
-    code: i18nKey
+    code: I18nKey
+    className?: string
 }
 
-export const I18n: FC<I18nProps> = ({code}) => {
+export const I18n: FC<I18nProps> = ({code, className}) => {
     const {langCode, translate} = useContext(LanguageContext)
 
     if (!code || !langCode) {
@@ -16,7 +17,7 @@ export const I18n: FC<I18nProps> = ({code}) => {
 
     const text = useMemo(() => translate(code), [code, langCode])
 
-    return <span>
+    return <span className={className || ''}>
         {text}
     </span>
 }

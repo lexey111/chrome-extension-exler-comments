@@ -7,3 +7,7 @@ export type Rule = {
 }
 
 export type Rules = Array<Rule>
+
+export const defaultRule = {
+    id: 'default', user: '*', onlyNegativeBalance: true, hideFrom: false, hideTo: false
+}

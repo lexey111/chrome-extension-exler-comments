@@ -1,6 +1,6 @@
-import {i18nKey} from './index'
+import {I18nKey} from './index'
 
-export const UA: Record<i18nKey, string> = {
+export const UA: Record<I18nKey, string> = {
     title: 'Exler\'s site | вогнегасник коментарів',
     enable_processing: 'Увімкнути обробку',
     statistics: 'Статистика',
@@ -19,6 +19,7 @@ export const UA: Record<i18nKey, string> = {
     open_settings_page: 'Відкрити налагодження...',
     rules: 'Правила',
     no_rules: 'Поки що немає жодного правила. Будь ласка, натисніть кнопку "Додати" нижче, щоб створити перше.',
+    no_rules_popup: 'Немає правил для застосування. Будь ласка, натисніть "Відкрити налагодження" нижче, щоб задати правила.',
     add_rule: 'Додати правило',
     cancel: 'Відміна',
     save: 'Зберегти',
@@ -35,5 +36,8 @@ export const UA: Record<i18nKey, string> = {
     delete: 'Видалити',
     confirm: 'Підтвердження',
     are_you_sure: 'Ви впевнені, що хочете видалити запис?',
-    star_user_hint: 'Ви можете використовувати ім\'я користувача "*" та "Тільки якщо від\'ємний...", щоб приховати всі коментарі з від\'ємним балансом'
+    star_user_hint: 'Ви можете використовувати ім\'я користувача "*" та "Тільки якщо від\'ємний...", щоб приховати всі коментарі з від\'ємним балансом',
+    mode_blur: 'розмивання',
+    mode_overlay: 'перекриття',
+    mode_collapse: 'згортання',
 } as const

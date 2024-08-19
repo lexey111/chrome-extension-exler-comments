@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useState} from 'preact/compat'
 import {rulesStorageKey} from '../../consts/storage-keys.consts'
-import {Rules} from '../types'
+import {defaultRule, Rules} from '../types'
 
 export const getRuleState = async (): Promise<Rules> => {
     const storedState = await chrome.storage.sync.get([rulesStorageKey])
     let actual: Rules = []
     try {
-        actual = JSON.parse(storedState[rulesStorageKey])
+        actual = storedState[rulesStorageKey] ? JSON.parse(storedState[rulesStorageKey]) : [{...defaultRule}]
     } catch (e) {
         console.error(e)
     }

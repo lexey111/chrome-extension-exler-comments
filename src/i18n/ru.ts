@@ -1,6 +1,6 @@
-import {i18nKey} from './index'
+import {I18nKey} from './index'
 
-export const RU: Record<i18nKey, string> = {
+export const RU: Record<I18nKey, string> = {
     title: 'Exler\'s site | огнетушитель комментариев',
     enable_processing: 'Включить обработку',
     statistics: 'Статистика',
@@ -19,6 +19,7 @@ export const RU: Record<i18nKey, string> = {
     open_settings_page: 'Открыть настройки...',
     rules: 'Правила',
     no_rules: 'Пока нет ни одного правила. Пожалуйста, нажмите кнопку "Добавить" ниже, чтобы создать первое.',
+    no_rules_popup: 'Нет правил для применения. Пожалуйста, нажмите "Открыть настройки" ниже чтобы задать правила.',
     add_rule: 'Добавить правило',
     cancel: 'Отмена',
     save: 'Сохранить',
@@ -35,5 +36,8 @@ export const RU: Record<i18nKey, string> = {
     delete: 'Удалить',
     confirm: 'Подтвердить',
     are_you_sure: 'Вы уверены, что хотите удалить запись?',
-    star_user_hint: 'Вы можете использовать имя пользователя "*" и "Только если отрицательный...", чтобы скрыть все комментарии с отрицательным балансом'
+    star_user_hint: 'Вы можете использовать имя пользователя "*" и "Только если отрицательный...", чтобы скрыть все комментарии с отрицательным балансом',
+    mode_blur: 'размытие',
+    mode_overlay: 'шторка',
+    mode_collapse: 'сворачивание',
 } as const

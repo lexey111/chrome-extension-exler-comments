@@ -17,6 +17,7 @@ export const EN = {
     open_settings_page: 'Open settings page...',
     rules: 'Rules',
     no_rules: 'Nothing has been created yet. Please click the "Add" button below to create your first one.',
+    no_rules_popup: 'No rules to process. Please click "Open settings page" below to create your first one.',
     add_rule: 'Add rule',
     cancel: 'Cancel',
     save: 'Save',
@@ -33,5 +34,8 @@ export const EN = {
     delete: 'Delete',
     confirm: 'Confirm',
     are_you_sure: 'Are you sure you want to delete record?',
-    star_user_hint: 'You can use username "*" and "Only if negative..." to hide all comments with a negative balance'
+    star_user_hint: 'You can use username "*" and "Only if negative..." to hide all comments with a negative balance',
+    mode_blur: 'blur',
+    mode_overlay: 'overlay',
+    mode_collapse: 'collapse',
 } as const

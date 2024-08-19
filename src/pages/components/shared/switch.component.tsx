@@ -1,11 +1,11 @@
 import {FC, useCallback} from 'preact/compat'
 import {ComponentChildren, h} from 'preact'
-import {I18n, i18nKey} from '../../../i18n'
+import {I18n, I18nKey} from '../../../i18n'
 
 export type SwitchProps = {
     on?: boolean | null
     onChange?: (state?: boolean) => void
-    titleKey?: i18nKey
+    titleKey?: I18nKey
     title?: any
     disabled?: boolean
     children?: ComponentChildren

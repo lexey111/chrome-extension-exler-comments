@@ -4,9 +4,13 @@ import {GoSettings} from './components/popup'
 import {OnOff, StatTable} from './components/shared'
 import {useOnOff} from './hooks'
 import {useEffect} from 'preact/compat'
+import {useRules} from './hooks/useRules'
 
 export const PopupPage = () => {
     const {on} = useOnOff()
+
+    const {rules} = useRules()
+
     useEffect(() => {
         if (!on) {
             document.body.classList.add('disabled')
@@ -22,7 +26,8 @@ export const PopupPage = () => {
         </h1>
         <OnOff/>
 
-        <StatTable/>
+        {rules.length > 0 && <StatTable/>}
+        {rules.length === 0 && <div className={'no-rules-info'}><I18n code={'no_rules_popup'}/></div>}
 
         <GoSettings/>
 

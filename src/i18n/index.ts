@@ -6,9 +6,9 @@ import {UA} from './ua'
 import {EN} from './en'
 import {RU} from './ru'
 
-export type i18nKey = keyof typeof EN
+export type I18nKey = keyof typeof EN
 
-export const LANG_DATA: Record<LanguageCode, Record<i18nKey, string>> = {
+export const LANG_DATA: Record<LanguageCode, Record<I18nKey, string>> = {
     EN: EN,
     UA: UA,
     RU: RU

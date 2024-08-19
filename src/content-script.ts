@@ -1,6 +1,6 @@
 import {hideModeStorageKey, onOffStorageKey, rulesStorageKey} from './consts/storage-keys.consts'
 
-import {HideMode, Rules} from './pages/types'
+import {defaultRule, HideMode, Rules} from './pages/types'
 import {processPage} from './content/content-process'
 
 export type ProcessSettings = {
@@ -25,7 +25,7 @@ async function init() {
         const storedState = await chrome.storage.sync.get([rulesStorageKey])
         let actual: Rules = []
         try {
-            actual = JSON.parse(storedState[rulesStorageKey])
+            actual = storedState[rulesStorageKey] ? JSON.parse(storedState[rulesStorageKey]) : [{...defaultRule}]
         } catch (e) {
             //console.error(e)
         }

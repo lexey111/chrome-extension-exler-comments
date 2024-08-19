@@ -4,7 +4,7 @@
 @import "language-component.css";
 
 .extension-stat {
-    margin: 2rem 0;
+    margin: 3rem 0;
     font-size: .8rem;
 
     table {
@@ -40,8 +40,43 @@
             }
         }
     }
+
     .reset-stat-container {
         margin: .5rem 0;
         text-align: right;
+    }
+
+    .progress {
+        width: 100%;
+        max-width: 400px;
+        height: 1rem;
+        margin: .5rem 1px;
+        border: 1px solid var(--border-color);
+        background: var(--cell-color);
+        border-radius: 4px;
+        font-size: .7rem;
+        position: relative;
+        line-height: 1;
+
+        span {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background-color: var(--active-border-color);
+            z-index: 0;
+        }
+
+        i {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            font-style: normal;
+            mix-blend-mode: multiply;
+        }
     }
 }
